@@ -21,6 +21,9 @@
     <!-- Theme CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
+	<!-- Video Heading CSS -->
+	<link href="css/video-head.css" rel="stylesheet">
+	
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -41,50 +44,23 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header">
+            <div class="video">
+			<video  autoplay="autoplay" preload="auto" loop="loop" id="mainVideo">
+				<source src="video/wild.mp4" type="video/mp4">
+				<source src="video/wild.webm" type="video/webm">
+			</video>
+			<div class="videotext">
+	    		<p class="videomainheding">동반은 LIFE 야</p>
+    			<p class="videosubheding">30만 재외 유학생과 함께 하는 동반 여행기. 우리는 하나입니다</p>
+			</div>
+		</div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>엄마를 부탁해</h1>
-                        <br>
-                        <hr class="small">
-                        <br>
-                        <span class="subheading">안심하고 부모님을 해외로 초대하세요</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-10">
-                <div class="search-form">
-                	<form action="">
-                		<div class="SearchForm_location col-md-2 col-lg-3">
-	                		<input class="form-control input-lg" type="text" placeholder="출발(공항)" id="airportSearch">
-	                    	<div class="panel panel-info" id="airport_autocomplete" style="z-index:1; position:absolute;"></div>
-                    	</div>
-                    	<div class="SearchForm_location col-md-2 col-lg-3">
-    	            		<input class="form-control input-lg" type="text" placeholder="도착(국가)" id="nationSearch">
-        	            	<div class="panel panel-info" id="nation_autocomplete" style="z-index:1; position:absolute;"></div>
-        	            </div>
-        	            <div class="SearchForm_date col-md-2 col-lg-2">
-            	        	<input class="form-control input-lg" id="from-datepicker" type="text" placeholder="출발일From">
-            	        </div>
-            	        <div class="SearchForm_date col-md-2 col-lg-2">
-                	    	<input class="form-control input-lg" id="to-datepicker" type="text" placeholder="출발일To">
-                	    </div>
-                	    <div class="submit-form col-md-2 col-lg-2">
-                    		<input class="form-control input-lg" type="submit" value="검색">
-                    	</div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="include/find.jsp"></jsp:include>
     
     <div class="container">
         <div class="row">
