@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<insert id="addMember" parameterType="MemberDTO">
+		insert into member(mem_num, mem_id, mem_passwd, mem_name, mem_birth)
+		values (mem_seq.nextval,#{mem_id},#{mem_passwd},#{mem_name},#{mem_birth})
+	</insert>
+	
+	<select id="login" parameterType="hashmap" resultType="MemberDTO">
+		select mem_id, mem_name, mem_birth from member
+		where mem_id = #{mem_id} and mem_passwd = #{mem_passwd}
+	</select>
+</mapper>
