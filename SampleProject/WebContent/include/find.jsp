@@ -10,8 +10,8 @@
 	                    	<div class="panel panel-info" id="airport_autocomplete" style="z-index:1; position:absolute;"></div>
                     	</div>
                     	<div class="SearchForm_location col-md-2 col-lg-3">
-    	            		<input class="form-control input-lg" type="text" placeholder="도착(국가)" id="nationSearch" name="scb_to">
-        	            	<div class="panel panel-info" id="nation_autocomplete" style="z-index:1; position:absolute;"></div>
+    	            		<input class="form-control input-lg" type="text" placeholder="도착(국가)" id="countrySearch" name="scb_to">
+        	            	<div class="panel panel-info" id="country_autocomplete" style="z-index:1; position:absolute;"></div>
         	            </div>
         	            <div class="SearchForm_date col-md-2 col-lg-2">
             	        	<input class="form-control input-lg" id="from-datepicker" type="text" placeholder="출발일From" name="min">

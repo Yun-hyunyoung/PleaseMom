@@ -3,7 +3,7 @@ $(function(){
         source : function( request, response ) {
              $.ajax({
                     type: 'post',
-                    url: "airportSearch.jsp",
+                    url: "search/airportSearch.jsp",
                     //request.term = $("#autocomplete").val()
                     data: { value : request.term },
                     dataType:'json',
