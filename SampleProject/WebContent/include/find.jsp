@@ -3,8 +3,8 @@
  <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-10">
-                <div class="search-form">
-                	<form action="BoardListServlet">
+             	<form action="BoardListServlet">
+    	            <div class="search-form">
                 		<div class="SearchForm_location col-md-2 col-lg-3">
 	                		<input class="form-control input-lg" type="text" placeholder="출발(공항)" id="airportSearch" name="scb_from">
 	                    	<div class="panel panel-info" id="airport_autocomplete" style="z-index:1; position:absolute;"></div>
@@ -22,8 +22,8 @@
                 	    <div class="submit-form col-md-2 col-lg-2">
                     		<input class="form-control input-lg" type="submit" value="검색">
                     	</div>
-                    </form>
-                </div>
+	                </div>
+                </form>
             </div>
         </div>
     </div>

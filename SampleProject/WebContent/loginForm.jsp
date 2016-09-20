@@ -43,11 +43,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>엄마를 부탁해</h1>
+                        <h1>Login</h1>
                         <br>
                         <hr class="small">
-                        <br>
-                        <span class="subheading">안심하고 부모님을 해외로 초대하세요</span>
                     </div>
                 </div>
             </div>
@@ -69,7 +67,10 @@
 	
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
-
+    
+    <!-- Login Validation Check JavaScript -->
+    <script src="js/loginValidation.js"></script>
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -81,7 +82,6 @@
     <script src="js/clean-blog.min.js"></script>
     
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-
 </body>
 
 </html>
