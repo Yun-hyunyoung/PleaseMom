@@ -36,4 +36,32 @@ public class MemberService {
 		}
 		return dto;
 	}//end login()
+	
+	public MemberDTO catchProfile(String id) throws CommonException{
+		SqlSession session = MySqlSessionFactory.getSession();
+		MemberDTO dto = null;
+		try{
+		dto = session.selectOne("member.catchProfile",id);
+		}catch(Exception e){
+			throw new CommonException("회원정보 가져오기 실패");
+		}finally{
+			session.close();
+		}
+		return dto;
+	}
+	
+	public void updateMember(HashMap<String, String> map) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			int n = session.update("updateMember", map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("회원수정 실패");
+		} finally {
+			session.close();
+		}
+	}
+	
+	
 }
