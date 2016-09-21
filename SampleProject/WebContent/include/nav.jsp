@@ -40,7 +40,7 @@
 				            <li><a href="UpdateProfileFormServlet">프로필 수정</a></li>
 				            <li><a href="#">계정 관리</a></li>
 				            <li role="separator" class="divider"></li>
-				            <li><a href="#">로그아웃</a></li>
+				            <li><a href="LogoutServlet">로그아웃</a></li>
 				          </ul>
 				        </li>
                     </c:if>
