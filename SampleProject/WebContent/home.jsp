@@ -62,21 +62,7 @@
     <!-- Main Content -->
     <jsp:include page="include/find.jsp"></jsp:include>
     
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <hr>
-                <div class="post-preview">
-                	국가 사진들이 입력될 것
-                </div>
-                <hr>
-                <div class="post-preview">
-                    후기들이 입력될 것
-                </div>
-            </div>
-        </div>
-	</div>
-            
+    <jsp:include page="include/image-find.jsp"></jsp:include>
 
     <hr>
 
