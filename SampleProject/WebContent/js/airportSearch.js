@@ -14,11 +14,9 @@ $(function(){
                         		for (var i = 0; i < plane.length; i++){
                         			str += '<div class="panel-body panel-airport_search" id="a'+i+'"><h5>' + plane[i].plane + '</h5></div>';
                         		}
-                    		console.log($(".panel-info"));
                             $("#airport_autocomplete").html(str);
                             for (var i = 0; i < plane.length; i++){
                             	$("body").on("click","#a"+i, function() {
-                            		console.log(this);
 									$("#airportSearch").val($(this).text());
 									$("#airport_autocomplete").html("");
 								})

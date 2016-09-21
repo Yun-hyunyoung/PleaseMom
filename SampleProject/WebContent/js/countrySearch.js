@@ -17,7 +17,6 @@ $(function(){
                             $("#country_autocomplete").html(str);
                             for (var i = 0; i < plane.length; i++){
                             	$("body").on("click","#n"+i, function() {
-                            		console.log(this);
 									$("#countrySearch").val($(this).text());
 									$("#country_autocomplete").html("");
 								})
