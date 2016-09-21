@@ -1,58 +1,7 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<style>
-
-	.board{
-		margin: 50px auto;
-		height: 600px;
-		width: 100%;
-	}
-	.board-line{		
-		width: 100%;
-		text-align:center;
-	}
-	.board-one{
-		width: 45%;
-		height: 250px;
-		margin: 20px;
-		display: inline-block;
-		border: 2px solid lightBlue;
-		border-radius: 8px;
-		border-style: rounded;
-	}
-	.b-inline-a{
-		float:left;
-		width:80px;
-		height:100%;
-	}
-	.b-inline-b{
-		float:right;
-		width:80%;
-		height:100%;
-		vertical-align: center;
-	}
-	.board-status {
-		padding: 120% 0;
-    	text-align: center;
-	}
-	.board-location{
-		padding: 7% 0;
-		text-align:center
-	}
-	.board-location .from-to{
-		display: inline-block;
-	}
-	.board-location .via{
-		display: inline-block;
-	}
-	.board-date-time{
-		padding: 7% 0;
-	}
-	.board-title{
-		padding: 5% 0;
-	}
-</style> 
+<br>
 <header class="intro-header">
     <div class="container">
     </div>
