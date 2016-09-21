@@ -26,4 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		mem_name = #{username}
 	   where mem_id = #{userid}	
 	</update>
+	
+	
+	<update id="authenEmail" parameterType="string">
+		update member
+		set mem_email_ck = 'Y'
+	   where mem_id = #{userid}	
+	</update>
 </mapper>

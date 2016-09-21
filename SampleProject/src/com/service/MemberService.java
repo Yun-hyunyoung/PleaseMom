@@ -64,4 +64,16 @@ public class MemberService {
 	}
 	
 	
+	public void authenEmail(String userid) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			int n = session.update("authenEmail", userid);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("이메일 인증 실패");
+		} finally {
+			session.close();
+		}
+	}
 }
