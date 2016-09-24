@@ -76,4 +76,17 @@ public class MemberService {
 			session.close();
 		}
 	}
+	
+	public void deleteMember(String userid) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try{
+			int n = session.delete("member.deleteMember", userid);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("회원삭제 실패");
+		} finally {
+			session.close();
+		}
+	}
 }

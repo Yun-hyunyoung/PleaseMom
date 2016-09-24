@@ -77,22 +77,39 @@
 				    </div>
 				  </div>
 				  <hr style="margin-top: 100px;margin-bottom: 100px;height: 1px;background-color: black">
-				  <h1>계정 삭제 요청</h1> <hr>
-				<button class="button" style="vertical-align:middle" onclick="deleteMember(myForm)" ><span>계정 삭제</span></button>
 			</form>
+		  	<h1>계정 삭제 요청</h1> <hr>
+			<button class="button" style="vertical-align:middle" data-toggle="modal" data-target="#myModal"><span>계정 삭제</span></button>
         </div>
     </div>
 </div>
 
-<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">계정 삭제 확인</h4>
+      </div>
+      <div class="modal-body">
+        <h3 align="center"><span class="glyphicon glyphicon-alert">주의</span></h3><br>
+        <h5 align="center">회원님의 프로필과 등록된 글, 후기 등 모든 정보가 삭제됩니다.</h5>
+      </div>
+      <form name="deleteForm" action="DeleteMemberServlet">
+        <div class="modal-footer">
+          <input type="hidden" name="deleteUserid" value="${prof.mem_id}">
+          <button type="submit" class="btn btn-danger">삭제</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
-
 	function emailAuthor(f){
-		   f.action="sendMail.jsp";
+		f.action="sendMail.jsp";
 	}
-	function deleteMember(f){
-		   f.action="";
-	}
-	
-
 </script>
