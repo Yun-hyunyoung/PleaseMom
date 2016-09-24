@@ -27,15 +27,8 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <jsp:include page="member/addMemberForm.jsp"></jsp:include>
-            </div>
-        </div>
-    </div>
-
+    <jsp:include page="member/addMemberForm.jsp"></jsp:include>
+    
     <hr>
 
     <jsp:include page="include/footer.jsp"></jsp:include>

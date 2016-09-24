@@ -28,25 +28,25 @@
 			  <h1>필수정보</h1>
 			  <hr>
 			  <div class="form-group">
-			    <label for="inputEmail3" class="col-sm-3 control-label">아이디</label>
+			    <label class="col-sm-3 control-label">아이디</label>
 			    <div class="col-sm-9">
 			      <input class="form-control input-lg" type="email" name="userid" value="${prof.mem_id}" autofocus readonly="readonly">
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-3 control-label">비밀번호</label>
+			    <label class="col-sm-3 control-label">비밀번호</label>
 			    <div class="col-sm-9">
-			      <input class="form-control input-lg" type="password" name="passwd" id="passwd" placeholder="Password">
+			      <input class="form-control input-lg" type="password" name="passwd" id="passwd" placeholder="Password" required>
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-3 control-label">비밀번호 확인</label>
+			    <label class="col-sm-3 control-label">비밀번호 확인</label>
 			    <div class="col-sm-9">
-			      <input class="form-control input-lg" type="password" name="passwd" id="passwd" placeholder="Confirm Password">
+			      <input class="form-control input-lg" type="password" name="passwd" id="passwd" placeholder="Confirm Password" required>
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-3 control-label">전화번호</label>
+			    <label class="col-sm-3 control-label">전화번호</label>
 			    <div class="col-sm-7">
 			    <c:set var="xxx" value="${prof.mem_phone}" scope="session"></c:set>
 			      <c:if test="${xxx == null}">
@@ -61,15 +61,15 @@
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-3 control-label">생일</label>
+			    <label class="col-sm-3 control-label">생일</label>
 			    <div class="col-sm-9">
 			    	<input class="form-control input-lg" type="text" name="birth" value="${prof.mem_birth}" readonly="readonly">
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-3 control-label">이름</label>
+			    <label class="col-sm-3 control-label">이름</label>
 			    <div class="col-sm-9">
-			    	<input class="form-control input-lg" type="text" name="username" value="${prof.mem_name}">
+			    	<input class="form-control input-lg" type="text" name="username" value="${prof.mem_name}" required>
 			    </div>
 			  </div>
 			  <hr style="margin-top: 100px;margin-bottom: 100px;height: 1px;background-color: black">

@@ -1,4 +1,4 @@
-$("#userid").on("keydown", function() {
+/*$("#userid").on("keydown", function() {
 	$("#id-valid").html("");
 })
 $("#passwd").on("keydown", function() {
@@ -14,4 +14,4 @@ $("#submit").on("click", function(event) {
 		$("#pass-valid").html("비밀번호를 입력하세요");
 		event.preventDefault();
 	}
-})
+})*/

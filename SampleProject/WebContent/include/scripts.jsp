@@ -21,6 +21,9 @@
 	<!-- Date Picker JavaScript -->
 	<script src="js/datepicker.js"></script>
 	
+	<!-- Birth Catch JavaScript -->
+	<script src="js/birthpicker.js"></script>
+	
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	
 	<!-- Login Validation Check JavaScript -->

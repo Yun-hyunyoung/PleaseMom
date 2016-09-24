@@ -26,7 +26,6 @@ public class UpdateProfileServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userid = request.getParameter("userid");
 		String passwd = request.getParameter("passwd");
-		String passwd2 = request.getParameter("passwd2");
 		String phone = request.getParameter("phone");
 		String username = request.getParameter("username");
 		HashMap<String, String> map = new HashMap<>();
@@ -40,25 +39,18 @@ public class UpdateProfileServlet extends HttpServlet {
 		MemberService service = new MemberService();
 		String target="";
 		String title="";
-		if(passwd.equals(passwd2))
-		{
-			try {
+		
+		try {
 			service.updateMember(map);
 			target = "home.jsp";
 			request.setAttribute("update", "정상적으로 수정되었습니다.");
-			}catch (CommonException e) {
-				title= e.getMessage();
-				String link="LoginFormServlet";
-				target="error.jsp";
-				request.setAttribute("title", title);
-				request.setAttribute("link", link);
-			}
+		}catch (CommonException e) {
+			title= e.getMessage();
+			String link="LoginFormServlet";
+			target="error.jsp";
+			request.setAttribute("title", title);
+			request.setAttribute("link", link);
 		}
-		else{
-			target = "home.jsp";
-		}
-	
-		
 		
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
