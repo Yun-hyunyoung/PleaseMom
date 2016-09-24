@@ -34,33 +34,3 @@
 	<hr>
 	<input class="form-control input-lg" type="submit" value="수정">
 </form>
-<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
-<script type="text/javascript">
-
-	$(document).ready(function(){
-	   
-		$("#passwd2").on("keyup", function(event){
-		 $("#result2").removeClass();
-		   var p = $("#passwd").val();
-		   var p2 = $("#passwd2").val();
-		   if(p == p2){
-			   $("#result2").text("일치").addClass("blue");
-		   }else{
-			   $("#result2").text("불일치").addClass("red");;
-		   }
-	   });
-	   
-		$("form").on("submit", function(event){
-			var passwd = $("#passwd").val();
-			var passwd2 = $("#passwd2").val();
-			if(passwd != passwd2){
-				alert("비밀번호가 다릅니다.");
-			}else{
-				alert("성공적으로 수정하였습니다.");
-			}
-		});
-	   
-	});
-	
-
-</script>
