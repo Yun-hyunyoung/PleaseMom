@@ -16,8 +16,7 @@
 	<h4><input class="form-control input-lg" type="submit" id="submit" value="로그인"></h4>
 	<br>
 	<h5 align="center">
-		<a href="javascript:void(0);" onClick=window.open("findinfo/findIdForm.jsp","Ratting","width=550,height=300,0,status=0")>아이디찾기</a>|
-		<a href="javascript:void(0);" onClick=window.open("findinfo/findIdForm.jsp","Ratting","width=550,height=300,0,status=0")>비밀번호찾기</a>|
+		<a href="javascript:void(0);" onClick=window.open("findPasswdForm.jsp","Ratting","width=550,height=300,0,status=0")>비밀번호찾기</a>|
 		<a href="AddMemberFormServlet">회원가입</a>
 	</h5>
 </form>
