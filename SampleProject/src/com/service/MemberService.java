@@ -27,7 +27,6 @@ public class MemberService {
 		MemberDTO dto = null;
 		try {
 			dto = session.selectOne("member.login", map);
-			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new CommonException("로그인 실패");
@@ -37,17 +36,19 @@ public class MemberService {
 		return dto;
 	}//end login()
 	
-	public MemberDTO catchProfile(String id) throws CommonException{
+	public MemberDTO boardSearchMember(String scb_num) throws CommonException{
 		SqlSession session = MySqlSessionFactory.getSession();
 		MemberDTO dto = null;
-		try{
-		dto = session.selectOne("member.catchProfile",id);
-		}catch(Exception e){
-			throw new CommonException("회원정보 가져오기 실패");
-		}finally{
+		try {
+			dto = session.selectOne("member.boardSearch",Integer.parseInt(scb_num));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("게시글작성자 정보찾기 실패");
+		} finally {
 			session.close();
 		}
 		return dto;
+		
 	}
 	
 	public void updateMember(HashMap<String, String> map) throws CommonException {
@@ -63,6 +64,18 @@ public class MemberService {
 		}
 	}
 	
+	public MemberDTO catchProfile(String id) throws CommonException{
+		SqlSession session = MySqlSessionFactory.getSession();
+		MemberDTO dto = null;
+		try{
+		dto = session.selectOne("member.catchProfile",id);
+		}catch(Exception e){
+			throw new CommonException("회원정보 가져오기 실패");
+		}finally{
+			session.close();
+		}
+		return dto;
+	}
 	
 	public void authenEmail(String userid) throws CommonException {
 		SqlSession session = MySqlSessionFactory.getSession();

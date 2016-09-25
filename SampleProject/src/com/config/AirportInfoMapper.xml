@@ -17,4 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and country_kr like '%'||#{name}||'%'
 		or country_kr like '%'||#{name}||'%'
 	</select>
+	<select id="airportNum" parameterType="string" resultType="string">
+		select airport_num
+		from airport_info
+		where name_kr=#{name}
+	</select>
 </mapper>

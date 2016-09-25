@@ -13,9 +13,12 @@ import com.dto.PageDTO;
 public class BoardService {
 
 	//페이지
-	public PageDTO page(int curPage, HashMap<String, String> map){
+	public HashMap<String, Object> page(int curPage, HashMap<String, String> map){
+		HashMap<String, Object> mapList =new HashMap<>();
 		PageDTO dto = new PageDTO();
 		List<BoardDTO> list = null;
+		List<String> listName_kr_start=null;
+		List<String> listName_kr_arrival=null;
 		SqlSession session = 
 				MySqlSessionFactory.getSession();
 		try{
@@ -25,6 +28,8 @@ public class BoardService {
         list =
 		session.selectList("list", map,
 				new RowBounds(skip, count));
+        listName_kr_start =session.selectList("listAirportStart",map,new RowBounds(skip,count));
+        listName_kr_arrival =session.selectList("listAirportArrival",map,new RowBounds(skip,count));
 			
 			
 		}finally {
@@ -35,7 +40,11 @@ public class BoardService {
 		dto.setList(list);
 		dto.setCurPage(curPage);
 		dto.setTotalRecord(totalCount(map));
-		return dto;
+		
+		mapList.put("dto", dto);
+		mapList.put("start", listName_kr_start);
+		mapList.put("arrival",listName_kr_arrival);
+		return mapList;
 	}//end list()
 	
 	//전체 레코드 갯수
@@ -51,23 +60,6 @@ public class BoardService {
 		return count;
 	}//end totalCount
 	
-	
-	
-	
-	
-	//검색하기
-	public List<BoardDTO>
-	       search(HashMap<String, String> map){
-		List<BoardDTO> list = null;
-		SqlSession session = 
-				MySqlSessionFactory.getSession();
-		try{
-		  list = session.selectList("search", map);
-		}finally {
-			session.close();
-		}
-		return list;
-	}//end list()
 	
 	
 	
@@ -101,41 +93,29 @@ public class BoardService {
 		}
 	}//end updated
 	
-	
-	
-	
-	// 조회수 증가
-	private void readCnt(String num){
-		SqlSession session = 
-				MySqlSessionFactory.getSession();
-		try{
-        int n =  	
-      session.update("readCnt", Integer.parseInt(num));
-        session.commit();
-		}finally {
-			session.close();
-		}
-	}//end readCnt
 
 	//글자세히 보기
-	public BoardDTO retrieve(String num){
-		//조회수 증가
-		readCnt(num);
+	public HashMap<String, Object> retrieve(String scb_num){
 		SqlSession session = 
 				MySqlSessionFactory.getSession();
 		BoardDTO dto = null;
+		String name_kr_start;
+		String name_kr_arrival;
+		HashMap<String, Object> map=new HashMap<>();
 		try{
-		  dto = 
-	 session.selectOne("retrieve", Integer.parseInt(num));
+		  dto = session.selectOne("retrieve", Integer.parseInt(scb_num));
+		  System.out.println(dto);
+		  name_kr_start=session.selectOne("retrieveAirportStart",dto);
+		  name_kr_arrival=session.selectOne("retrieveAirportArrival",dto);
 		}finally {
 			session.close();
 		}
-		return dto;
+		map.put("bDto",dto);
+		map.put("start",name_kr_start);
+		map.put("arrival",name_kr_arrival);
+		return map;
 	}//end 
-	
-	
-	
-	
+
 	
 	//글쓰기
 	public void write(BoardDTO dto){
@@ -149,20 +129,18 @@ public class BoardService {
 		}
 	}//end write
 	
-	
-	
-	//목록보기
-	public List<BoardDTO> list(){
-		List<BoardDTO> list = null;
-		SqlSession session = 
-				MySqlSessionFactory.getSession();
-		try{
-		  list = session.selectList("list");
-		}finally {
+	//공항번호 가져오기
+	public int airportNum(String name) {
+		SqlSession session=MySqlSessionFactory.getSession();
+		String num="";
+		try {
+			num=session.selectOne("airport.airportNum",name);
+			System.out.println(num);
+		} finally {
 			session.close();
 		}
-		return list;
-	}//end list()
+		return Integer.parseInt(num);
+	}
 	
 	
 }//end 

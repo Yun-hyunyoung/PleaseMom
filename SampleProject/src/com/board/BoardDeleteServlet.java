@@ -17,14 +17,14 @@ import com.service.BoardService;
 public class BoardDeleteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		System.out.println("BoardDeleteServlet");
-		String num = request.getParameter("num");
-		
+		String scb_num = request.getParameter("scb_num");
 		BoardService service = new BoardService();
-		service.delete(num);
+		service.delete(scb_num);
 		
-		
-		response.sendRedirect("BoardListServlet");
+		response.sendRedirect("home.jsp");
+//		response.sendRedirect("BoardListServlet");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

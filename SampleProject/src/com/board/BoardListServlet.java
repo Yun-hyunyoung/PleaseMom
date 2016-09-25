@@ -23,9 +23,10 @@ import com.dto.PageDTO;
 public class BoardListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String curPage = request.getParameter("curPage");
-		HashMap<String, String> map=new HashMap<>();
 		HttpSession session=request.getSession();
+		String curPage=request.getParameter("curPage");
+		System.out.println("curPage=="+curPage);
+		HashMap<String, String> map=new HashMap<>();
 		if(curPage == null){
 			curPage = "1";
 			String scb_from1[]=request.getParameter("scb_from").split("/");//출발지
@@ -33,18 +34,21 @@ public class BoardListServlet extends HttpServlet {
 			String scb_to=request.getParameter("scb_to");//도착지
 			String min=request.getParameter("min");//미니멈
 			String max=request.getParameter("max");//맥시멈
-			session.setAttribute("map", map);
 			map.put("scb_from", scb_from);
 			map.put("scb_to", scb_to);
 			map.put("min", min);
 			map.put("max", max);
-			System.out.println(scb_from+scb_to+min+max);
+			session.setAttribute("map", map);
 		}
+		session.setAttribute("curPage1",curPage);
 		BoardService service = new BoardService();
 		
-		PageDTO dto = service.page(Integer.parseInt(curPage),(HashMap<String, String>)session.getAttribute("map"));
+		HashMap<String, Object> mapList
+		= service.page(Integer.parseInt((String)session.getAttribute("curPage1")),(HashMap<String, String>)session.getAttribute("map"));
 		
-		request.setAttribute("page", dto);
+		request.setAttribute("page", mapList.get("dto"));
+		request.setAttribute("start", mapList.get("start"));
+		request.setAttribute("arrival", mapList.get("arrival"));
 		
 		RequestDispatcher dis = 
 				request.getRequestDispatcher("boardList.jsp");

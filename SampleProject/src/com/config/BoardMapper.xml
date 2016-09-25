@@ -4,56 +4,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myboard">
 
-     <select id="search" 
-       parameterType="hashmap" resultType="BoardDTO">
-        select num, title, author, content,
-	         to_char(writeday,'yyyy/mm/dd') writeday,
-	         readcnt 
-	   from myboard 
-       <if test="searchName=='title'">
-          where title LIKE  '%'||#{searchValue}||'%'
-       </if>
-       <if test="searchName=='author'">
-         where author LIKE  '%'||#{searchValue}||'%'
-       </if>
-       
-     </select>
-
-
-
  <delete id="delete" parameterType="int">
-    delete from myboard
-     where num = #{num}
+    delete from schedule_board
+     where scb_num = #{scb_num}
  </delete>
 
  <update id="update" parameterType="BoardDTO">
-      update myboard 
-      set title=#{title}, 
-          author=#{author}, 
-          content=#{content}
-      where num = #{num}
+      update schedule_board 
+      set scb_title=#{scb_title}, 
+          scb_from=#{scb_from}, 
+          scb_via=#{scb_via},
+          scb_to=#{scb_to},
+          scb_sdate=#{scb_sdate},
+          scb_content=#{scb_content}
+      where scb_num = #{scb_num}
     </update>
-    
-    
-    <update id="readCnt" parameterType="int">
-      update myboard 
-      set readcnt = readcnt + 1
-      where num = #{num}
-    </update>
-
-    <select id="retrieve" 
-       parameterType="int" resultType="BoardDTO">
-        select num, title, author, content,
-	         to_char(writeday,'yyyy/mm/dd') writeday,
-	         readcnt 
-	   from myboard 
-	   where num = #{num}
-     </select>
-
 
     <insert id="write" parameterType="BoardDTO">
-     insert into myboard( num,title,author,content)
-     values ( myboard_seq.nextval, #{title},#{author},#{content}) 
+     insert into schedule_board(scb_num,scb_mem_num, scb_from,scb_via,scb_to,scb_sdate,scb_title,scb_content)
+     values ( scb_seq.nextval, #{scb_mem_num},#{scb_from},#{scb_via},#{scb_to},#{scb_sdate},#{scb_title},#{scb_content}) 
     </insert>
 
 
@@ -68,6 +37,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   	order by scb_num desc      
 	</select>
 	
+	<select id="listAirportStart" parameterType="hashmap" resultType="string">
+		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
+		where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
+	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_FROM
+	   	and scb_sdate between #{min} and #{max} 
+	   	order by scb_num desc
+	</select>
+
+	<select id="listAirportArrival" parameterType="hashmap" resultType="string">
+		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
+		where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
+		and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
+	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_to
+	   	and scb_sdate between #{min} and #{max}
+	   	order by scb_num desc     
+	</select>
+	
 	<select id="totalCount" resultType="int" parameterType="hashmap">
 	 select count(*) 
 	 from schedule_board
@@ -75,7 +61,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
 	 and scb_sdate between #{min} and #{max}
 	</select>
+
+    <select id="retrieve" 
+       parameterType="int" resultType="BoardDTO">
+       select scb_num, scb_from, scb_via, scb_to,scb_case,
+       scb_title,scb_content,scb_sdate
+	   from  schedule_board
+	   where scb_num = #{scb_num}
+     </select>
 	
+	
+	<select id="retrieveAirportStart" parameterType="BoardDTO" resultType="string">
+		select name_kr
+		from AIRPORT_INFO
+		where airport_num=#{scb_from}
+	</select>
+	<select id="retrieveAirportArrival" parameterType="BoardDTO" resultType="string">
+		select name_kr
+		from AIRPORT_INFO
+		where airport_num=#{scb_to}    
+	</select>
 	
 </mapper>
 
