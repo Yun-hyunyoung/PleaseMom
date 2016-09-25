@@ -70,6 +70,7 @@ public class MemberService {
 		try{
 		dto = session.selectOne("member.catchProfile",id);
 		}catch(Exception e){
+			e.printStackTrace();
 			throw new CommonException("회원정보 가져오기 실패");
 		}finally{
 			session.close();
