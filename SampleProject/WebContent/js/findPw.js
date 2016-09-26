@@ -5,7 +5,6 @@ $("#findPw").on("click", function(event) {
 		data:{userid:$("#userid_findpw").val()},
 		dataType:'text',
 		success:function(responseData){
-			console.log(responseData);
 			if(responseData.trim() == 'none'){
 				$("#checkId").html("<h5 style='color:red;'>이메일이 일치하지 않습니다.</h5>");
 			}else{
@@ -18,4 +17,8 @@ $("#findPw").on("click", function(event) {
 $("#findPw").on('click', function() {
 	$("#checkId").html("");
 	$("#showSubmit").html("");
+})
+
+$("#findPwClose").on('click', function() {
+	window.close();
 })

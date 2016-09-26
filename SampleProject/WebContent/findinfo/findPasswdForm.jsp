@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form id="findPwForm" action="">
+<form id="findPwForm" action="FindPasswdSuccessFormServlet" method="get">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3 col-md-10 col-md-offset-1">
         	<h1 align="center">비밀번호찾기</h1>

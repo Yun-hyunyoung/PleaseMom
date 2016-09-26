@@ -103,4 +103,19 @@ public class MemberService {
 			session.close();
 		}
 	}
+	
+	public void tempPasswd(HashMap<String,String> map) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try{
+			int n = session.update("member.tempPasswd", map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("임시비밀번호 설정 실패"); 
+		} finally {
+			session.close();
+		}
+	}
+	
+	
 }

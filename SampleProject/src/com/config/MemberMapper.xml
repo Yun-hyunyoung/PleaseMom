@@ -45,4 +45,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where member.mem_num=schedule_board.scb_mem_num
 		and scb_num=#{scb_num}
 	</select>
+	
+	<update id="tempPasswd" parameterType="hashmap">
+		update member
+		set mem_passwd = #{passwd}
+		where mem_id = #{userid}
+	</update>
 </mapper>
