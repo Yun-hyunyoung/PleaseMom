@@ -1,5 +1,9 @@
 $(".img-text").on("click", function() {
-	console.log($(this));
-	var aaa = $(this)[0].textContent;
-	console.log(aaa);
+	var country = $(this)[0].textContent;
+	$("#imgSearchCountry").val(country);
+	$("#imgSearchForm").submit();
 })
+function boardList(f){
+	f.action="BoardListServlet";
+	f.submit();
+}

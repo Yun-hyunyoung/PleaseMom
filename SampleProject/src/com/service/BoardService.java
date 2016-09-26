@@ -48,6 +48,42 @@ public class BoardService {
 		return mapList;
 	}//end list()
 	
+	//이미지 서치 페이지
+	public HashMap<String, Object> imgSearchPage(int curPage, String scb_to){
+		HashMap<String, Object> mapList =new HashMap<>();
+		PageDTO dto = new PageDTO();
+		List<BoardDTO> list = null;
+		List<String> listName_kr_start=null;
+		List<String> listName_kr_arrival=null;
+		SqlSession session = 
+				MySqlSessionFactory.getSession();
+		try{
+			//new RowBounds(시작, 갯수))
+			int count = dto.getPerPage();	
+			int skip = (curPage-1)*count;
+			list =
+					session.selectList("countrySearch", scb_to,
+							new RowBounds(skip, count));
+			listName_kr_start =session.selectList("countrySearchStart",scb_to,new RowBounds(skip,count));
+			listName_kr_arrival =session.selectList("countrySearchArrival",scb_to,new RowBounds(skip,count));
+			
+			
+		}finally {
+			session.close();
+		}
+		
+		//3가지 저장
+		dto.setList(list);
+		dto.setCurPage(curPage);
+		System.out.println("service쪽 cuPage=="+curPage);
+		dto.setTotalRecord(totalCount(scb_to));
+		
+		mapList.put("dto", dto);
+		mapList.put("start", listName_kr_start);
+		mapList.put("arrival",listName_kr_arrival);
+		return mapList;
+	}//end list()
+	
 	//전체 레코드 갯수
 	public int totalCount(HashMap<String, String> map){
 		int count = 0;
@@ -55,6 +91,17 @@ public class BoardService {
 				MySqlSessionFactory.getSession();
 		try{
 		 count = session.selectOne("totalCount",map);
+		}finally {
+			session.close();
+		}
+		return count;
+	}//end totalCount
+	public int totalCount(String scb_to){
+		int count = 0;
+		SqlSession session = 
+				MySqlSessionFactory.getSession();
+		try{
+			count = session.selectOne("totalCountImgSearch",scb_to);
 		}finally {
 			session.close();
 		}
