@@ -69,6 +69,7 @@
 		out.print("...");
 		out.print("<a href='BoardListServlet?curPage=" + totalCount + "'>" +totalCount + "</a>&nbsp;");
 		//endPage+1
+		//pddd
 	}
 
 	/* if (curBlock >= totalBlock) {
