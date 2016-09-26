@@ -4,11 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+	<jsp:include page="include/header.jsp" flush="true"></jsp:include>
 </head>
 <body>
- <jsp:include page="include/nav.jsp" flush="true" /><br>
- <jsp:include page="board/update.jsp" flush="true" />
- 
+	<jsp:include page="include/nav.jsp" flush="true" />
+	
+	<header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+        <div class="container">
+            <br><br>
+        </div>
+    </header>
+    
+	<jsp:include page="board/update.jsp" flush="true" />
+ 	<hr>
+
+    <jsp:include page="include/footer.jsp"></jsp:include>
+	
+    <jsp:include page="include/scripts.jsp"></jsp:include>
 </body>
 </html>

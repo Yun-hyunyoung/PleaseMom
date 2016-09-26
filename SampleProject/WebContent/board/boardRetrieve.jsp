@@ -38,7 +38,9 @@ ${map.min }
 	}
 	function boardUpdate(f) {
 		f.action="update.jsp";
-		f.submit();
+		console.log(f.action);
+		location.href="update.jsp";
+		//f.submit();
 	}
 	function during(f){
 		f.action="";

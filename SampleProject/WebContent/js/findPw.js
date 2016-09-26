@@ -14,6 +14,7 @@ $("#findPw").on("click", function(event) {
 		}
 	})
 })
+
 $("#findPw").on('click', function() {
 	$("#checkId").html("");
 	$("#showSubmit").html("");
