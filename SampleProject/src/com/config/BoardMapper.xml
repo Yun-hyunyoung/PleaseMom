@@ -22,18 +22,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <insert id="write" parameterType="BoardDTO">
      insert into schedule_board(scb_num,scb_mem_num, scb_from,scb_via,scb_to,scb_sdate,scb_title,scb_content)
-     values ( scb_seq.nextval, #{scb_mem_num},#{scb_from},#{scb_via},#{scb_to},#{scb_sdate},#{scb_title},#{scb_content}) 
+     values ( scb_seq.nextval, #{scb_mem_num},#{scb_from},#{scb_via},#{scb_to},to_date(#{scb_sdate},'YYYY-MM-DD:HH24:MI'),#{scb_title},#{scb_content}) 
     </insert>
 
 
 	<select id="list" resultType="BoardDTO" parameterType="hashmap">
 	   select scb_num, scb_mem_num, scb_from,scb_via,scb_to,
-	         to_char(scb_sdate,'yyyy/mm/dd') scb_sdate,scb_title,
-	         scb_content,to_char(scb_wdate,'yyyy/mm/dd') scb_wdate,scb_case
+	         scb_sdate,scb_title,
+	         scb_content,scb_wdate,scb_case
 		from schedule_board
 		where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
 		and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
-	   	and scb_sdate between #{min} and #{max}
+	   	and scb_sdate between to_date(#{min},'YYYY-MM-DD:HH24:MI') and to_date(#{max},'YYYY-MM-DD:HH24:MI')
 	   	order by scb_num desc      
 	</select>
 	
@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
 		where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
 	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_FROM
-	   	and scb_sdate between #{min} and #{max} 
+	   	and scb_sdate between to_date(#{min},'YYYY-MM-DD:HH24:MI') and to_date(#{max},'YYYY-MM-DD:HH24:MI')
 	   	order by scb_num desc
 	</select>
 
@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
 		and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
 	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_to
-	   	and scb_sdate between #{min} and #{max}
+	   	and scb_sdate between to_date(#{min},'YYYY-MM-DD:HH24:MI') and to_date(#{max},'YYYY-MM-DD:HH24:MI')
 	   	order by scb_num desc     
 	</select>
 	
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 from schedule_board
 	 where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
 	 and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
-	 and scb_sdate between #{min} and #{max}
+	 and scb_sdate between to_date(#{min},'YYYY-MM-DD:HH24:MI') and to_date(#{max},'YYYY-MM-DD:HH24:MI')
 	</select>
 
     <select id="retrieve" 

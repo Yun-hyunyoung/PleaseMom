@@ -22,4 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from airport_info
 		where name_kr=#{name}
 	</select>
+	<select id="searchCountry" parameterType="string" resultType="string">
+		select country_kr
+		from airport_info
+		where name_kr=#{airName}
+	</select>
 </mapper>

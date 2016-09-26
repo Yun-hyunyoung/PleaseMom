@@ -39,6 +39,7 @@ public class BoardService {
 		//3가지 저장
 		dto.setList(list);
 		dto.setCurPage(curPage);
+		System.out.println("service쪽 cuPage=="+curPage);
 		dto.setTotalRecord(totalCount(map));
 		
 		mapList.put("dto", dto);

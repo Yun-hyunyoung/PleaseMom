@@ -33,4 +33,17 @@ public class AirportService {
 		}
 		return list;
 	}
+	//공항이름으로 국가 이름 찾기
+	public String airportSearchCountry(String scb_to) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String country=null;
+		try {
+			country = session.selectOne("airport.searchCountry", scb_to);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return country;
+	}
 }

@@ -19,6 +19,19 @@
 	경유<input type="text" name="scb_via">회
 	목적지<input type="text" name="scb_to">
 	출발일<input type="text" name="scb_sdate">
+	출발시간
+	<select name="hour">
+		<%for(int i=1;i<=24;i++){
+				int j=i;
+		%><option><%=j %></option>
+		<% }%>
+	</select>
+	<select name="minute">
+		<%for(int i=1;i<=59;i++){
+				int j=i;
+		%><option><%=j %></option>
+		<% }%>
+	</select>
 	글내용<input type="text" name="scb_content">
 	<input type="button" value="글쓰기" onclick="boardWrite(myForm)">
 	<input type="button" value="취소" onclick="goBack()">
