@@ -18,6 +18,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                 	<c:if test="${ sessionScope.login == null }">
+                		<li>
+                			<a href="#" onclick="boardWriteUI(myForm)">글쓰기</a>
+                		</li>
 	                    <li>
 	                        <a href="#">도움말</a>
 	                    </li>
@@ -29,6 +32,9 @@
 	                    </li>
                     </c:if>
                     <c:if test="${ sessionScope.login != null }">
+                    	<li>
+                			<a href="#" onclick="boardWriteUI(myForm)">글쓰기</a>
+                		</li>
 	                    <li>
 	                        <a href="#">도움말</a>
 	                    </li>
@@ -46,7 +52,6 @@
 				        </li>
                     </c:if>
                 </ul>
-           		<input class="btn btn-default navbat-btn navbar-right" type="button" value="글쓰기" onclick="boardWriteUI(myForm)">
             </div>
             <!-- /.navbar-collapse -->
         </div>
