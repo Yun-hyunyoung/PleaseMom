@@ -28,3 +28,6 @@
 	
 	<!-- Login Validation Check JavaScript -->
     <script src="js/loginValidation.js"></script>
+    
+    <!-- Find Password JavaScript -->
+    <script src="js/findPw.js"></script>

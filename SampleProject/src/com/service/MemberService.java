@@ -70,6 +70,7 @@ public class MemberService {
 		try{
 		dto = session.selectOne("member.catchProfile",id);
 		}catch(Exception e){
+			e.printStackTrace();
 			throw new CommonException("회원정보 가져오기 실패");
 		}finally{
 			session.close();
@@ -102,4 +103,19 @@ public class MemberService {
 			session.close();
 		}
 	}
+	
+	public void tempPasswd(HashMap<String,String> map) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try{
+			int n = session.update("member.tempPasswd", map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("임시비밀번호 설정 실패"); 
+		} finally {
+			session.close();
+		}
+	}
+	
+	
 }

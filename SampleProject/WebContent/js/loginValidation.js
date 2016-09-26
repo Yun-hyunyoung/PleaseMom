@@ -15,3 +15,46 @@ $("#submit").on("click", function(event) {
 		event.preventDefault();
 	}
 })*/
+$(".id-valid-ck").on("keyup", function() {
+	$.ajax({
+		type:'post',
+		url:'search/memberSearchByPw.jsp',
+		data: {userid: $(".id-valid-ck").val()},
+		dataType: 'text',
+		success: function(data) {
+			if(data.trim() == 'none'){
+				$('.valid-id').html('<h5>사용 가능한 아이디입니다.</h5>');
+				$(".valid-submit").prop("type", "submit");
+			}else{
+				$('.valid-id').html('<h5>중복된 아이디입니다.</h5>');
+				$(".valid-submit").prop("type", "button");
+			}
+		}
+	})
+})
+
+$(".valid-submit").on("click", function(event) {
+	$.ajax({
+		type:'post',
+		url:'search/memberSearchByPw.jsp',
+		data: {userid: $(".id-valid-ck").val()},
+		dataType: 'text',
+		success: function(data) {
+			console.log(data.trim());
+			if(data.trim() == 'none'){
+				
+			} else if(($("#passwd2").val() != $("#passwd").val())){
+				$(".valid-pass").html("<h5>비밀번호가 일치하지 않습니다!!!</h5>");
+			} else{
+				$('.valid-id').html('<h5>중복된 아이디입니다!!!</h5>');
+			}
+		}
+	})
+})
+$("#passwd2").on("focusout", function() {
+	if ($("#passwd2").val() == $("#passwd").val()) {
+		$(".valid-pass").html("<h5>비밀번호 일치</h5>");
+	} else{
+		$(".valid-pass").html("<h5>비밀번호 불일치</h5>");
+	}
+})
