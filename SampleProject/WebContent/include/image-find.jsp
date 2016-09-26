@@ -10,8 +10,8 @@
              <hr class="small">
          </div>
      </div>
-    <form id="imgSearchForm" method="get" action="BoardImageSearchServlet">
-    	<input type="hidden" name="scb_from" value="한국">
+    <form id="imgSearchForm" method="get" action="BoardListServlet">
+    	<input type="hidden" name="scb_from" value="인천 국제공항">
     	<input type="hidden" name="scb_to" id="imgSearchCountry" value="">
     	<input type="hidden" name="min" value="2016-09-26:00:00">
     	<input type="hidden" name="max" value="9999-12-31:23:59">
