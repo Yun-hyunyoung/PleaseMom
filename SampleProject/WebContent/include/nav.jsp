@@ -1,3 +1,4 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -45,8 +46,21 @@
 				        </li>
                     </c:if>
                 </ul>
+           		<input class="btn btn-default navbat-btn navbar-right" type="button" value="글쓰기" onclick="boardWriteUI(myForm)">
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+<script>
+	function boardWriteUI(f){
+		<% if ((MemberDTO)session.getAttribute("login")==null){
+			%>
+			alert("로그인을 하세요");
+		<%}else{%>
+		
+		f.action="BoardWriteUIServlet";
+		f.submit();
+		<%}%>
+	}
+</script>

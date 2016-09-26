@@ -4,7 +4,7 @@
  <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-10">
-             	<form name="myForm" method="get">
+             	<form name="myForm" method="get" action="BoardListServlet">
     	            <div class="search-form">
                 		<div class="SearchForm_location col-md-2 col-lg-3">
 	                		<input class="form-control input-lg airportSearch" type="text" placeholder="출발(공항)" name="scb_from">
@@ -21,25 +21,8 @@
                 	    <div class="submit-form col-md-2 col-lg-2">
                     		<input class="form-control input-lg" type="button" value="검색" onclick="boardList(myForm)">
                     	</div>
-                    	<input class="form-control input-lg" type="button" value="글쓰기" onclick="boardWrite(myForm)">
 	                </div>
                 </form>
             </div>
         </div>
     </div>
-<script type="text/javascript">
-	function boardWrite(f){
-		<% if ((MemberDTO)session.getAttribute("login")==null){
-			%>
-			alert("로그인을 하세요");
-		<%}else{%>
-		
-		f.action="BoardWriteUIServlet";
-		f.submit();
-		<%}%>
-	}
-	function boardList(f){
-		f.action="BoardListServlet";
-		f.submit();
-	}
-</script>

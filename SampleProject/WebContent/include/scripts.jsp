@@ -31,3 +31,6 @@
     
     <!-- Find Password JavaScript -->
     <script src="js/findPw.js"></script>
+    
+    <!-- Common JavaScript -->
+    <script src="js/mom.js"></script>

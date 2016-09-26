@@ -2,15 +2,15 @@
     pageEncoding="UTF-8"%>
 <div class="img-container">
 
-         <div class="col-lg-8 col-lg-offset-2 col-lg-8 col-lg-offset-2">
-             <div class="site-heading" style="text-align:center">
-             	<br>
-                 <h1>나라 검색</h1>
-                 <br>
-                 <hr class="small">
-             </div>
+     <div class="col-lg-8 col-lg-offset-2 col-lg-8 col-lg-offset-2">
+         <div class="site-heading" style="text-align:center">
+         	<br>
+             <h1>나라 검색</h1>
+             <br>
+             <hr class="small">
          </div>
-         
+     </div>
+     
     <div class="row">
 		  <div class="col-lg-8 rm-padding-sm col-md-12 col-sm-12 img-auto">
 		  	<div class="img-box">
