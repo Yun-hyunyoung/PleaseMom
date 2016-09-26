@@ -7,12 +7,10 @@
              	<form name="myForm" method="get">
     	            <div class="search-form">
                 		<div class="SearchForm_location col-md-2 col-lg-3">
-	                		<input class="form-control input-lg" type="text" placeholder="출발(공항)" id="airportSearch" name="scb_from">
-	                    	<div class="panel panel-info" id="airport_autocomplete" style="z-index:1; position:absolute;"></div>
+	                		<input class="form-control input-lg airportSearch" type="text" placeholder="출발(공항)" name="scb_from">
                     	</div>
                     	<div class="SearchForm_location col-md-2 col-lg-3">
-    	            		<input class="form-control input-lg" type="text" placeholder="도착(국가)" id="countrySearch" name="scb_to">
-        	            	<div class="panel panel-info" id="country_autocomplete" style="z-index:1; position:absolute;"></div>
+    	            		<input class="form-control input-lg countrySearch" type="text" placeholder="도착(국가)" name="scb_to">
         	            </div>
         	            <div class="SearchForm_date col-md-2 col-lg-2">
             	        	<input class="form-control input-lg" id="from-datepicker" type="text" placeholder="출발일From" name="min">

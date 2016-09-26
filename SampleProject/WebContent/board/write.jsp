@@ -1,39 +1,94 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<script type="text/javascript">
-	function boardWrite(f) {
-		f.action="BoardWriteServlet";
-		f.submit();
-	}
-	function goBack(){
-		window.history.back();
-	}
-</script>
-
+<%@page import="java.text.SimpleDateFormat"%> 
+<%@page import="java.util.Date"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+     pageEncoding="UTF-8"%> 
+     
+ <script type="text/javascript"> 
+	function boardWrite(f) { 
+		f.action="BoardWriteServlet"; 
+		f.submit(); 
+ 	} 
+ 	function goBack(){ 
+ 		window.history.back(); 
+ 	} 
+ </script> 
 <form name="myForm">
-	제목<input type="text" name="scb_title">
-	출발지<input type="text" name="scb_from">
-	경유<input type="text" name="scb_via">회
-	목적지<input type="text" name="scb_to">
-	출발일<input type="text" name="scb_sdate">
-	출발시간
-	<select name="hour">
-		<%for(int i=1;i<=24;i++){
-				int j=i;
-		%><option><%=j %></option>
-		<% }%>
-	</select>
-	<select name="minute">
-		<%for(int i=1;i<=59;i++){
-				int j=i;
-		%><option><%=j %></option>
-		<% }%>
-	</select>
-	글내용<input type="text" name="scb_content">
-	<input type="button" value="글쓰기" onclick="boardWrite(myForm)">
-	<input type="button" value="취소" onclick="goBack()">
+	<div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+       		<div class="form-group">
+		      <label class="col-sm-1 control-label"><h4>제목</h4></label>
+	  	      <div class="col-sm-11">
+		        <input class="form-control input-lg" type="text" name="scb_title" autofocus required>
+		      </div>
+		    </div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+		    <div class="form-group">
+		      <label class="col-sm-1 control-label"><h4>출발지</h4></label>
+		      <div class="col-sm-4">
+		        <input class="form-control input-lg airportSearch" type="text" name="scb_from" placeholder="출빌공항From" required>
+		      </div>
+		      <label class="col-sm-1 control-label"><h4>경유</h4></label>
+		      <div class="col-sm-1"><select class="form-control " name="minute"> 
+			 		<%for(int i=1;i<=5;i++){ 
+			 				int j=i; 
+			 		%><option><%=j %></option> 
+			 		<% }%> 
+			 	</select></div>
+		      <label class="col-sm-1 control-label"><h4>목적지</h4></label>
+		      <div class="col-sm-4">
+		        <input class="form-control input-lg airportSearch" type="text" name="scb_to" placeholder="출발공항To" required>
+		      </div>
+		    </div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+		    <div class="form-group">
+		      <label class="col-sm-1 control-label"><h4>출발일</h4></label>
+		      	<div class="col-sm-4 SearchForm_date">
+   	        		<input class="form-control input-lg" id="from-datepicker" type="text" placeholder="출발일From" name="scb_sdate">
+   	        	</div>
+		    	<label class="col-sm-1 control-label"><h4>시간</h4></label>
+			 	<div class="col-sm-3"><select class="form-control" name="hour"> 
+			 		<%for(int i=1;i<=24;i++){ 
+			 				int j=i; 
+			 		%><option><%=j %></option> 
+			 		<% }%> 
+			 	</select></div>
+			 	<div class="col-sm-3"><select class="form-control" name="minute"> 
+			 		<%for(int i=1;i<=59;i++){ 
+			 				int j=i; 
+			 		%><option><%=j %></option> 
+			 		<% }%> 
+			 	</select></div>
+		 	</div>
+	    </div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+		    <div class="form-group">
+		      <label class="col-sm-1 control-label"><h4>글내용</h4></label>
+		      	<div class="col-sm-11">
+   	        		<textarea class="form-control input-lg" rows="5" name="scb_content"></textarea>
+   	        	</div>
+		    </div>
+		</div>
+	</div>
+   	<br>
+   	<div class="row">
+       	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+       		<div class="col-sm-6">
+       			<h4><input class="form-control input-lg valid-submit" type="button" value="등록" onclick="boardWrite(myForm)"></h4>
+   			</div>
+   			<div class="col-sm-6">
+       			<h4><input class="form-control input-lg valid-submit" type="button" value="취소" onclick="goBack()"></h4>
+       		</div>
+   		</div>
+   	</div>
 </form>
-

@@ -1,36 +1,39 @@
 $(function(){
-	$( "#airportSearch" ).autocomplete({
-        source : function( request, response ) {
-             $.ajax({
-                    type: 'post',
-                    url: "search/airportSearch.jsp",
-                    //request.term = $("#autocomplete").val()
-                    data: { value : request.term },
-                    dataType:'json',
-                    success: function(data) {
-                    	var plane = data.airplane
-                    	if(plane.length > 0){
-                    		var str = ''
-                        		for (var i = 0; i < plane.length; i++){
-                        			str += '<div class="panel-body panel-airport_search" id="a'+i+'"><h5>' + plane[i].plane + '</h5></div>';
-                        		}
-                            $("#airport_autocomplete").html(str);
-                            for (var i = 0; i < plane.length; i++){
-                            	$("body").on("click","#a"+i, function() {
-									$("#airportSearch").val($(this).text());
-									$("#airport_autocomplete").html("");
-								})
-                			}
-                            $("body").on("click", function() {
-								$("#airport_autocomplete").html("");
-							})
-                    	}else{
-                    		$("#airport_autocomplete").html("");
-                    	}
-                    }
-               });
-            },
-        //조회를 위한 최소글자수
-        minLength: 1
-    });
+	$( ".airportSearch" ).autocomplete({
+		source: function( request, response ) {
+	        $.ajax({
+	            dataType: "json",
+	            type : 'Get',
+	            url: 'search/airportSearch.jsp',
+	            data: { value : request.term },
+	            success: function(data) {
+	                //$('.airportSearch').removeClass('ui-autocomplete-loading');  
+	                // hide loading image
+
+	                response( $.map( data, function(item) {
+	                    // your operation on data
+	                	return item.label;
+	                }));
+	            },
+	            error: function(data) {
+	                //$('.airportSearch').removeClass('ui-autocomplete-loading');  
+	            }
+	        });
+	    },
+	    focus: function( event, ui ) {
+	    	event.preventDefault();
+	    },
+	    classes: {
+	        "ui-autocomplete": "highlight"
+	    }
+	}).data("ui-autocomplete")._renderItem = function (ul, item) {
+
+        ul.addClass('customClass'); //Ul custom class here
+
+        return $("<li></li>")
+        .addClass(item.customClass) //item based custom class to li here
+        .append("<a href='#'>" + item.label + "</a>")
+        .data("ui-autocomplete-item", item)
+        .appendTo(ul);
+    };
 });
