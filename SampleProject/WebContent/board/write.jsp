@@ -2,17 +2,8 @@
 <%@page import="java.util.Date"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
      pageEncoding="UTF-8"%> 
-     
- <script type="text/javascript"> 
-	function boardWrite(f) { 
-		f.action="BoardWriteServlet"; 
-		f.submit(); 
- 	} 
- 	function goBack(){ 
- 		window.history.back(); 
- 	} 
- </script> 
-<form name="myForm">
+ 
+<form name="writeBoardForm">
 	<div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
        		<div class="form-group">
@@ -29,18 +20,18 @@
 		    <div class="form-group">
 		      <label class="col-sm-1 control-label"><h4>출발지</h4></label>
 		      <div class="col-sm-4">
-		        <input class="form-control input-lg airportSearch" type="text" name="scb_from" placeholder="출빌공항From" required>
+		        <input class="form-control input-lg airportSearch" type="text" name="scb_from" placeholder="출발공항" required>
 		      </div>
 		      <label class="col-sm-1 control-label"><h4>경유</h4></label>
-		      <div class="col-sm-1"><select class="form-control " name="scb_via"> 
+		      <div class="col-sm-1"><select class="form-control" name="scb_via"> 
 			 		<%for(int i=0;i<=5;i++){ 
 			 				int j=i; 
-			 		%><option><%=j %></option> 
+			 		%><option><%=j%></option> 
 			 		<% }%> 
 			 	</select></div>
 		      <label class="col-sm-1 control-label"><h4>목적지</h4></label>
 		      <div class="col-sm-4">
-		        <input class="form-control input-lg airportSearch" type="text" name="scb_to" placeholder="출발공항To" required>
+		        <input class="form-control input-lg airportSearch" type="text" name="scb_to" placeholder="도착공항" required>
 		      </div>
 		    </div>
 		</div>
@@ -51,7 +42,7 @@
 		    <div class="form-group">
 		      <label class="col-sm-1 control-label"><h4>출발일</h4></label>
 		      	<div class="col-sm-4 SearchForm_date">
-   	        		<input class="form-control input-lg datepicker" type="text" placeholder="출발일From" name="scb_sdate">
+   	        		<input class="form-control input-lg datepicker" type="text" placeholder="출발일" name="scb_sdate">
    	        	</div>
 		    	<label class="col-sm-1 control-label"><h4>시간</h4></label>
 			 	<div class="col-sm-3"><select class="form-control" name="hour"> 
@@ -61,7 +52,7 @@
 			 		<% }%> 
 			 	</select></div>
 			 	<div class="col-sm-3"><select class="form-control" name="minute"> 
-			 		<%for(int i=1;i<=59;i++){ 
+			 		<%for(int i=0;i<=59;i++){ 
 			 				int j=i; 
 			 		%><option><%=j %></option> 
 			 		<% }%> 
@@ -84,7 +75,7 @@
    	<div class="row">
        	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
        		<div class="col-sm-6">
-       			<h4><input class="form-control input-lg valid-submit" type="button" value="등록" onclick="boardWrite(myForm)"></h4>
+       			<h4><input class="form-control input-lg valid-submit" type="button" value="등록" onclick="boardWrite(writeBoardForm)"></h4>
    			</div>
    			<div class="col-sm-6">
        			<h4><input class="form-control input-lg valid-submit" type="button" value="취소" onclick="goBack()"></h4>

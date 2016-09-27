@@ -11,7 +11,7 @@
 		        <input class="form-control input-lg" id="userid_findpw" type="email" name="userid" placeholder="Email address" autofocus>
 		      </div>
 		      <div class="col-xs-2">
-		      	<input class="form-control input-lg" id="findPw" type="button" value="체크">
+		      	<input class="form-control input-lg" id="findPwBtn" type="button" value="체크">
 		      </div>
 		    </div>
 		    <label class="col-xs-12 control-label" id="checkId"></label>

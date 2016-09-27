@@ -59,9 +59,9 @@
 		location.href="BoardDeleteServlet?scb_num="+num;
 	}
 	function boardUpdate(f) {
-		f.action="update.jsp";
+		f.action="BoardUpdateUIServlet";
 		console.log(f.action);
-		location.href="update.jsp";
+		location.href="BoardUpdateUIServlet";
 	}
 	function boardMediate(){
 		if(${login==null}){

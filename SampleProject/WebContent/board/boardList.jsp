@@ -30,11 +30,11 @@
 									<div class="from-to">
 										<div>${start[s.index]}</div>
 									</div>
-									<img src="img/right-arrow.jpg" style="width:20px; height:20px"></img>
+									<img src="img/right-arrow.png" style="width:20px; height:20px"></img>
 									<div class="via">
 										<div>${board.scb_via}회</div>
 									</div>
-									<img src="img/right-arrow.jpg" style="width:20px; height:20px"></img>
+									<img src="img/right-arrow.png" style="width:20px; height:20px"></img>
 									<div class="from-to">
 										<div>${arrival[s.index]}</div>
 									</div>

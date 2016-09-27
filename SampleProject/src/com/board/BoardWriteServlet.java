@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.service.AirportService;
 import com.service.BoardService;
 import com.dto.BoardDTO;
@@ -22,9 +25,8 @@ import com.dto.MemberDTO;
  */
 @WebServlet("/BoardWriteServlet")
 public class BoardWriteServlet extends HttpServlet {
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		
 		request.setCharacterEncoding("UTF-8");
 		String scb_title=request.getParameter("scb_title");//글제목
@@ -51,7 +53,6 @@ public class BoardWriteServlet extends HttpServlet {
 		BoardDTO bDto=new BoardDTO(0, scb_mem_num, scb_from_num, scb_via, scb_to_num, scb_sdate, scb_title, scb_content, null, null);
 
 		bService.write(bDto);
-		
 		AirportService aService=new AirportService();
 		String scb_to_country=aService.airportSearchCountry(scb_to);
 		HashMap<String, Object> map=(HashMap<String, Object>)session.getAttribute("map");

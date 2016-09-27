@@ -65,6 +65,7 @@ public class MemberService {
 	}
 	
 	public MemberDTO catchProfile(String id) throws CommonException{
+		
 		SqlSession session = MySqlSessionFactory.getSession();
 		MemberDTO dto = null;
 		try{

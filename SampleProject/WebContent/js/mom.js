@@ -15,10 +15,10 @@ function boardList(f){
 
 /*  login/loginForm.jsp 
 	find Password Events	*/
-$("#findPw").on("click", function(event) {
+$("#findPwBtn").on("click", function(event) {
 	$.ajax({
 		type:'post',
-		url:'search/memberSearchByPw.jsp',
+		url:'search/memberSearchByPasswd.jsp',
 		data:{userid:$("#userid_findpw").val()},
 		dataType:'text',
 		success:function(responseData){
@@ -31,7 +31,7 @@ $("#findPw").on("click", function(event) {
 	})
 })
 
-$("#findPw").on('click', function() {
+$("#findPwBtn").on('click', function() {
 	$("#checkId").html("");
 	$("#showSubmit").html("");
 })
@@ -106,3 +106,28 @@ $("#passwd2").on("focusout", function() {
 		$(".valid-submit").prop("type", "button");
 	}
 })
+
+/*	write.jsp
+ * 	Board Write Form Event
+ *  return list function
+ */
+function boardWrite(f) { 
+	f.action="BoardWriteServlet"; 
+	f.submit(); 
+} 
+function goBack(){ 
+	window.history.back(); 
+} 
+
+/*	update.jsp
+ * 	Board Update Form Event
+ *  return retrieve function
+ */
+function update(f) {
+	f.action="BoardUpdateServlet";
+	f.submit();
+}
+function cancle(f){
+	f.action="BoardRetrieveServlet";
+	f.submit();
+}
