@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<!-- jQuery -->
+	<!-- jQuery JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
+    
+    <!-- jQuery-UI SDN JavaScript -->
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -24,13 +27,6 @@
 	<!-- Birth Catch JavaScript -->
 	<script src="js/birthpicker.js"></script>
 	
-	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-	
-	<!-- Login Validation Check JavaScript -->
-    <script src="js/loginValidation.js"></script>
-    
-    <!-- Find Password JavaScript -->
-    <script src="js/findPw.js"></script>
     
     <!-- Common JavaScript -->
     <script src="js/mom.js"></script>

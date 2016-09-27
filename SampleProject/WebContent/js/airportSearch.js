@@ -26,14 +26,5 @@ $(function(){
 	    classes: {
 	        "ui-autocomplete": "highlight"
 	    }
-	}).data("ui-autocomplete")._renderItem = function (ul, item) {
-
-        ul.addClass('customClass'); //Ul custom class here
-
-        return $("<li></li>")
-        .addClass(item.customClass) //item based custom class to li here
-        .append("<a href='#'>" + item.label + "</a>")
-        .data("ui-autocomplete-item", item)
-        .appendTo(ul);
-    };
+	});
 });
