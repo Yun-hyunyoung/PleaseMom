@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -143,36 +144,55 @@ public class BoardService {
 		return Integer.parseInt(num);
 	}
 	//scb_case 상태 변경
-		public int boardUpdateCase(HashMap<String, String> mediateMemberCaseMap) throws CommonException {
-			SqlSession session=MySqlSessionFactory.getSession();
-			int n=0;
-			try {
-				n=session.update("updateBoardCase",mediateMemberCaseMap);
-				session.commit();
-				System.out.println("업데이트 case  n==="+n);
-			}catch(Exception e){
-				e.printStackTrace();
-				throw new CommonException("게시판 상태 업데이트 실패");
-			}
-			finally {
-				session.close();
-			}
-			return n;
+	public int boardUpdateCase(HashMap<String, String> mediateMemberCaseMap) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			n = session.update("updateBoardCase", mediateMemberCaseMap);
+			session.commit();
+			System.out.println("업데이트 case  n===" + n);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("게시판 상태 업데이트 실패");
+		} finally {
+			session.close();
 		}
-		//게시글 업데이트된후 리트라이브
-		public BoardDTO boardUpdateRetrieve(int scb_num) throws CommonException {
-			SqlSession session=MySqlSessionFactory.getSession();
-			BoardDTO dto=new BoardDTO();
-			try {
-				dto=session.selectOne("boardUpdateRetrieve",scb_num);
-			}catch(Exception e){
-				e.printStackTrace();
-				throw new CommonException("게시판 글 retrieve 재검색 실패");
-			}
-			finally {
-				session.close();
-			}
-			return dto;
+		return n;
+	}
+
+	// 게시글 업데이트된후 리트라이브
+	public BoardDTO boardUpdateRetrieve(int scb_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		BoardDTO dto = new BoardDTO();
+		try {
+			dto = session.selectOne("boardUpdateRetrieve", scb_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("게시판 글 retrieve 재검색 실패");
+		} finally {
+			session.close();
 		}
+		return dto;
+	}
+
+	//중개 게시글 얻어오기
+	public List<BoardDTO> mediateBoardList(List<Integer> numList) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<BoardDTO> list=null;
+		if(numList.size()==0)
+			numList.add(0);
+		try {
+			list = session.selectList("mediateBoardList", numList);
+			System.out.println("list 중개 게시글 얻기=="+list);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("중개 request 게시글 얻기 실패");
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
 	
 }//end 

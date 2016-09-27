@@ -7,4 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into travel_history(th_num,th_req_num,th_gui_num,th_scb_num)
 		values(th_seq.nextval,#{th_req_num},#{th_gui_num},#{th_scb_num})
 	</insert>
+	
+	<select id="requestList" parameterType="int" resultType="int">
+		select th_scb_num
+		from travel_history
+		where th_req_num=#{mem_num}
+	</select>
+
+	<select id="guiderList" parameterType="int" resultType="int">
+		select th_scb_num
+		from travel_history
+		where th_gui_num=#{mem_num}
+	</select>
 </mapper>

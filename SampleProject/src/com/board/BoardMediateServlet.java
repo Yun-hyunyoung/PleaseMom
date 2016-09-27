@@ -62,7 +62,7 @@ public class BoardMediateServlet extends HttpServlet {
 				throw new CommonException("인설트 실패");
 			}
 			retrieveMap.put("bDto", board);//세션에 재저장 bDto
-			session.setAttribute("retrieveMap", retrieveMap);//retrieve로 뿌릴 정보 재저장
+			session.setAttribute("retrieveMap", retrieveMap);//retrieve로 뿌릴 정보 세션에 재저장
 			
 			//mediateMemberCaseMap.put("boardCase", board.getScb_case());//변경된 게시판 case 재저장			
 			//session.setAttribute("mediateMemberCaseMap", mediateMemberCaseMap);//4가지정보 세션저장

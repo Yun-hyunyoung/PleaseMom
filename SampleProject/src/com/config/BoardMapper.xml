@@ -3,6 +3,21 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myboard">
+	<select id="mediateBoardList" parameterType="list" resultType="BoardDTO">
+		select * from schedule_board
+		<where>
+			scb_num in
+			<foreach collection="list" open="(" close=")" separator="," item="numList">
+				<if test="numList==null">
+					0
+				</if>
+				<if test="numList!=null">
+					#{numList}
+				</if>
+			</foreach>
+		</where>
+	</select>
+
 	<select id="boardUpdateRetrieve" parameterType="int" resultType="BoardDTO">
 		select scb_num, scb_mem_num, scb_from,scb_via,scb_to,
 	         scb_sdate,scb_title,

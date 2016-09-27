@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-sm-3">
 			<h4><a href="UpdateProfileFormServlet">프로필 수정</a></h4>
-			<h4><a href="#">중개 현황</a></h4>
+			<h4><a href="BoardMediateListServlet">중개 현황</a></h4>
 			<h4><a href="#">후기</a></h4>
 		</div>
 		<div class="col-sm-9">
