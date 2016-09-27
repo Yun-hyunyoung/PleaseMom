@@ -10,20 +10,22 @@ $.datepicker.setDefaults({
     showMonthAfterYear: true,
     yearSuffix: '년'
 });
-
 $( function() {
-    $( "#from-datepicker" ).datepicker();
-    $( "#from-datepicker" ).datepicker( "option", "showAnim", "fadeIn" );
-    $( "#from-datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-    $(" #from-datepicker ").each(function() {    
-        $(this).datepicker('setDate', $(this).val());
+	var dif_day = 0;
+    $(".datepicker").datepicker({
+    	onSelect : function() {
+    		$( ".datepicker-to" ).datepicker( "destroy" );
+    		var from_date = $(".datepicker").datepicker('getDate');		// 출발일 From
+    		var today = new Date();										// 오늘날짜
+    		var ONE_DAY = 1000*60*60*24;								// 하루 ms
+    		var diffrence = Math.abs(from_date - today);				// 출발일from - 오늘날짜
+    		dif_day = Math.floor((diffrence / ONE_DAY) + 1);		// 일로 환산
+
+    		$(".datepicker-to").datepicker({
+    	    	minDate: dif_day
+    	    });
+		},
+    	minDate: 0
     });
-    
-    $( "#to-datepicker" ).datepicker();
-    $( "#to-datepicker" ).datepicker( "option", "showAnim", "fadeIn" );
-    $( "#to-datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-    $( "#to-datepicker" ).datepicker( 'setDate', new Date() );
-    $(" #to-datepicker").each(function() {    
-        $(this).datepicker('setDate', $(this).val());
-    });
- });
+      
+});

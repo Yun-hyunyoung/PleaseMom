@@ -14,10 +14,10 @@
     	            		<input class="form-control input-lg countrySearch" type="text" placeholder="도착(국가)" name="scb_to" value="${ map.scb_to }">
         	            </div>
         	            <div class="SearchForm_date col-md-2 col-lg-2">
-            	        	<input class="form-control input-lg" id="from-datepicker" type="text" placeholder="출발일From" name="min" value="${ map.min }">
+            	        	<input class="form-control input-lg datepicker" type="text" placeholder="출발일From" name="min" value="${ map.min }">
             	        </div>
             	        <div class="SearchForm_date col-md-2 col-lg-2">
-                	    	<input class="form-control input-lg" id="to-datepicker" type="text" placeholder="출발일To" name="max" value="${ map.max }">
+                	    	<input class="form-control input-lg datepicker-to" type="text" placeholder="출발일To" name="max" value="${ map.max }">
                 	    </div>
                 	    <div class="submit-form col-md-2 col-lg-2">
                     		<input class="form-control input-lg" type="button" value="검색" onclick="boardList(myForm)">

@@ -1,7 +1,19 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="img-container">
+<%
+	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
+	Date sysdate = new Date();
+	Date dateNextMonth = new Date();
+	dateNextMonth.setMonth(dateNextMonth.getMonth() + 1);
+	
+	String s_sysdate = df.format(sysdate);
+	String s_dateNextMonth = df.format(dateNextMonth);
+%>
+<div class="img-container">
      <div class="col-lg-8 col-lg-offset-2 col-lg-8 col-lg-offset-2">
          <div class="site-heading" style="text-align:center">
          	<br>
@@ -13,8 +25,8 @@
     <form id="imgSearchForm" method="get" action="BoardListServlet">
     	<input type="hidden" name="scb_from" value="인천 국제공항">
     	<input type="hidden" name="scb_to" id="imgSearchCountry" value="">
-    	<input type="hidden" name="min" value="2016-09-26:00:00">
-    	<input type="hidden" name="max" value="9999-12-31:23:59">
+    	<input type="hidden" name="min" value="<%= s_sysdate %>">
+    	<input type="hidden" name="max" value="<%= s_dateNextMonth %>">
 	    <div class="row">
 			  <div class="col-lg-8 rm-padding-sm col-md-12 col-sm-12 img-auto">
 			  	<div class="img-box">

@@ -51,7 +51,7 @@
 		    <div class="form-group">
 		      <label class="col-sm-1 control-label"><h4>출발일</h4></label>
 		      	<div class="col-sm-4 SearchForm_date">
-   	        		<input class="form-control input-lg" id="from-datepicker" type="text" placeholder="출발일From" name="scb_sdate">
+   	        		<input class="form-control input-lg datepicker" type="text" placeholder="출발일From" name="scb_sdate">
    	        	</div>
 		    	<label class="col-sm-1 control-label"><h4>시간</h4></label>
 			 	<div class="col-sm-3"><select class="form-control" name="hour"> 
