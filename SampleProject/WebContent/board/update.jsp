@@ -1,3 +1,4 @@
+<%@page import="com.dto.BoardDTO"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,6 +18,17 @@
 	<input type="button" value="취소" onclick="cancle(myForm)">
 	<input type="hidden" name="scb_num" value="${retrieveMap.bDto.scb_num}">
 </form> --%>
+<%
+	HashMap<String, Object> map = (HashMap<String, Object>)session.getAttribute("retrieveMap");
+	System.out.println(map);
+	BoardDTO dto = (BoardDTO)map.get("bDto");
+	String scb_via = dto.getScb_via();
+	String sDate = dto.getScb_sdate();
+	
+	String time = sDate.split(" ")[1];
+	int hour = Integer.parseInt(time.split(":")[0]);
+	int min = Integer.parseInt(time.split(":")[1]);
+%>
 <form name="updateBoardForm">
 	<input type="hidden" name="scb_num" value="${retrieveMap.bDto.scb_num}">
 	<div class="row">
@@ -41,8 +53,14 @@
 		      <div class="col-sm-1"><select class="form-control" name="scb_via" > 
 			 		<%for(int i=0;i<=5;i++){ 
 			 				int j=i; 
-			 		%><option><%=j%></option> 
-			 		<% }%> 
+			 		if(scb_via.equals(String.valueOf(i))){
+			 		%>
+			 			<option selected>
+			 		<% } else { %>
+			 			<option>
+			 		<% } %>
+			 			<%=j%></option> 
+			 		<% } %> 
 			 	</select></div>
 		      <label class="col-sm-1 control-label"><h4>목적지</h4></label>
 		      <div class="col-sm-4">
@@ -63,14 +81,26 @@
 			 	<div class="col-sm-3"><select class="form-control" name="hour"> 
 			 		<%for(int i=1;i<=24;i++){ 
 			 				int j=i; 
-			 		%><option><%=j %></option> 
-			 		<% }%> 
+			 		if(hour == i){
+			 		%>
+			 			<option selected>
+			 		<% } else { %>
+			 			<option>
+			 		<% } %>
+			 			<%=j%></option> 
+			 		<% } %> 
 			 	</select></div>
 			 	<div class="col-sm-3"><select class="form-control" name="minute"> 
 			 		<%for(int i=0;i<=59;i++){ 
 			 				int j=i; 
-			 		%><option><%=j %></option> 
-			 		<% }%> 
+			 		if(min == i){
+			 		%>
+			 			<option selected>
+			 		<% } else { %>
+			 			<option>
+			 		<% } %>
+			 			<%=j%></option> 
+			 		<% } %> 
 			 	</select></div>
 		 	</div>
 	    </div>
