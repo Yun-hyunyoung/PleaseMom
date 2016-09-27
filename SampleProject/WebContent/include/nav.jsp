@@ -22,9 +22,6 @@
                 			<a href="#" onclick="boardWriteUI(myForm)">글쓰기</a>
                 		</li>
 	                    <li>
-	                        <a href="#">도움말</a>
-	                    </li>
-	                    <li>
 	                        <a href="AddMemberFormServlet">회원가입</a>
 	                    </li>
 	                    <li>
@@ -35,9 +32,6 @@
                     	<li>
                 			<a href="#" onclick="boardWriteUI(myForm)">글쓰기</a>
                 		</li>
-	                    <li>
-	                        <a href="#">도움말</a>
-	                    </li>
 	                    <li>
 	                        <a href="#">메시지</a>
 	                    </li>

@@ -5,9 +5,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
 <div class="row">
 <div align="center" class="col-sm-12">
-<nav>
+<nav style="padding-top: 50px">
 	<ul class="pagination">
 <%
 	PageDTO pageDTO = (PageDTO) request.getAttribute("page");

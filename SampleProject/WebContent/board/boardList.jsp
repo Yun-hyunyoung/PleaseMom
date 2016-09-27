@@ -3,174 +3,54 @@
     
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
+ <%@ taglib prefix="c-rt" uri="http://java.sun.com/jstl/core_rt" %> 
 
 <div class="container">
-        <div class="row">
-        	<div class="col-lg-12 col-md-12">
-        		<c:set var="board" value="${page.list}"></c:set>
-				<c:set var="start" value="${start }"></c:set>
-				<c:set var="arrival" value="${arrival }"></c:set>
-				<div class="board">
-					<c:set var="board" value="${page.list}"></c:set>
-						<div class="board-line">
-						<c:if test="${board[0].scb_num != null}">
-						  <div class="board-one">
-						  <div class="b-inline-a">
-							<div class="board-status">
-								<c:if test="${board[0].scb_case == 'WAIT'}">
+	<div class="row">
+		<div class="col-lg-12 col-md-12">
+				<c:forEach var="board" items="${page.list}" varStatus="s">
+					<c:if test="${board != null}">
+					<div class="board-container col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="board-content">
+							<div class="status ">
+								<c:if test="${board.scb_case == 'WAIT'}">
 									<img src="img/ic_sub.jpg">
 								</c:if>
-								<c:if test="${board[0].scb_case == 'DURING'}">
+								<c:if test="${board.scb_case == 'DURING'}">
 									<img src="img/ic_pro.jpg">
 								</c:if>
-								<c:if test="${board[0].scb_case == 'CONFIRM'}">
+								<c:if test="${board.scb_case == 'CONFIRM'}">
 									<img src="img/ic_com.jpg">
 								</c:if>	
 							</div>
-						  </div>
-						  <div class="b-inline-b">
-							<div class="board-location">
-								<div class="from-to">
-									<span class="label label-success">${start[0]}</span>
+							<div class="contents ">
+								<div class="location">
+									<img src="img/plane.png" style="width:20px; height:20px"></img>
+									<div class="from-to">
+										<div>${start[s.index]}</div>
+									</div>
+									<img src="img/right-arrow.jpg" style="width:20px; height:20px"></img>
+									<div class="via">
+										<div>${board.scb_via}회</div>
+									</div>
+									<img src="img/right-arrow.jpg" style="width:20px; height:20px"></img>
+									<div class="from-to">
+										<div>${arrival[s.index]}</div>
+									</div>
 								</div>
-								->
-								<div class="via">
-									<span class="label label-info">${board[0].scb_via}</span>
+								<div class="board-date-time">
+									<div>${board.scb_sdate}</div>
 								</div>
-								->
-								<div class="from-to">
-									<span class="label label-success">${arrival[0]}</span>
+								<div class="board-title">
+									<a href="BoardRetrieveServlet?scb_num=${board.scb_num}"><div>${board.scb_title}</div></a>
 								</div>
 							</div>
-							<div class="board-date-time">
-								<span class="label label-info">${board[0].scb_sdate}</span>
-							</div>
-							<div class="board-title">
-								<a href="BoardRetrieveServlet?scb_num=${board[0].scb_num}"><span class="label label-success">${board[0].scb_title}</span></a>
-							</div>
-						  </div>
 						</div>
-						</c:if>
-						<c:if test="${board[1].scb_num != null}">
-						  <div class="board-one">
-						  <div class="b-inline-a">
-							<div class="board-status">
-								<c:if test="${board[1].scb_case == 'WAIT'}">
-									<img src="img/ic_sub.jpg">
-								</c:if>
-								<c:if test="${board[1].scb_case == 'DURING'}">
-									<img src="img/ic_pro.jpg">
-								</c:if>
-								<c:if test="${board[1].scb_case == 'CONFIRM'}">
-									<img src="img/ic_com.jpg">
-								</c:if>	
-							</div>
-						  </div>
-						  <div class="b-inline-b">
-							<div class="board-location">
-								<div class="from-to">
-									<span class="label label-success">${start[1]}</span>
-								</div>
-								->
-								<div class="via">
-									<span class="label label-info">${board[1].scb_via}</span>
-								</div>
-								->
-								<div class="from-to">
-									<span class="label label-success">${arrival[1]}</span>
-								</div>
-							</div>
-							<div class="board-date-time">
-								<span class="label label-info">${board[1].scb_sdate}</span>
-							</div>
-							<div class="board-title">
-								<a href="BoardRetrieveServlet?scb_num=${board[1].scb_num}"><span class="label label-success">${board[1].scb_title}</span></a>
-							</div>
-						  </div>
-						</div>
-						</c:if>
-					</div>	
-						<div class="board-line">
-						<c:if test="${board[2].scb_num != null}">
-						  <div class="board-one">
-						  <div class="b-inline-a">
-							<div class="board-status">
-								<c:if test="${board[2].scb_case == 'WAIT'}">
-									<img src="img/ic_sub.jpg">
-								</c:if>
-								<c:if test="${board[2].scb_case == 'DURING'}">
-									<img src="img/ic_pro.jpg">
-								</c:if>
-								<c:if test="${board[2].scb_case == 'CONFIRM'}">
-									<img src="img/ic_com.jpg">
-								</c:if>	
-							</div>
-						  </div>
-						  <div class="b-inline-b">
-							<div class="board-location">
-								<div class="from-to">
-									<span class="label label-success">${start[2]}</span>
-								</div>
-								->
-								<div class="via">
-									<span class="label label-info">${board[2].scb_via}</span>
-								</div>
-								->
-								<div class="from-to">
-									<span class="label label-success">${arrival[2]}</span>
-								</div>
-							</div>
-							<div class="board-date-time">
-								<span class="label label-info">${board[2].scb_sdate}</span>
-							</div>
-							<div class="board-title">
-								<a href="BoardRetrieveServlet?scb_num=${board[2].scb_num}"><span class="label label-success">${board[2].scb_title}</span></a>
-							</div>
-						  </div>
-						</div>
-						</c:if>
-						<c:if test="${board[3].scb_num != null}">
-						  <div class="board-one">
-						  <div class="b-inline-a">
-							<div class="board-status">
-								<c:if test="${board[3].scb_case == 'WAIT'}">
-									<img src="img/ic_sub.jpg">
-								</c:if>
-								<c:if test="${board[3].scb_case == 'DURING'}">
-									<img src="img/ic_pro.jpg">
-								</c:if>
-								<c:if test="${board[3].scb_case == 'CONFIRM'}">
-									<img src="img/ic_com.jpg">
-								</c:if>	
-							</div>
-						  </div>
-						  <div class="b-inline-b">
-							<div class="board-location">
-								<div class="from-to">
-									<span class="label label-success">${start[3]}</span>
-								</div>
-								->
-								<div class="via">
-									<span class="label label-info">${board[3].scb_via}</span>
-								</div>
-								->
-								<div class="from-to">
-									<span class="label label-success">${arrival[3]}</span>
-								</div>
-							</div>
-							<div class="board-date-time">
-								<span class="label label-info">${board[3].scb_sdate}</span>
-							</div>
-							<div class="board-title">
-								<a href="BoardRetrieveServlet?scb_num=${board[3].scb_num}"><span class="label label-success">${board[3].scb_title}</span></a>
-							</div>
-						  </div>
-						</div>
-						</c:if>
-					</div>			
-				</div>
-				<jsp:include page="page.jsp" flush="true" />
-            </div>
-        </div>
+					</div>
+					</c:if>
+				</c:forEach>
+			<jsp:include page="page.jsp" flush="true" />
+		</div>
 	</div>
+</div>
