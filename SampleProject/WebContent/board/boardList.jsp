@@ -18,7 +18,15 @@
 						  <div class="board-one">
 						  <div class="b-inline-a">
 							<div class="board-status">
-								<div class="alert alert-info" role="alert">${board[0].scb_case}</div>
+								<c:if test="${board[0].scb_case == 'WAIT'}">
+									<img src="img/ic_sub.jpg">
+								</c:if>
+								<c:if test="${board[0].scb_case == 'DURING'}">
+									<img src="img/ic_pro.jpg">
+								</c:if>
+								<c:if test="${board[0].scb_case == 'CONFIRM'}">
+									<img src="img/ic_com.jpg">
+								</c:if>	
 							</div>
 						  </div>
 						  <div class="b-inline-b">
@@ -48,7 +56,15 @@
 						  <div class="board-one">
 						  <div class="b-inline-a">
 							<div class="board-status">
-								<div class="alert alert-info" role="alert">${board[1].scb_case}</div>
+								<c:if test="${board[1].scb_case == 'WAIT'}">
+									<img src="img/ic_sub.jpg">
+								</c:if>
+								<c:if test="${board[1].scb_case == 'DURING'}">
+									<img src="img/ic_pro.jpg">
+								</c:if>
+								<c:if test="${board[1].scb_case == 'CONFIRM'}">
+									<img src="img/ic_com.jpg">
+								</c:if>	
 							</div>
 						  </div>
 						  <div class="b-inline-b">
@@ -80,7 +96,15 @@
 						  <div class="board-one">
 						  <div class="b-inline-a">
 							<div class="board-status">
-								<div class="alert alert-info" role="alert">${board[2].scb_case}</div>
+								<c:if test="${board[2].scb_case == 'WAIT'}">
+									<img src="img/ic_sub.jpg">
+								</c:if>
+								<c:if test="${board[2].scb_case == 'DURING'}">
+									<img src="img/ic_pro.jpg">
+								</c:if>
+								<c:if test="${board[2].scb_case == 'CONFIRM'}">
+									<img src="img/ic_com.jpg">
+								</c:if>	
 							</div>
 						  </div>
 						  <div class="b-inline-b">
@@ -110,7 +134,15 @@
 						  <div class="board-one">
 						  <div class="b-inline-a">
 							<div class="board-status">
-								<div class="alert alert-info" role="alert">${board[3].scb_case}</div>
+								<c:if test="${board[3].scb_case == 'WAIT'}">
+									<img src="img/ic_sub.jpg">
+								</c:if>
+								<c:if test="${board[3].scb_case == 'DURING'}">
+									<img src="img/ic_pro.jpg">
+								</c:if>
+								<c:if test="${board[3].scb_case == 'CONFIRM'}">
+									<img src="img/ic_com.jpg">
+								</c:if>	
 							</div>
 						  </div>
 						  <div class="b-inline-b">
