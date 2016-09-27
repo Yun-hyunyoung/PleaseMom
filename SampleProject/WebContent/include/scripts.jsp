@@ -3,8 +3,8 @@
 	<!-- jQuery JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     
-    <!-- jQuery-UI SDN JavaScript -->
-	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <!-- jQuery-UI JavaScript -->
+	<script src="vendor/jquery/jquery-ui.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
