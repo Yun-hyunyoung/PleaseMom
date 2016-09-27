@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.MySqlSessionFactory;
 import com.dto.BoardDTO;
 import com.dto.PageDTO;
+import com.exception.CommonException;
 
 public class BoardService {
 
@@ -141,6 +142,37 @@ public class BoardService {
 		}
 		return Integer.parseInt(num);
 	}
-	
+	//scb_case 상태 변경
+		public int boardUpdateCase(HashMap<String, String> mediateMemberCaseMap) throws CommonException {
+			SqlSession session=MySqlSessionFactory.getSession();
+			int n=0;
+			try {
+				n=session.update("updateBoardCase",mediateMemberCaseMap);
+				session.commit();
+				System.out.println("업데이트 case  n==="+n);
+			}catch(Exception e){
+				e.printStackTrace();
+				throw new CommonException("게시판 상태 업데이트 실패");
+			}
+			finally {
+				session.close();
+			}
+			return n;
+		}
+		//게시글 업데이트된후 리트라이브
+		public BoardDTO boardUpdateRetrieve(int scb_num) throws CommonException {
+			SqlSession session=MySqlSessionFactory.getSession();
+			BoardDTO dto=new BoardDTO();
+			try {
+				dto=session.selectOne("boardUpdateRetrieve",scb_num);
+			}catch(Exception e){
+				e.printStackTrace();
+				throw new CommonException("게시판 글 retrieve 재검색 실패");
+			}
+			finally {
+				session.close();
+			}
+			return dto;
+		}
 	
 }//end 

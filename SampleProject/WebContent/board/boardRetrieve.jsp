@@ -36,12 +36,15 @@
 </div>
 
 <form name="myForm" method="get">
+<c:set var="case2" value="${retrieveMap.bDto.scb_case}"></c:set>
 <c:set var="loginMemberNum" value="${login.mem_num}" scope="session"></c:set>
+<c:set var="retrieveMap" value="${retrieveMap}" scope="session"></c:set>
 <c:set var="DtoMemberNum" value="${mDto.mem_num}"></c:set>
 <c:set var="boardNum" value="${retrieveMap.bDto.scb_num}"></c:set>
 <c:set var="searchMapFrom" value="${map.scb_from}" scope="session"></c:set>
+<c:set var="mDto" value="${mDto}" scope="session"></c:set>
 <c:if test="${loginMemberNum!=DtoMemberNum}">
-	<input type="button" value="동행요청" onclick="during(myForm)" >
+	<input type="button" value="동행요청" <c:if test="${case2=='DURING'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
 </c:if>
 <c:if test="${loginMemberNum==DtoMemberNum}">
 	<input type="button" value="수정" onclick="boardUpdate(myForm)">
@@ -60,9 +63,12 @@
 		console.log(f.action);
 		location.href="update.jsp";
 	}
-	function during(f){
-		f.action="";
-		f.submit();
+	function boardMediate(){
+		if(${login==null}){
+			alert("로그인을 하셔야 이용 할 수 있습니다.");
+		}else{
+			location.href="BoardMediateServlet";
+		} 
 	}
 	function boardRetrieveToList(f,scb_from,scb_to,min,max,curPage) {
 		location.href="BoardListServlet?scb_from="+scb_from+"&scb_to="+scb_to+"&min="+min+"&max="+max+"&curPage="+curPage;

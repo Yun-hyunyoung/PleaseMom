@@ -32,8 +32,8 @@
 		        <input class="form-control input-lg airportSearch" type="text" name="scb_from" placeholder="출빌공항From" required>
 		      </div>
 		      <label class="col-sm-1 control-label"><h4>경유</h4></label>
-		      <div class="col-sm-1"><select class="form-control " name="minute"> 
-			 		<%for(int i=1;i<=5;i++){ 
+		      <div class="col-sm-1"><select class="form-control " name="scb_via"> 
+			 		<%for(int i=0;i<=5;i++){ 
 			 				int j=i; 
 			 		%><option><%=j %></option> 
 			 		<% }%> 

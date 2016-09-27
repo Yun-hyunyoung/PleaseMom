@@ -3,6 +3,22 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myboard">
+	<select id="boardUpdateRetrieve" parameterType="int" resultType="BoardDTO">
+		select scb_num, scb_mem_num, scb_from,scb_via,scb_to,
+	         scb_sdate,scb_title,
+	         scb_content,scb_wdate,scb_case
+		from schedule_board
+		where scb_num=#{scb_num} 
+	</select>
+	
+	
+	<update id="updateBoardCase" parameterType="hashmap">
+		<if test="memberLoginCase=='DURING' and memberBoardCase=='DURING' and boardCase=='WAIT'">
+			update schedule_board
+			set scb_case='DURING'
+			where scb_num=#{boardNum}
+		</if>
+	</update>
 
  <delete id="delete" parameterType="int">
     delete from schedule_board
@@ -60,6 +76,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
 	 and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
 	 and scb_sdate between to_date(#{min},'YYYY-MM-DD:HH24:MI') and to_date(#{max},'YYYY-MM-DD:HH24:MI')
+	</select>
+	
+	<select id="totalCountImgSearch" resultType="int" parameterType="string">
+	 select count(*) 
+	 from schedule_board
+	 where scb_from in (select airport_num from AIRPORT_INFO where COUNTRY_KR='대한민국')
+	 and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
+	 and scb_sdate between to_date(sysdate,'YYYY-MM-DD:HH24:MI') and to_date('9999-12-31:23:59','YYYY-MM-DD:HH24:MI')
 	</select>
 
     <select id="retrieve" 

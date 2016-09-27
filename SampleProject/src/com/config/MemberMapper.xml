@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="login" parameterType="hashmap" resultType="MemberDTO">
-		select mem_num, mem_id, mem_name, mem_birth from member
+		select mem_num, mem_id, mem_name, mem_birth,
+		mem_phone,mem_birth,mem_case,mem_picture,mem_email_ck,mem_phone_ck
+		from member
 		where mem_id = #{mem_id} and mem_passwd = #{mem_passwd}
 	</select>
 	
@@ -40,7 +42,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="boardSearch" parameterType="int" resultType="MemberDTO">
-		select mem_num,mem_id, mem_name, mem_email_ck, mem_phone_ck, mem_picture
+		select mem_num, mem_id, mem_name, mem_birth,
+		mem_phone,mem_birth,mem_case,mem_picture,mem_email_ck,mem_phone_ck
 		from member, schedule_board
 		where member.mem_num=schedule_board.scb_mem_num
 		and scb_num=#{scb_num}
