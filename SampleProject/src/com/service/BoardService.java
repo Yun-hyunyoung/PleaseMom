@@ -176,14 +176,26 @@ public class BoardService {
 	}
 
 	//중개 게시글 얻어오기
-	public List<BoardDTO> mediateBoardList(List<Integer> numList) throws CommonException {
+	public HashMap<String, Object> mediateBoardList(List<Integer> numList) throws CommonException {
 		SqlSession session = MySqlSessionFactory.getSession();
-		List<BoardDTO> list=null;
+		HashMap<String, Object> mapList = new HashMap<>();
+		List<BoardDTO> boardList=null;
+		List<String> listName_kr_start = null;
+		List<String> listName_kr_arrival = null;
+		System.out.println("numList===="+numList);
 		if(numList.size()==0)
 			numList.add(0);
 		try {
-			list = session.selectList("mediateBoardList", numList);
-			System.out.println("list 중개 게시글 얻기=="+list);
+			boardList = session.selectList("mediateBoardList", numList);
+			if(boardList.size()==0){
+				boardList.add(new BoardDTO());
+				boardList.get(0).setScb_num(0);
+			}
+			listName_kr_start=session.selectList("mediateBoardStart",boardList);
+			System.out.println("listName_kr_start 중개 게시글 얻기=="+listName_kr_start);
+			
+			listName_kr_arrival=session.selectList("mediateBoardArrival",boardList);
+			System.out.println("listName_kr_arrival 중개 게시글 얻기=="+listName_kr_arrival);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -191,8 +203,11 @@ public class BoardService {
 		} finally {
 			session.close();
 		}
-		return list;
+		
+		mapList.put("boardList", boardList);
+		mapList.put("mediateStart", listName_kr_start);
+		mapList.put("mediateArrival", listName_kr_arrival);
+		return mapList;
 	}
 
-	
 }//end 

@@ -3,19 +3,40 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myboard">
+	<select id="mediateBoardArrival" parameterType="list" resultType="string">
+		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
+		<where>
+			scb_num in 
+			<foreach collection="list" open="(" close=")" separator="," item="boardList">
+				#{boardList.scb_num}
+			</foreach>
+		</where>
+	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_TO
+	   	order by scb_num desc
+	</select>
+
+	<select id="mediateBoardStart" parameterType="list" resultType="string">
+		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
+		<where>
+			scb_num in
+			<foreach collection="list" open="(" close=")" separator="," item="boardList">
+				#{boardList.scb_num}
+			</foreach>
+		</where>
+	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_FROM
+	   	order by scb_num desc
+	</select>
+	
+	
 	<select id="mediateBoardList" parameterType="list" resultType="BoardDTO">
 		select * from schedule_board
 		<where>
 			scb_num in
 			<foreach collection="list" open="(" close=")" separator="," item="numList">
-				<if test="numList==null">
-					0
-				</if>
-				<if test="numList!=null">
-					#{numList}
-				</if>
+				#{numList}
 			</foreach>
 		</where>
+		order by scb_num desc
 	</select>
 
 	<select id="boardUpdateRetrieve" parameterType="int" resultType="BoardDTO">
