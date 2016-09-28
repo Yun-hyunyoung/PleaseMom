@@ -29,16 +29,58 @@
 				
 			</form>
 				<c:set var="requestBoardList" value="${requestBoard}"></c:set>
+				<c:set var="rBoard" value="${requestBoard.boardList}"></c:set>
+				<c:set var="rStart" value="${requestBoard.mediateStart}"></c:set>
+				<c:set var="rArrival" value="${requestBoard.mediateArrival}"></c:set>
+				
 				<c:set var="guiderBoardList" value="${guiderBoard}"></c:set>
+				<c:set var="gBoard" value="${guiderBoard.boardList}"></c:set>
+				<c:set var="gStart" value="${guiderBoard.mediateStart}"></c:set>
+				<c:set var="gArrival" value="${guiderBoard.mediateArrival}"></c:set>
+				<c:set var="size" value="${size}"></c:set>
 			<button id="request"> 동행요청한 게시글</button>
 			<button id="guider"> 내가작성한 게시글</button>
 			<c:if test="${ requestBoardList !=null}">
-				reqeuest:${requestBoardList }
-				request aaaa
+				<c:if test="${size != 0}">
+					<br>-----reqeuest----<br>
+					<c:forEach begin="0" end="${size-1}" varStatus="status">
+						<a href="BoardMediateRetrieveServlet?scb_num=${ rBoard[status.index].scb_num}" style="text-decoration: none;">
+						<div>
+							글번호:${rBoard[status.index].scb_num}<br>
+							글제목:${rBoard[status.index].scb_title}<br>
+							글상태:${rBoard[status.index].scb_case}<br>
+							출발공항:${rStart[status.index]}<br>
+							경유:${rBoard[status.index].scb_via}<br>
+							도착공항:${rArrival[status.index]}<br>
+							글내용:${rBoard[status.index].scb_content}<br><br>
+						</div>
+						</a>
+					</c:forEach>
+				</c:if>
+				<c:if test="${size == 0 }">
+					<br>자료가 없습니다.
+				</c:if>
 			</c:if>
 			<c:if test="${ guiderBoardList !=null}">
-				guider bbbb
-				guider:${ guiderBoardList}
+				<c:if test="${size != 0}">
+					<br>-----guider----<br>
+					<c:forEach begin="0" end="${size-1}" varStatus="status">
+						<a href="#">
+							<div>
+								글번호:${gBoard[status.index].scb_num}<br>
+								글제목:${gBoard[status.index].scb_title}<br>
+								글상태:${rBoard[status.index].scb_case}<br>
+								출발공항:${gStart[status.index]}<br>
+								경유:${gBoard[status.index].scb_via}<br>
+								도착공항:${gArrival[status.index]}<br>
+								글내용:${gBoard[status.index].scb_content}<br><br>
+							</div>
+						</a>
+					</c:forEach>
+				</c:if>	
+				<c:if test="${size == 0 }">
+					<br>자료가 없습니다.
+				</c:if>
 			</c:if>
 			
 		</div>

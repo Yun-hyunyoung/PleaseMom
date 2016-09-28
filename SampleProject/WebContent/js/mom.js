@@ -146,3 +146,16 @@ $(document).ready(function () {
 	});
 });
 
+/*
+ *	mediateRetrieve.jsp
+ *	confirm,cancle,list function 
+*/
+function mediateConfirmfunction(f) {
+	location.href="BoardMediateConfirmServlet";
+}
+function mediateCanclefunction(f) {
+	location.href="BoardMediateCancleServlet";
+}
+function mediateListfunction(f) {
+	location.href="BoardMediateListServlet";
+}

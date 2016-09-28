@@ -26,13 +26,10 @@ import com.service.TravelHistoryService;
 public class BoardMediateListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("BoardMediateListServlet");
 		HttpSession session=request.getSession();
 		MemberDTO loginDto=(MemberDTO)session.getAttribute("login");//로그인 사용자
 		TravelHistoryService thService=new TravelHistoryService();
 		BoardService bService=new BoardService();
-		
-		TravelHistoryDTO thDto=new TravelHistoryDTO();
 		
 		String separator=request.getParameter("separator");
 		
@@ -41,7 +38,6 @@ public class BoardMediateListServlet extends HttpServlet {
 		
 		HashMap<String,Object> requestBoard=null;
 		HashMap<String,Object> guiderBoard=null;
-		//HashMap<String, Object> mediateMap=new HashMap<>();
 		
 		
 		try {
@@ -51,22 +47,19 @@ public class BoardMediateListServlet extends HttpServlet {
 			requestBoard=bService.mediateBoardList(th_req_numList);//동행요청 게시글정보,출발 공항이름,도착공항이름
 			guiderBoard=bService.mediateBoardList(th_gui_numList);//내가 작성한 게시글정보,출발 공항이름,도착공항이름
 			
+			List<String> requestList=(List<String>)requestBoard.get("mediateStart");
+			List<String> guiderList=(List<String>)guiderBoard.get("mediateStart");
 			
-			System.out.println("requestBoard=="+requestBoard);
-			System.out.println("guiderBoard=="+guiderBoard);
-			
-			
-			System.out.println("separator=="+separator);
 			if(separator==null)
 				separator="request";
 			if(separator.equals("request")){
 				request.setAttribute("requestBoard", requestBoard);
+				request.setAttribute("size", requestList.size());
 			}
 			else{
 				request.setAttribute("guiderBoard", guiderBoard);
+				request.setAttribute("size", guiderList.size());
 			}
-//			System.out.println("mediateMap=="+mediateMap);
-//			request.setAttribute("mediateBoardListMap", mediateMap);
 		} catch (CommonException e) {
 			e.printStackTrace();
 		}

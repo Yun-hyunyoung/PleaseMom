@@ -3,6 +3,19 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myboard">
+	<select id="mediateBoardMember" parameterType="list" resultType="MemberDTO">
+	select *
+	from member, SCHEDULE_BOARD
+	<where>
+		mem_num=scb_mem_num and
+		mem_num in 
+		<foreach collection="list" item="boardList" open="(" close=")" separator=",">
+			#{boardList.scb_mem_num}
+		</foreach>
+	</where>
+	order by scb_num desc
+	</select>
+	
 	<select id="mediateBoardArrival" parameterType="list" resultType="string">
 		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
 		<where>
@@ -125,7 +138,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="retrieve" 
        parameterType="int" resultType="BoardDTO">
        select scb_num, scb_from, scb_via, scb_to,scb_case,
-       scb_title,scb_content,scb_sdate
+       scb_title,scb_content,scb_sdate, scb_mem_num
 	   from  schedule_board
 	   where scb_num = #{scb_num}
      </select>

@@ -1,6 +1,5 @@
 package com.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
 import com.dto.BoardDTO;
+import com.dto.MemberDTO;
 import com.dto.PageDTO;
 import com.exception.CommonException;
 
