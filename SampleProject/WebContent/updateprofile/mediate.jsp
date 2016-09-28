@@ -1,7 +1,23 @@
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-
+<%
+	HashMap<String,Object> mediateBoardListMap=(HashMap<String,Object>)request.getAttribute("mediateBoardListMap");
+	HashMap<String,Object> requesBoard = (HashMap<String,Object>)mediateBoardListMap.get("requestBoard");
+%>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#request").on("click",function(){
+			
+		});
+		
+		$("#guider").on("click",function(){
+			
+		});
+	});
+	
+</script>
 <style type="text/css">
 
  .abc{
@@ -25,8 +41,12 @@
 		</div>
 		<div class="col-sm-9">
 			<form class="form-horizontal" action="UpdateProfileServlet">
-			aaaaaaaaaa
+				<c:set var="requestBoardList" value="${mediateBoardListMap.requestBoard}"></c:set>
+				<c:set var="guiderBoardList" value="${mediateBoardListMap.guiderBoard}"></c:set>
+				
 			</form>
+			<button id="request"> 동행요청한 게시글</button>
+			<button id="guider"> 내가작성한 게시글</button>
 		</div>
     </div>
 </div>
