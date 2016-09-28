@@ -20,11 +20,11 @@
 </form> --%>
 <%
 	HashMap<String, Object> map = (HashMap<String, Object>)session.getAttribute("retrieveMap");
-	System.out.println(map);
+
 	BoardDTO dto = (BoardDTO)map.get("bDto");
 	String scb_via = dto.getScb_via();
 	String sDate = dto.getScb_sdate();
-	
+	String date = sDate.split(" ")[0];
 	String time = sDate.split(" ")[1];
 	int hour = Integer.parseInt(time.split(":")[0]);
 	int min = Integer.parseInt(time.split(":")[1]);
@@ -75,7 +75,7 @@
 		    <div class="form-group">
 		      <label class="col-sm-1 control-label"><h4>출발일</h4></label>
 		      	<div class="col-sm-4 SearchForm_date">
-   	        		<input class="form-control input-lg datepicker" type="text" placeholder="출발일" name="scb_sdate" value="${retrieveMap.bDto.scb_sdate}">
+   	        		<input class="form-control input-lg datepicker" type="text" placeholder="출발일" name="scb_sdate" value="<%= date %>">
    	        	</div>
 		    	<label class="col-sm-1 control-label"><h4>시간</h4></label>
 			 	<div class="col-sm-3"><select class="form-control" name="hour"> 
