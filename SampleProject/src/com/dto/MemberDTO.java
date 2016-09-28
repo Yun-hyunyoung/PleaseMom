@@ -11,6 +11,7 @@ public class MemberDTO {
 	private String mem_email_ck;
 	private String mem_phone_ck;
 	private String mem_case;
+	
 	public int getMem_num() {
 		return mem_num;
 	}

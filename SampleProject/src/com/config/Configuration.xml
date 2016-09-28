@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.dto.BoardDTO" alias="BoardDTO"/>
 		<typeAlias alias="TravelHistoryDTO" type="com.dto.TravelHistoryDTO"/>
+		<typeAlias type="com.dto.ReviewDTO" alias="ReviewDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -26,5 +27,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/MemberMapper.xml" />
 		<mapper resource="com/config/BoardMapper.xml" />
 		<mapper resource="com/config/TravelHistoryMapper.xml"/>
+		<mapper resource="com/config/ReviewMapper.xml"/>
 	</mappers>
 </configuration>
