@@ -34,13 +34,14 @@ public class BoardMediateListServlet extends HttpServlet {
 		
 		TravelHistoryDTO thDto=new TravelHistoryDTO();
 		
+		String separator=request.getParameter("separator");
 		
 		List<Integer> th_req_numList=null;
 		List<Integer> th_gui_numList=null;
 		
 		HashMap<String,Object> requestBoard=null;
 		HashMap<String,Object> guiderBoard=null;
-		HashMap<String, Object> mediateMap=new HashMap<>();
+		//HashMap<String, Object> mediateMap=new HashMap<>();
 		
 		
 		try {
@@ -55,10 +56,17 @@ public class BoardMediateListServlet extends HttpServlet {
 			System.out.println("guiderBoard=="+guiderBoard);
 			
 			
-			mediateMap.put("requestBoard", requestBoard);
-			mediateMap.put("guiderBoard", guiderBoard);
-			System.out.println("mediateMap=="+mediateMap);
-			request.setAttribute("mediateBoardListMap", mediateMap);
+			System.out.println("separator=="+separator);
+			if(separator==null)
+				separator="request";
+			if(separator.equals("request")){
+				request.setAttribute("requestBoard", requestBoard);
+			}
+			else{
+				request.setAttribute("guiderBoard", guiderBoard);
+			}
+//			System.out.println("mediateMap=="+mediateMap);
+//			request.setAttribute("mediateBoardListMap", mediateMap);
 		} catch (CommonException e) {
 			e.printStackTrace();
 		}
