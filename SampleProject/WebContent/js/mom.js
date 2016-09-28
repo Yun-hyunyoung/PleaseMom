@@ -131,3 +131,18 @@ function cancle(f){
 	f.action="BoardRetrieveServlet";
 	f.submit();
 }
+
+/*
+ * 	mediate.jsp
+ *  Button Event => request/guider
+ */
+$(document).ready(function () {
+	$("#request").on("click",function(){
+		location.href="BoardMediateListServlet?separator=request";
+	});
+	
+	$("#guider").on("click",function(){
+		location.href="BoardMediateListServlet?separator=guider";
+	});
+});
+
