@@ -35,7 +35,23 @@
     <jsp:include page="include/footer.jsp"></jsp:include>
     
     <jsp:include page="include/scripts.jsp"></jsp:include>
-    
+    <script>
+	    $.notifyDefaults({
+	    	placement: {
+	    		from: "bottom",
+	    		align: "right"
+	    	},
+	    	animate:{
+	    		enter: "animated fadeInUp",
+	    		exit: "animated fadeOutDown"
+	    	}
+	    });
+    	$.notify({
+    		title: '<string>Notify Test</string>',
+    		message: "홈페이지 방문을 환영합니다!"
+    		
+    	})
+    </script>
 </body>
 
 </html>

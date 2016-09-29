@@ -86,8 +86,7 @@
 			alert("로그인을 하세요");
 		<%}else{%>
 		
-		f.action="BoardWriteUIServlet";
-		f.submit();
+		location.href = "BoardWriteUIServlet";
 		<%}%>
 	}
 </script>

@@ -27,6 +27,9 @@
 	<!-- Birth Catch JavaScript -->
 	<script src="js/birthpicker.js"></script>
 	
+	<!-- Bootstrap Notify JavaScript -->
+	<script src="js/bootstrap-notify.js"></script>
+	
     
     <!-- Common JavaScript -->
     <script src="js/mom.js"></script>
