@@ -1,3 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -52,6 +54,32 @@
         <!-- /.container -->
     </nav>
 <script>
+<%
+	String dupleLogin = (String)application.getAttribute("dupleLogout");
+	if(dupleLogin != null){
+%>
+	alert("<%= dupleLogin %>");
+<%
+	}
+%>
+
+<%
+	String msgLogin = (String)request.getAttribute("msgLogin");
+	if(msgLogin != null){
+%>
+	alert("<%= msgLogin %>");
+<%
+	}
+%>
+
+<%
+	String msgLogout = (String)request.getAttribute("msgLogout");
+	if(msgLogout != null){
+%>
+	alert("<%= msgLogout %>");
+<%
+	}
+%>
 	function boardWriteUI(f){
 		<% if ((MemberDTO)session.getAttribute("login")==null){
 			%>

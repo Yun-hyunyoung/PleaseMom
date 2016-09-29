@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
 import com.exception.CommonException;
+import com.login.LoginServlet.LoginManager;
 import com.service.MemberService;
 
 @WebServlet("/LogoutServlet")
@@ -25,8 +26,9 @@ public class LogoutServlet extends HttpServlet {
 		String title = null;
 		
 		if (dto != null) {
+			LoginManager.getInstance().removeLogin(dto.getMem_id());
 			session.invalidate();
-			request.setAttribute("msgLogin", "로그아웃 되었습니다");
+			request.setAttribute("msgLogout", "로그아웃 되었습니다");
 			target = "home.jsp";
 		} else{
 			target = "error.jsp";
