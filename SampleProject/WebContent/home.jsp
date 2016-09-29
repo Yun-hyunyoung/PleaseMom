@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@page import="com.login.LoginServlet.LoginManager"%>
 <html lang="ko">
 
 <head>
@@ -9,7 +10,7 @@
 
 <body>
     <jsp:include page="include/nav.jsp" flush="true"></jsp:include>
-
+	<% LoginManager.getInstance().printLoginList(); %>
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header">
