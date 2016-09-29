@@ -30,6 +30,7 @@
 			<c:set var="mediateRetrieve" value="${ mediateRetrieve}" scope="session"></c:set>
 			<c:set var="mediateRetrieveDto" value="${ mediateRetrieveDto}" scope="session"></c:set>
 			<c:set var="requestMember" value="${mediateRetrieveRequestMember}"></c:set>
+			<c:set var="login" value="${login}" scope="session"></c:set>
 			글작성자:${mediateRetrieveDto.mem_name}<br>
 			사진:${mediateRetrieveDto.mem_picture}<br>
 			전화번호:${mediateRetrieveDto.mem_phone}<br>
@@ -50,10 +51,11 @@
 				이메일 인증:${requestMember.mem_email_ck}<br>
 				휴대폰 인증:${requestMember.mem_phone_ck}<br>
 			</c:if>
-			
-			
-				<button name="mediateConfirm" onclick="mediateConfirmfunction()">승인완료</button>			
-				<button name="mediateCancle" onclick="mediateCancelfunction()">동행취소</button>			
+			${login.mem_case }
+				<%-- <button name="mediateConfirm" onclick="mediateConfirmfunction()" <c:if test="${login.mem_case=='CONFIRM'}">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if>>동행승인</button>		
+				<button name="mediateCancle" onclick="mediateCancelfunction()" <c:if test="${login.mem_case=='CANCEL' }">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if>>동행취소</button> --%>		
+				<button name="mediateConfirm" onclick="mediateConfirmfunction()">동행승인</button>		
+				<button name="mediateCancle" onclick="mediateCancelfunction()">동행취소</button>		
 				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>			
 			
 		</div>

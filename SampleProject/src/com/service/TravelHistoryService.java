@@ -116,5 +116,22 @@ public class TravelHistoryService {
 		}
 		return n;
 	}
+	//승인완료
+	public int confirm(HashMap<String, Integer> caseMap) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		int n=0;
+		try {
+			n=session.update("travelHistory.confirm",caseMap);
+			session.commit();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("TravelHistory 승인 실패");
+		}
+		finally {
+			session.close();
+		}
+		return n;
+	}
 	
 }

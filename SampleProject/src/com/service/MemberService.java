@@ -133,33 +133,39 @@ public class MemberService {
 		return dto;
 	}
 	//동행취소시 로그인 회원 상태 변경
-	public void updateCancelCase(int mem_num) throws CommonException {
+	public int updateCancelCase(int mem_num) throws CommonException {
 		SqlSession session = MySqlSessionFactory.getSession();
 		MemberDTO dto=null;
+		int n=0;
 		try{
-			session.update("member.updateCancelCase", mem_num);
-			session.commit();
+			n=session.update("member.updateCancelCase", mem_num);
+			if(n>0)
+				session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new CommonException("회원 동행취소 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분"); 
 		} finally {
 			session.close();
 		}
+		return n;
 	}
 	
 	// 동행 승인시 로그인 회원 상태 변경
-	public void updateConfirmCase(int mem_num) throws CommonException {
+	public int updateConfirmCase(int mem_num) throws CommonException {
 		SqlSession session = MySqlSessionFactory.getSession();
 		MemberDTO dto = null;
+		int n=0;
 		try {
-			session.update("member.updateConfirmCase", mem_num);
-			session.commit();
+			n=session.update("member.updateConfirmCase", mem_num);
+			if(n>0)
+				session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new CommonException("회원 동행승인 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분");
 		} finally {
 			session.close();
 		}
+		return n;
 	}
 
 	// 동행 취소후 guider,request Case 변경
@@ -170,7 +176,7 @@ public class MemberService {
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new CommonException("게시판삭제후 Guider,Request 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분");
+			throw new CommonException("게시판변경후 Guider,Request 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분");
 		} finally {
 			session.close();
 		}

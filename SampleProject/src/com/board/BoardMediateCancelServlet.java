@@ -40,7 +40,11 @@ public class BoardMediateCancelServlet extends HttpServlet {
 		String caseBoard;
 		MemberDTO mediateMemberDTO=new MemberDTO();
 		try {
-			mService.updateCancelCase(login.getMem_num());
+			int n=mService.updateCancelCase(login.getMem_num());
+			if(n>0){
+				login.setMem_case("CANCEL");
+				session.setAttribute("login", login);
+			}
 			if (login.getMem_num() == boardMemberDTO.getMem_num()) {
 				// 로그인한사람 -> 가이더
 				int requestNum = thService.selectRequestNum(scb_num);
@@ -74,7 +78,6 @@ public class BoardMediateCancelServlet extends HttpServlet {
 		} catch (CommonException e) {
 			e.printStackTrace();
 		} 
-		
 		RequestDispatcher dis =
 				request.getRequestDispatcher("mediateRetrieve.jsp");
 		dis.forward(request, response);

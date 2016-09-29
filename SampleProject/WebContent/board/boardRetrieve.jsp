@@ -44,7 +44,7 @@
 <c:set var="searchMapFrom" value="${map.scb_from}" scope="session"></c:set>
 <c:set var="mDto" value="${mDto}" scope="session"></c:set>
 <c:if test="${loginMemberNum!=DtoMemberNum}">
-	<input type="button" value="동행요청" <c:if test="${case2=='DURING'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
+	<input type="button" value="동행요청" <c:if test="${case2!='WAIT'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
 </c:if>
 <c:if test="${loginMemberNum==DtoMemberNum}">
 	<input type="button" value="수정" onclick="boardUpdate(myForm)">

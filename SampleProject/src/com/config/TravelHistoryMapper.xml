@@ -36,4 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from travel_history
 		where th_case='N' and th_req_num=#{requestNum} and th_gui_num=#{guiderNum}
 	</delete>
+	<update id="confirm" parameterType="hashmap">
+		update travel_history
+		set th_case='Y'
+		where th_req_num=#{requestNum} and th_gui_num=#{guiderNum}
+	</update>
 </mapper>
