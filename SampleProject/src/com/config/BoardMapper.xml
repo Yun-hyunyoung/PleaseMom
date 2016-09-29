@@ -3,18 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myboard">
-	<select id="mediateBoardMember" parameterType="list" resultType="MemberDTO">
-	select *
-	from member, SCHEDULE_BOARD
-	<where>
-		mem_num=scb_mem_num and
-		mem_num in 
-		<foreach collection="list" item="boardList" open="(" close=")" separator=",">
-			#{boardList.scb_mem_num}
-		</foreach>
-	</where>
-	order by scb_num desc
-	</select>
 	
 	<select id="mediateBoardArrival" parameterType="list" resultType="string">
 		select name_kr from AIRPORT_INFO, SCHEDULE_BOARD
@@ -25,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</where>
 	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_TO
-	   	order by scb_num desc
+	   	order by scb_case desc, scb_num desc
 	</select>
 
 	<select id="mediateBoardStart" parameterType="list" resultType="string">
@@ -37,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</where>
 	   	and AIRPORT_INFO.AIRPORT_NUM=SCHEDULE_BOARD.SCB_FROM
-	   	order by scb_num desc
+	   	order by scb_case desc, scb_num desc
 	</select>
 	
 	
@@ -49,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{numList}
 			</foreach>
 		</where>
-		order by scb_num desc
+		order by scb_case desc, scb_num desc
 	</select>
 
 	<select id="boardUpdateRetrieve" parameterType="int" resultType="BoardDTO">
@@ -61,12 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<update id="updateBoardCase" parameterType="hashmap">
-		<if test="memberLoginCase=='DURING' and memberBoardCase=='DURING' and boardCase=='WAIT'">
+	<update id="updateBoardCase" parameterType="int">
 			update schedule_board
 			set scb_case='DURING'
 			where scb_num=#{boardNum}
-		</if>
 	</update>
 
  <delete id="delete" parameterType="int">

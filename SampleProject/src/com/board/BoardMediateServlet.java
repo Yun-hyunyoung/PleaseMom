@@ -35,19 +35,16 @@ public class BoardMediateServlet extends HttpServlet {
 		MemberService mService=new MemberService();//멤버서비스
 		BoardService bService = new BoardService();//보드서비스
 		int scb_num = board.getScb_num();//게시글번호얻기
-		HashMap<String, String> mediateMemberCaseMap=
-				new HashMap<>();//케이스정보 저장 로그인멤버case,게시판작성자case,게시판case,게시판번호
-		
+		int n=0;
 		
 		try {
 			boardMemberDto =mService.boardSearchMember(String.valueOf(scb_num));//게시판 작성자 정보 얻기
 			
-			mediateMemberCaseMap.put("memberLoginCase", loginDto.getMem_case());
-			mediateMemberCaseMap.put("memberBoardCase", boardMemberDto.getMem_case());
-			mediateMemberCaseMap.put("boardCase", board.getScb_case());
-			mediateMemberCaseMap.put("boardNum", String.valueOf(scb_num));
-			
-			int n=bService.boardUpdateCase(mediateMemberCaseMap);//게시판 상태 수정
+			if(loginDto.getMem_case().equals("DURING") && boardMemberDto.getMem_case().equals("DURING") && board.getScb_case().equals("WAIT"))
+			{
+				n=bService.boardUpdateCase(scb_num);//게시판 상태 수정
+				
+			}
 			board=bService.boardUpdateRetrieve(scb_num);//수정된 게시판 얻기
 			if(n>0){
 				//게시판 업데이트 성공-> travel_history 테이블에 삽입

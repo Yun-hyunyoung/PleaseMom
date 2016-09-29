@@ -1,3 +1,4 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -50,14 +51,37 @@
 				전화번호:${requestMember.mem_phone}<br>
 				이메일 인증:${requestMember.mem_email_ck}<br>
 				휴대폰 인증:${requestMember.mem_phone_ck}<br>
+				동행요청자 상태:${requestMember.mem_case}
 			</c:if>
 			${login.mem_case }
-				<%-- <button name="mediateConfirm" onclick="mediateConfirmfunction()" <c:if test="${login.mem_case=='CONFIRM'}">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if>>동행승인</button>		
-				<button name="mediateCancle" onclick="mediateCancelfunction()" <c:if test="${login.mem_case=='CANCEL' }">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if>>동행취소</button> --%>		
-				<button name="mediateConfirm" onclick="mediateConfirmfunction()">동행승인</button>		
-				<button name="mediateCancle" onclick="mediateCancelfunction()">동행취소</button>		
-				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>			
-			
+			<c:if test="${login.mem_case=='DURING'}" >
+				<c:if test="${mediateRetrieve.bDto.scb_case!='CONFIRM'}">
+					<button name="mediateConfirm" onclick="mediateConfirmfunction()">동행승인</button>		
+					<button name="mediateCancle" onclick="mediateCancelfunction()">동행취소</button>		
+					<button name="mediateList" onclick="mediateListfunction()">목록보기</button>
+				</c:if>
+			</c:if>
+			<c:if test="${ login.mem_case=='CANCEL'}">
+				
+				<button name="mediateCancle" onclick="mediateCancelfunction()" <c:if test="${login.mem_case=='CANCEL' }">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if>>동행취소</button>		
+				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>
+			</c:if>
+			<c:if test="${login.mem_case=='CONFIRM'}">
+				<button name="mediateConfirm" onclick="mediateConfirmfunction()" <c:if test="${login.mem_case=='CONFIRM'}">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if>>동행승인</button>
+				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>
+			</c:if>
+			<c:if test="${mediateRetrieve.bDto.scb_case=='CONFIRM'}">
+				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>
+			</c:if>
+			<%
+				String check=(String)request.getAttribute("check");
+				if (check != null) {
+					if (check.equals("cancel") || check.equals("confirm")) {
+						MemberDTO loginDto = (MemberDTO) session.getAttribute("login");
+						loginDto.setMem_case("DURING");
+					}
+				}
+			%>
 		</div>
     </div>
 </div>

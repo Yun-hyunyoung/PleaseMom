@@ -69,7 +69,7 @@
 							<div>
 								글번호:${gBoard[status.index].scb_num}<br>
 								글제목:${gBoard[status.index].scb_title}<br>
-								글상태:${rBoard[status.index].scb_case}<br>
+								글상태:${gBoard[status.index].scb_case}<br>
 								출발공항:${gStart[status.index]}<br>
 								경유:${gBoard[status.index].scb_via}<br>
 								도착공항:${gArrival[status.index]}<br>

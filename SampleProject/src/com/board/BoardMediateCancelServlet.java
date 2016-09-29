@@ -73,6 +73,7 @@ public class BoardMediateCancelServlet extends HttpServlet {
 				bService.updateCase(scb_num,caseBoard);
 				mService.updateDuringCase(login.getMem_num());
 				mService.updateDuringCase(mediateMemberDTO.getMem_num());
+				request.setAttribute("check", "cancel");
 				System.out.println("게시판 WAIT로 변경 성공");
 			}
 		} catch (CommonException e) {

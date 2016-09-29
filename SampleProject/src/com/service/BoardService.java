@@ -143,11 +143,11 @@ public class BoardService {
 		return Integer.parseInt(num);
 	}
 	//scb_case 상태 변경
-	public int boardUpdateCase(HashMap<String, String> mediateMemberCaseMap) throws CommonException {
+	public int boardUpdateCase(int scb_num) throws CommonException {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
-			n = session.update("updateBoardCase", mediateMemberCaseMap);
+			n = session.update("updateBoardCase", scb_num);
 			session.commit();
 			System.out.println("업데이트 case  n===" + n);
 		} catch (Exception e) {
