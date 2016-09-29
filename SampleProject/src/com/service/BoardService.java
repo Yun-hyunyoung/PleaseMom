@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
 import com.dto.BoardDTO;
-import com.dto.MemberDTO;
 import com.dto.PageDTO;
 import com.exception.CommonException;
 
@@ -208,6 +207,26 @@ public class BoardService {
 		mapList.put("mediateStart", listName_kr_start);
 		mapList.put("mediateArrival", listName_kr_arrival);
 		return mapList;
+	}
+
+	//게시판상태변경
+	public void updateCase(int scb_num, String caseBoard) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		HashMap<String, String> map=new HashMap<>();
+		map.put("scb_num", String.valueOf(scb_num));
+		map.put("caseBoard", caseBoard);
+		try {
+			session.update("myboard.updateCase",map);
+			session.commit();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("게시판 상태변경 실패");
+		}
+		finally {
+			session.close();
+		}
+		
 	}
 
 }//end 

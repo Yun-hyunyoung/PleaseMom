@@ -54,4 +54,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set mem_passwd = #{passwd}
 		where mem_id = #{userid}
 	</update>
+	
+	<select id="selectMember" parameterType="int" resultType="MemberDTO">
+		select *
+		from member
+		where mem_num=#{mem_num}
+	</select>
+	
+	<update id="updateCancelCase" parameterType="int">
+		update member
+		set mem_case='CANCEL'
+		where mem_num=#{mem_num}
+	</update>
+	
+	<update id="updateConfirmCase" parameterType="int">
+		update member
+		set mem_case='CONFIRM'
+		where mem_num=#{mem_num}
+	</update>
+	
+	<update id="updateDuringCase" parameterType="int">
+		update member
+		set mem_case='DURING'
+		where mem_num=#{mem_num}
+	</update>
 </mapper>

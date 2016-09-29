@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -117,6 +118,61 @@ public class MemberService {
 			session.close();
 		}
 	}
+	//중개현황 
+	public MemberDTO selectMember(int mem_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		MemberDTO dto=null;
+		try{
+			dto = session.selectOne("member.selectMember", mem_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("회원정보 얻기 실패 : 중개현황->request멤버 정보얻기 부분"); 
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	//동행취소시 로그인 회원 상태 변경
+	public void updateCancelCase(int mem_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		MemberDTO dto=null;
+		try{
+			session.update("member.updateCancelCase", mem_num);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("회원 동행취소 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분"); 
+		} finally {
+			session.close();
+		}
+	}
 	
-	
+	// 동행 승인시 로그인 회원 상태 변경
+	public void updateConfirmCase(int mem_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		MemberDTO dto = null;
+		try {
+			session.update("member.updateConfirmCase", mem_num);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("회원 동행승인 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분");
+		} finally {
+			session.close();
+		}
+	}
+
+	// 동행 취소후 guider,request Case 변경
+	public void updateDuringCase(int mem_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			session.update("member.updateDuringCase", mem_num);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("게시판삭제후 Guider,Request 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분");
+		} finally {
+			session.close();
+		}
+	}
 }

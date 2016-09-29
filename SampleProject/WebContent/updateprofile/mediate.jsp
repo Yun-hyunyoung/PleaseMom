@@ -65,7 +65,7 @@
 				<c:if test="${size != 0}">
 					<br>-----guider----<br>
 					<c:forEach begin="0" end="${size-1}" varStatus="status">
-						<a href="#">
+						<a href="BoardMediateRetrieveServlet?scb_num=${ gBoard[status.index].scb_num}" style="text-decoration: none;">
 							<div>
 								글번호:${gBoard[status.index].scb_num}<br>
 								글제목:${gBoard[status.index].scb_title}<br>

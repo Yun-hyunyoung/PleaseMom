@@ -25,11 +25,35 @@
 			<h4><a href="#">후기</a></h4>
 		</div>
 		<div class="col-sm-9">
-			mediateRetrieve
 			<form class="form-horizontal" action="UpdateProfileServlet">
 			</form>
+			<c:set var="mediateRetrieve" value="${ mediateRetrieve}" scope="session"></c:set>
+			<c:set var="mediateRetrieveDto" value="${ mediateRetrieveDto}" scope="session"></c:set>
+			<c:set var="requestMember" value="${mediateRetrieveRequestMember}"></c:set>
+			글작성자:${mediateRetrieveDto.mem_name}<br>
+			사진:${mediateRetrieveDto.mem_picture}<br>
+			전화번호:${mediateRetrieveDto.mem_phone}<br>
+			이메일 인증:${mediateRetrieveDto.mem_email_ck}<br>
+			휴대폰 인증:${mediateRetrieveDto.mem_phone_ck}<br>
+			
+			게시판상태:${mediateRetrieve.bDto.scb_case}<br>
+			출발공항:${mediateRetrieve.start}<br>
+			경유:${mediateRetrieve.bDto.scb_via}<br>
+			도착공항:${mediateRetrieve.arrival}<br>
+			출발시간:${mediateRetrieve.bDto.scb_sdate}<br>
+			
+			<c:if test="${requestMember!=null }">
+				----------신청자 정보--------------<br>
+				동행요청 신청자:${requestMember.mem_name}<br>
+				사진:${requestMember.mem_picture}<br>
+				전화번호:${requestMember.mem_phone}<br>
+				이메일 인증:${requestMember.mem_email_ck}<br>
+				휴대폰 인증:${requestMember.mem_phone_ck}<br>
+			</c:if>
+			
+			
 				<button name="mediateConfirm" onclick="mediateConfirmfunction()">승인완료</button>			
-				<button name="mediateCancle" onclick="mediateCanclefunction()">동행취소</button>			
+				<button name="mediateCancle" onclick="mediateCancelfunction()">동행취소</button>			
 				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>			
 			
 		</div>

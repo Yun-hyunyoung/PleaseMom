@@ -17,6 +17,7 @@ import com.dto.MemberDTO;
 import com.dto.TravelHistoryDTO;
 import com.exception.CommonException;
 import com.service.BoardService;
+import com.service.MemberService;
 import com.service.TravelHistoryService;
 
 /**
@@ -30,7 +31,7 @@ public class BoardMediateListServlet extends HttpServlet {
 		MemberDTO loginDto=(MemberDTO)session.getAttribute("login");//로그인 사용자
 		TravelHistoryService thService=new TravelHistoryService();
 		BoardService bService=new BoardService();
-		
+		MemberService mService=new MemberService();
 		String separator=request.getParameter("separator");
 		
 		List<Integer> th_req_numList=null;

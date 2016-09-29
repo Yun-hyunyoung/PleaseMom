@@ -19,7 +19,7 @@ public class TravelHistoryService {
 		map.put("th_gui_num", guider_num);
 		map.put("th_scb_num", scb_num);
 		try {
-			session.insert("insertTravelHistory",map);
+			session.insert("travelHistory.insertTravelHistory",map);
 			session.commit();
 		} 
 		catch(Exception e){
@@ -36,7 +36,7 @@ public class TravelHistoryService {
 		SqlSession session=MySqlSessionFactory.getSession();
 		List<Integer> list=null;
 		try {
-			list=session.selectList("requestList",mem_num);
+			list=session.selectList("travelHistory.requestList",mem_num);
 			System.out.println("listRequest==="+list);
 		} 
 		catch(Exception e){
@@ -53,7 +53,7 @@ public class TravelHistoryService {
 		SqlSession session=MySqlSessionFactory.getSession();
 		List<Integer> list=null;
 		try {
-			list=session.selectList("guiderList",mem_num);
+			list=session.selectList("travelHistory.guiderList",mem_num);
 			System.out.println("listGuider==="+list);
 		} 
 		catch(Exception e){
@@ -64,6 +64,57 @@ public class TravelHistoryService {
 			session.close();
 		}
 		return list;
+	}
+	//요청자 정보 얻기
+	public int selectRequestNum(int scb_num) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		int num=0;
+		try {
+			num=session.selectOne("travelHistory.selectRequestNum",scb_num);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("Request 번호 얻기 실패");
+		}
+		finally {
+			session.close();
+		}
+		
+		return num;
+	}
+	//가이더 정보 얻기
+	public int selectGuiderNum(int scb_num) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		int num=0;
+		try {
+			num=session.selectOne("travelHistory.selectGuiderNum",scb_num);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("Guider 번호 얻기 실패");
+		}
+		finally {
+			session.close();
+		}
+		
+		return num;
+	}
+	//삭제하기
+	public int delete(HashMap<String, Integer> caseMap) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		int n=0;
+		try {
+			n=session.delete("travelHistory.delete",caseMap);
+			session.commit();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("TravelHistory 삭제 실패");
+		}
+		finally {
+			session.close();
+		}
+		return n;
 	}
 	
 }

@@ -154,6 +154,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from AIRPORT_INFO
 		where airport_num=#{scb_to}    
 	</select>
+	
+	<update id="updateCase" parameterType="hashmap">
+		update schedule_board
+		set scb_case=#{caseBoard}
+		where scb_num=#{scb_num} 
+	</update>
 </mapper>
 
 

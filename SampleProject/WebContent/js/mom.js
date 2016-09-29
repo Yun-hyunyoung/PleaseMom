@@ -153,8 +153,8 @@ $(document).ready(function () {
 function mediateConfirmfunction(f) {
 	location.href="BoardMediateConfirmServlet";
 }
-function mediateCanclefunction(f) {
-	location.href="BoardMediateCancleServlet";
+function mediateCancelfunction(f) {
+	location.href="BoardMediateCancelServlet";
 }
 function mediateListfunction(f) {
 	location.href="BoardMediateListServlet";
