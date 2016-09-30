@@ -111,9 +111,8 @@ public class LoginServlet extends HttpServlet {
 				 * else put userid, session 
 				 */
 				if (ctxLoginList.size() != 0) {
-					String userid = null;
 					for (HashMap<String, Object> map : ctxLoginList) {
-						userid = (String)map.get("userid");
+						String userid = (String)map.get("userid");
 						/*
 						 * 로그인된 아이디와 저장된 로그인 정보의 아이디를 비교
 						 * comparing this login id and before login ids
@@ -125,11 +124,13 @@ public class LoginServlet extends HttpServlet {
 							break;
 						}
 					}
-						HashMap<String, Object> dummyMap = new HashMap<String, Object>();
-						dummyMap.put("userid", userid);
-						dummyMap.put("session", session);
-						ctxLoginList.add(dummyMap);
-						ctx.setAttribute("ctxLoginList", ctxLoginList);
+					MemberDTO temp = (MemberDTO)bindSession.getValue();
+					String userid = temp.getMem_id();
+					HashMap<String, Object> dummyMap = new HashMap<String, Object>();
+					dummyMap.put("userid", userid);
+					dummyMap.put("session", session);
+					ctxLoginList.add(dummyMap);
+					ctx.setAttribute("ctxLoginList", ctxLoginList);
 				}else{
 					MemberDTO temp = (MemberDTO)bindSession.getValue();
 					String userid = temp.getMem_id();
@@ -167,7 +168,7 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("현재 접속자 수 : " + ctxLoginList.size());
 				System.out.println("-------------------------------");
 				for (int i = 0; i < ctxLoginList.size(); i++) {
-					System.out.println((i+1) + " : " + ctxLoginList.get(i).get("userid"));
+					System.out.println((i+1) + " : " + ctxLoginList.get(i).get("userid") + " | " + ctxLoginList.get(i).get("session"));
 				}
 				System.out.println("-------------------------------");
 			}
