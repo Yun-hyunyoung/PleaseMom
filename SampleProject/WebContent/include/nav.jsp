@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="com.login.LoginServlet.LoginManager"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dto.MemberDTO"%>
@@ -55,11 +57,20 @@
     </nav>
 <script>
 <%
-	String dupleLogin = (String)application.getAttribute("dupleLogout");
-	if(dupleLogin != null){
+	LoginManager lm = LoginManager.getInstance();
+	MemberDTO dto = (MemberDTO)session.getAttribute("login");
+	double noneAccessedTime = (new Date().getTime() - session.getLastAccessedTime()) / 1000;
+	if(session.isNew()){
+		System.out.println(session.getMaxInactiveInterval());
+		if(noneAccessedTime > session.getMaxInactiveInterval()){
 %>
-	alert("<%= dupleLogin %>");
+			alert("세션이 만료되었습니다.");
 <%
+		}else{
+%>
+			alert("중복 로그인이 발생하여 세션이 종료되었습니다.");
+<%
+		}
 	}
 %>
 

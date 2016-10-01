@@ -42,6 +42,8 @@ public class LoginServlet extends HttpServlet {
 		String title = null;
 		
 		LoginManager.getInstance();
+		
+		
 		try {
 			dto = service.login(map);
 			if (dto == null) {
@@ -73,7 +75,7 @@ public class LoginServlet extends HttpServlet {
 	/*	
 	 * 	SessionAttributeListener Inner Class
 	 */
-	public static class LoginManager implements HttpSessionAttributeListener {
+	public static class LoginManager implements HttpSessionAttributeListener, HttpSessionListener {
 		private static List<HashMap<String, Object>> ctxLoginList = null;		// Sesseion ID, userid 저장용
 		private static LoginManager loginManager = null;
 		public static synchronized LoginManager getInstance()
@@ -95,7 +97,7 @@ public class LoginServlet extends HttpServlet {
 			
 			// TODO Auto-generated method stub
 			HttpSession session = bindSession.getSession();
-			System.out.println("LoginServlet Session" + session);
+			
 			/* 
 			 * login이라는 session attribute가 set되었을 때
 			 * set Session attribute named "login"
@@ -113,6 +115,7 @@ public class LoginServlet extends HttpServlet {
 				if (ctxLoginList.size() != 0) {
 					for (HashMap<String, Object> map : ctxLoginList) {
 						String userid = (String)map.get("userid");
+						
 						/*
 						 * 로그인된 아이디와 저장된 로그인 정보의 아이디를 비교
 						 * comparing this login id and before login ids
@@ -164,7 +167,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		public void printLoginList(){
-			if(ctxLoginList != null){
+			if(ctxLoginList != null && ctxLoginList.size() > 0){
 				System.out.println("현재 접속자 수 : " + ctxLoginList.size());
 				System.out.println("-------------------------------");
 				for (int i = 0; i < ctxLoginList.size(); i++) {
@@ -172,6 +175,24 @@ public class LoginServlet extends HttpServlet {
 				}
 				System.out.println("-------------------------------");
 			}
+		}
+		
+		@Override
+		public void sessionCreated(HttpSessionEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void sessionDestroyed(HttpSessionEvent event) {
+			HttpSession session = event.getSession();
+		    if (ctxLoginList != null) {
+				for (int i = 0; i < ctxLoginList.size(); i++) {
+					if (session.toString().equals(ctxLoginList.get(i).get("session").toString())) {
+						ctxLoginList.remove(i);
+					}
+				}
+		    }
 		}
 	}
 }
