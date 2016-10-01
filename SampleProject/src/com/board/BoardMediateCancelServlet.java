@@ -49,21 +49,22 @@ public class BoardMediateCancelServlet extends HttpServlet {
 				// 로그인한사람 -> 가이더
 				int requestNum = thService.selectRequestNum(scb_num);
 				mediateMemberDTO = mService.selectMember(requestNum);// 요청자 정보얻기
-				System.out.println("케이스 확인------"+login.getMem_case().equals("CANCEL")+mediateMemberDTO.getMem_case().equals("CANCEL"));
-				if(login.getMem_case().equals("CANCEL") && mediateMemberDTO.getMem_case().equals("CANCEL")){
+				System.out.println("케이스 확인------"+login.getMem_case().equals("CANCEL")+mediateMemberDTO.getMem_case().equals("CANCEL")+bDto.getScb_mediate().equals("Y"));
+				if(login.getMem_case().equals("CANCEL") && mediateMemberDTO.getMem_case().equals("CANCEL") && bDto.getScb_mediate().equals("Y")){
 					caseMap.put("requestNum", mediateMemberDTO.getMem_num());
 					caseMap.put("guiderNum", login.getMem_num());
+					caseMap.put("scb_num", bDto.getScb_num());
 					checkNum=thService.delete(caseMap);
 				}
 			} else {
 				// 로그인한사람 -> 요청자
 				int guiderNum=thService.selectGuiderNum(scb_num);
 				mediateMemberDTO=mService.selectMember(guiderNum);
-//				caseMap.put("guiderCase", guiderDto.getMem_case());
-//				caseMap.put("requestCase", login.getMem_case());
-				if(login.getMem_case().equals("CANCEL") && mediateMemberDTO.getMem_case().equals("CANCEL")){
+				System.out.println("케이스 확인------"+login.getMem_case().equals("CANCEL")+mediateMemberDTO.getMem_case().equals("CANCEL")+bDto.getScb_mediate().equals("Y"));
+				if(login.getMem_case().equals("CANCEL") && mediateMemberDTO.getMem_case().equals("CANCEL") && bDto.getScb_mediate().equals("Y")){
 					caseMap.put("requestNum", login.getMem_num());
 					caseMap.put("guiderNum", mediateMemberDTO.getMem_num());
+					caseMap.put("scb_num", bDto.getScb_num());
 					checkNum=thService.delete(caseMap);
 				}
 			}
@@ -73,9 +74,11 @@ public class BoardMediateCancelServlet extends HttpServlet {
 				bService.updateCase(scb_num,caseBoard);
 				mService.updateDuringCase(login.getMem_num());
 				mService.updateDuringCase(mediateMemberDTO.getMem_num());
+				bService.mediateCaseUpdate("N", String.valueOf(scb_num));
 				request.setAttribute("check", "cancel");
 				System.out.println("게시판 WAIT로 변경 성공");
 			}
+			
 		} catch (CommonException e) {
 			e.printStackTrace();
 		} 

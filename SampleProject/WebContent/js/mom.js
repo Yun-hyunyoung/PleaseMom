@@ -159,3 +159,6 @@ function mediateCancelfunction(f) {
 function mediateListfunction(f) {
 	location.href="BoardMediateListServlet";
 }
+function mediateApprovalfunction(data,scb_num) {
+	location.href="BoardMediateRetrieveServlet?data="+data+"&scb_num="+scb_num;
+}

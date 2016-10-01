@@ -12,6 +12,7 @@ public class BoardDTO {
 	private String scb_content;//작성글
 	private String scb_wdate;//작성일
 	private String scb_case;//상황, 승인여부
+	private String scb_mediate;//수락여부
 	
 	public BoardDTO() {
 		// TODO Auto-generated constructor stub
@@ -96,9 +97,20 @@ public class BoardDTO {
 	public void setScb_case(String scb_case) {
 		this.scb_case = scb_case;
 	}
+	
+	
+	public String getScb_mediate() {
+		return scb_mediate;
+	}
+
+	public void setScb_mediate(String scb_mediate) {
+		this.scb_mediate = scb_mediate;
+	}
+
+	
 
 	public BoardDTO(int scb_num, int scb_mem_num, int scb_from, String scb_via, int scb_to, String scb_sdate,
-			String scb_title, String scb_content, String scb_wdate, String scb_case) {
+			String scb_title, String scb_content, String scb_wdate, String scb_case, String scb_mediate) {
 		super();
 		this.scb_num = scb_num;
 		this.scb_mem_num = scb_mem_num;
@@ -110,14 +122,15 @@ public class BoardDTO {
 		this.scb_content = scb_content;
 		this.scb_wdate = scb_wdate;
 		this.scb_case = scb_case;
+		this.scb_mediate = scb_mediate;
 	}
 
 	@Override
 	public String toString() {
 		return "BoardDTO [scb_num=" + scb_num + ", scb_mem_num=" + scb_mem_num + ", scb_from=" + scb_from + ", scb_via="
 				+ scb_via + ", scb_to=" + scb_to + ", scb_sdate=" + scb_sdate + ", scb_title=" + scb_title
-				+ ", scb_content=" + scb_content + ", scb_wdate=" + scb_wdate + ", scb_case=" + scb_case + "]";
+				+ ", scb_content=" + scb_content + ", scb_wdate=" + scb_wdate + ", scb_case=" + scb_case
+				+ ", scb_mediate=" + scb_mediate + "]";
 	}
-	
-	
+
 }

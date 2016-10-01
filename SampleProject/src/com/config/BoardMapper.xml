@@ -41,9 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="boardUpdateRetrieve" parameterType="int" resultType="BoardDTO">
-		select scb_num, scb_mem_num, scb_from,scb_via,scb_to,
-	         scb_sdate,scb_title,
-	         scb_content,scb_wdate,scb_case
+		select scb_num, scb_mem_num, scb_from,scb_via,scb_to, scb_sdate,scb_title, scb_content,scb_wdate,scb_case,scb_mediate
 		from schedule_board
 		where scb_num=#{scb_num} 
 	</select>
@@ -123,8 +121,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="retrieve" 
        parameterType="int" resultType="BoardDTO">
-       select scb_num, scb_from, scb_via, scb_to,scb_case,
-       scb_title,scb_content,scb_sdate, scb_mem_num
+       select scb_num, scb_from, scb_via, scb_to,scb_case, scb_title,scb_content,scb_sdate, scb_mem_num,scb_mediate
 	   from  schedule_board
 	   where scb_num = #{scb_num}
      </select>
@@ -146,6 +143,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set scb_case=#{caseBoard}
 		where scb_num=#{scb_num} 
 	</update>
+	<update id="mediateApproval" parameterType="hashmap">
+		update schedule_board
+		set scb_mediate=#{approval}
+		where scb_num=#{scb_num} 
+	</update>
+	
+	<select id="mediateCaseSelect" parameterType="int" resultType="string">
+		select scb_mediate
+		from schedule_board
+		where scb_num=#{scb_num}
+	</select>
 </mapper>
 
 

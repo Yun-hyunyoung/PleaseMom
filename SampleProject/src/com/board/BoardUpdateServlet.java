@@ -39,7 +39,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		MemberDTO mDto=(MemberDTO)session.getAttribute("login");
 		int scb_mem_num=mDto.getMem_num();
-		BoardDTO bDto=new BoardDTO(scb_num, scb_mem_num, scb_from_num, scb_via, scb_to_num, scb_sdate, scb_title, scb_content, null, null);
+		BoardDTO bDto=new BoardDTO(scb_num, scb_mem_num, scb_from_num, scb_via, scb_to_num, scb_sdate, scb_title, scb_content, null, null,"N");
 
 		bService.update(bDto);
 

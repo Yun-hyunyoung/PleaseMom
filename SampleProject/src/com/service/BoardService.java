@@ -104,6 +104,7 @@ public class BoardService {
 		String name_kr_arrival;
 		HashMap<String, Object> map=new HashMap<>();
 		try{
+		  
 		  dto = session.selectOne("retrieve", Integer.parseInt(scb_num));
 		  System.out.println(dto);
 		  name_kr_start=session.selectOne("retrieveAirportStart",dto);
@@ -227,6 +228,42 @@ public class BoardService {
 			session.close();
 		}
 		
+	}
+
+	//가이더 중개요청 수락
+	public int mediateCaseUpdate(String approval, String scb_num) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		HashMap<String, String>map=new HashMap<>();
+		map.put("approval", approval);
+		map.put("scb_num", scb_num);
+		int n=0;
+		try {
+			n=session.update("myboard.mediateApproval",map);
+			session.commit();
+		} 
+		catch(Exception e){
+			throw new CommonException("동행요청 수락 실패");
+		}
+		finally {
+			session.close();
+		}
+		return n;
+	}
+
+	//요청 상황 데이터 얻기
+	public String mediateCaseSelect(String scb_num) throws CommonException {
+		SqlSession session=MySqlSessionFactory.getSession();
+		String approval;
+		try {
+			approval=session.selectOne("myboard.mediateCaseSelect",Integer.parseInt(scb_num));
+		} 
+		catch(Exception e){
+			throw new CommonException("동행요청 상황 얻기 실패");
+		}
+		finally {
+			session.close();
+		}
+		return approval;
 	}
 
 }//end 

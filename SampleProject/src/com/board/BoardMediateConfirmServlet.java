@@ -49,9 +49,10 @@ public class BoardMediateConfirmServlet extends HttpServlet {
 				int requestNum = thService.selectRequestNum(scb_num);
 				mediateMemberDTO = mService.selectMember(requestNum);// 요청자 정보얻기
 				System.out.println("케이스 확인------"+login.getMem_case().equals("CONFIRM")+mediateMemberDTO.getMem_case().equals("CONFIRM"));
-				if(login.getMem_case().equals("CONFIRM") && mediateMemberDTO.getMem_case().equals("CONFIRM")){
+				if(login.getMem_case().equals("CONFIRM") && mediateMemberDTO.getMem_case().equals("CONFIRM") && bDto.getScb_mediate().equals("Y")){
 					caseMap.put("requestNum", mediateMemberDTO.getMem_num());
 					caseMap.put("guiderNum", login.getMem_num());
+					caseMap.put("scb_num", bDto.getScb_num());
 					checkNum=thService.confirm(caseMap);
 				}
 			} else {
@@ -61,6 +62,7 @@ public class BoardMediateConfirmServlet extends HttpServlet {
 				if(login.getMem_case().equals("CONFIRM") && mediateMemberDTO.getMem_case().equals("CONFIRM")){
 					caseMap.put("requestNum", login.getMem_num());
 					caseMap.put("guiderNum", mediateMemberDTO.getMem_num());
+					caseMap.put("scb_num", bDto.getScb_num());
 					checkNum=thService.confirm(caseMap);
 				}
 			}
@@ -70,6 +72,7 @@ public class BoardMediateConfirmServlet extends HttpServlet {
 				bService.updateCase(scb_num,caseBoard);
 				mService.updateDuringCase(login.getMem_num());
 				mService.updateDuringCase(mediateMemberDTO.getMem_num());
+				bService.mediateCaseUpdate("N", String.valueOf(scb_num));
 				request.setAttribute("check", "confirm");
 				System.out.println("게시판 Confirm로 변경 성공");
 			}
