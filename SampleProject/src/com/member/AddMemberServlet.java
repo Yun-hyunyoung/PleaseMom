@@ -18,7 +18,7 @@ import com.service.MemberService;
 public class AddMemberServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mem_option = (String)request.getParameter("mem_option");
+		request.setCharacterEncoding("UTF-8");
 		
 		String userid = (String)request.getParameter("userid");
 		String passwd = (String)request.getParameter("passwd");

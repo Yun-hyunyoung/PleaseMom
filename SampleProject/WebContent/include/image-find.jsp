@@ -18,8 +18,8 @@
          <div class="site-heading" style="text-align:center">
          	<br>
              <h1>나라 검색</h1>
+             <h5 style="color:rgba(3,3,3,0.5)">이미지를 클릭하면 해당 나라의 검색 결과로 이동합니다.</h5>
              <br>
-             <hr class="small">
          </div>
      </div>
     <form id="imgSearchForm" method="get" action="BoardListServlet">

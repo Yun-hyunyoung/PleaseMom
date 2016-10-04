@@ -1,6 +1,6 @@
 $(function() {
     //populate our years select box
-    for (i = new Date().getFullYear(); i > 1900; i--){
+    for (i = new Date().getFullYear() - 19; i > new Date().getFullYear() - 100; i--){
         $('#years').append($('<option />').val(i).html(i));
     }
     //populate our months select box

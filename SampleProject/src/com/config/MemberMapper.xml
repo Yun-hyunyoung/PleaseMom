@@ -5,25 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 	<insert id="addMember" parameterType="MemberDTO">
 		insert into member(mem_num, mem_id, mem_passwd, mem_name, mem_birth)
-		values (mem_seq.nextval,#{mem_id},#{mem_passwd},#{mem_name},#{mem_birth})
+		values (mem_seq.nextval,#{mem_id},CryptIT.encrypt(#{mem_passwd}, 'oramaster'),#{mem_name},#{mem_birth})
 	</insert>
 	
 	<select id="login" parameterType="hashmap" resultType="MemberDTO">
 		select mem_num, mem_id, mem_name, mem_birth,
 		mem_phone,mem_birth,mem_case,mem_picture,mem_email_ck,mem_phone_ck
 		from member
-		where mem_id = #{mem_id} and mem_passwd = #{mem_passwd}
+		where mem_id = #{mem_id} and CRYPTIT.DECRYPT(mem_passwd, 'oramaster') = #{mem_passwd}
 	</select>
 	
 	<select id="catchProfile" parameterType="string" resultType="MemberDTO">
-		select mem_num ,mem_id, mem_passwd ,mem_name, to_char(mem_birth,'yyyy-mm-dd') mem_birth, mem_phone, mem_picture, mem_email_ck, mem_phone_ck, mem_case
+		select mem_num ,mem_id, mem_name, to_char(mem_birth,'yyyy-mm-dd') mem_birth, mem_phone, mem_picture, mem_email_ck, mem_phone_ck, mem_case
 		from member
 		where mem_id = #{id}
 	</select>
 	
 	<update id="updateMember" parameterType="MemberDTO">
 		update member
-		set mem_passwd = #{passwd},
+		set mem_passwd = CryptIT.encrypt(#{passwd}, 'oramaster'),
 		mem_phone = #{phone},
 		mem_name = #{username}
 	   where mem_id = #{userid}	
@@ -51,12 +51,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="tempPasswd" parameterType="hashmap">
 		update member
-		set mem_passwd = #{passwd}
+		set mem_passwd = CryptIT.encrypt('#{passwd}', 'oramaster')
 		where mem_id = #{userid}
 	</update>
 	
 	<select id="selectMember" parameterType="int" resultType="MemberDTO">
-		select *
+		select mem_num, mem_id, mem_name, mem_birth,
+		mem_phone,mem_birth,mem_case,mem_picture,mem_email_ck,mem_phone_ck
 		from member
 		where mem_num=#{mem_num}
 	</select>

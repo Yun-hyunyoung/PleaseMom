@@ -40,73 +40,71 @@ $("#findPwClose").on('click', function() {
 	window.close();
 })
 
-/*   login/loginForm.jsp 
- *   Login Validation Event*/
-/*$("#userid").on("keydown", function() {
-	$("#id-valid").html("");
-})
-$("#passwd").on("keydown", function() {
-	$("#pass-valid").html("");
-})
-$("#submit").on("click", function(event) {
-	$("#id-valid").html("");
-	$("#pass-valid").html("");
-	if($("#userid").val() == ""){
-		$("#id-valid").html("아이디를 입력하세요");
-		event.preventDefault();
-	}else if($("#passwd").val() == ""){
-		$("#pass-valid").html("비밀번호를 입력하세요");
-		event.preventDefault();
-	}
-})*/
-
 /*	member/addMemberForm.jsp
 	add member Validation Event		*/
-$(".id-valid-ck").on("keyup", function() {
-	$.ajax({
-		type:'post',
-		url:'search/memberSearchByPw.jsp',
-		data: {userid: $(".id-valid-ck").val()},
-		dataType: 'text',
-		success: function(data) {
-			if(data.trim() == 'none'){
-				$('.valid-id').html('<h5>사용 가능한 아이디입니다.</h5>');
-				$(".valid-submit").prop("type", "submit");
-			}else{
-				$('.valid-id').html('<h5>중복된 아이디입니다.</h5>');
-				$(".valid-submit").prop("type", "button");
+$(".id-valid-ck").on("focusout", function() {
+	if($(".id-valid-ck").val() == ""){
+		$('.valid-id').html('<h5>E-mail을 입력해주세요.</h5>');
+	} else if(isEmail($(".id-valid-ck").val())){
+		$.ajax({
+			type:'post',
+			url:'search/memberSearchByPasswd.jsp',
+			data: {userid: $(".id-valid-ck").val()},
+			dataType: 'text',
+			success: function(data) {
+				if(data.trim() == 'none'){
+					$('.valid-id').html('<h5>사용 가능한 아이디입니다.</h5>');
+					$(".valid-submit").prop("type", "submit");
+				}else{
+					$('.valid-id').html('<h5>중복된 아이디입니다.</h5>');
+					$(".valid-submit").prop("type", "button");
+				}
 			}
-		}
-	})
+		})
+	} else{
+		$('.valid-id').html('<h5>E-mail 형식으로 입력해주세요.</h5>');
+		$(".valid-submit").prop("type", "button");
+	}
+})
+
+function isEmail(email) {
+  var regex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return regex.test(email);
+}
+
+$(".id-valid-ck").on("focus", function(){
+	$(".valid-id").html('');
 })
 
 $(".valid-submit").on("click", function(event) {
-	$.ajax({
-		type:'post',
-		url:'search/memberSearchByPw.jsp',
-		data: {userid: $(".id-valid-ck").val()},
-		dataType: 'text',
-		success: function(data) {
-			console.log(data.trim());
-			if(data.trim() != 'none'){
-				$('.valid-id').html('<h5>중복된 아이디입니다!!!</h5>');
-			}
-			if (($("#passwd2").val() != $("#passwd").val())){
-				$(".valid-pass").html("<h5>비밀번호가 일치하지 않습니다!!!</h5>");
-			}
-		}
-	})
+	if($(".id-valid-ck").val() == ""){
+		console.log("야호");
+		event.preventDefault();
+	} else if(!isEmail($(".id-valid-ck").val())){
+		console.log("야호1");
+		event.preventDefault();
+	} else if (($("#passwd2").val() != $("#passwd").val())){
+		console.log("야호2");
+		event.preventDefault();
+	}
 })
+
 $("#passwd2").on("focusout", function() {
-	if ($("#passwd2").val() == $("#passwd").val()) {
+	if ($("#passwd2").val() != "" && $("#passwd2").val() == $("#passwd").val()) {
 		$(".valid-pass").html("<h5>비밀번호 일치힙니다.</h5>");
 		$(".valid-submit").prop("type", "submit");
-	} else{
+	} else if ($("#passwd2").val() != ""){
 		$(".valid-pass").html("<h5>비밀번호 불일치합니다.</h5>");
 		$(".valid-submit").prop("type", "button");
 	}
 })
 
+$("#passwd2").on("focus", function() {
+	$(".valid-pass").html("");
+})
+$("#passwd").on("focus", function() {
+	$(".valid-pass").html("");
+})
 /*	write.jsp
  * 	Board Write Form Event
  *  return list function

@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>SIgn up</h1>
+                        <h1>Sign up</h1>
                         <br>
                         <hr class="small">
                     </div>
