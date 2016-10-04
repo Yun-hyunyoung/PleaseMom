@@ -37,7 +37,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<foreach collection="list" item="airport_num" open="(" close=")" separator=",">
 				#{airport_num}
 			</foreach>
-		
 		</where> 
 	</select>
 </mapper>

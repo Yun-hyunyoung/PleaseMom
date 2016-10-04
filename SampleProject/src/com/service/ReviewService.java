@@ -27,6 +27,9 @@ public class ReviewService {
 	public List<String> airportList(List<Integer> airportList) throws CommonException{
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<String> list = null;
+		if (airportList.size() == 0 || airportList == null) {
+			airportList.add(-1);
+		}
 		try {
 			list = session.selectList("review.airportList", airportList);
 		} catch (Exception e) {

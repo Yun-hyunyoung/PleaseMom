@@ -24,7 +24,7 @@
 			<h4><a href="BoardReviewListServlet">후기</a></h4>
 		</div>
 		<div class="col-sm-9">
-		<c:if test="${reviewList ==null }">
+		<c:if test="${reviewList.size() == 0 }">
 		<p>후기가 없습니다.</p>
 		</c:if>
 		<c:if test="${reviewList !=null }">
