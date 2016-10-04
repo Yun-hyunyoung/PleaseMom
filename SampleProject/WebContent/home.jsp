@@ -16,8 +16,8 @@
     <header class="intro-header">
             <div class="video">
 			<video  autoplay="autoplay" preload="auto" loop="loop" id="mainVideo">
-				 <!-- <source src="video/wild.mp4" type="video/mp4">
-				<source src="video/wild.webm" type="video/webm">  -->
+				 <source src="video/wild.mp4" type="video/mp4">
+				<source src="video/wild.webm" type="video/webm"> 
 			</video>
 			<div class="videotext">
 	    		<p class="videomainheding">동반은 LIFE 야</p>

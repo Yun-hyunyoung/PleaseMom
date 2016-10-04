@@ -42,6 +42,7 @@ public class BoardMediateServlet extends HttpServlet {
 			
 			if(loginDto.getMem_case().equals("DURING") && boardMemberDto.getMem_case().equals("DURING") && board.getScb_case().equals("WAIT"))
 			{
+				
 				n=bService.boardUpdateCase(scb_num);//게시판 상태 수정
 				
 			}

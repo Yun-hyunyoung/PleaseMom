@@ -56,7 +56,7 @@
         <!-- /.container -->
     </nav>
 <script>
-<%
+<%-- <%
 	LoginManager lm = LoginManager.getInstance();
 	MemberDTO dto = (MemberDTO)session.getAttribute("login");
 	double noneAccessedTime = (new Date().getTime() - session.getLastAccessedTime()) / 1000;
@@ -72,7 +72,7 @@
 <%
 		}
 	}
-%>
+%> --%>
 
 <%
 	String msgLogin = (String)request.getAttribute("msgLogin");
