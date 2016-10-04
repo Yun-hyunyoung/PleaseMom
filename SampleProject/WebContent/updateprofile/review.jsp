@@ -24,6 +24,10 @@
 			<h4><a href="BoardReviewListServlet">후기</a></h4>
 		</div>
 		<div class="col-sm-9">
+		<c:if test="${reviewList ==null }">
+		<p>후기가 없습니다.</p>
+		</c:if>
+		<c:if test="${reviewList !=null }">
 		<c:forEach items="${reviewList}" var="review" varStatus="s">
 			<p>${ review.review_content }</p>
 			<p>${ review.review_star }</p>
@@ -33,6 +37,7 @@
 			<p>${ review.boardDto.scb_via }</p>
 			<p>${ airportTo[s.index] }</p>
 		</c:forEach>
+		</c:if>
 		</div>
     </div>
 </div>
