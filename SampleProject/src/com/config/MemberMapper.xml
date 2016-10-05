@@ -4,8 +4,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<insert id="addMember" parameterType="MemberDTO">
-		insert into member(mem_num, mem_id, mem_passwd, mem_name, mem_birth)
-		values (mem_seq.nextval,#{mem_id},CryptIT.encrypt(#{mem_passwd}, 'oramaster'),#{mem_name},#{mem_birth})
+		insert into member(mem_num, mem_id, mem_passwd, mem_name, mem_birth, mem_picture)
+		values (mem_seq.nextval,#{mem_id},CryptIT.encrypt(#{mem_passwd}, 'oramaster'),#{mem_name},#{mem_birth}, 'img/images.png')
 	</insert>
 	
 	<select id="login" parameterType="hashmap" resultType="MemberDTO">

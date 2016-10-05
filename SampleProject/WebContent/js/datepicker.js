@@ -27,5 +27,7 @@ $( function() {
 		},
     	minDate: 0
     });
-      
+    $(".datepicker-to").datepicker({
+    	minDate: 0
+    });
 });

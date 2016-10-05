@@ -53,7 +53,7 @@
 			      <input class="form-control input-lg" type="text" name="phone" placeholder="-없이 입력해주세요.">
 			      </c:if>
 			      <c:if test="${xxx != null}">
-			      전화번호<input class="form-control input-lg" type="text" name="phone" value="${prof.mem_phone}">
+			      <input class="form-control input-lg" type="text" name="phone" value="${prof.mem_phone}">
 			      </c:if>
 			    </div>
 			    <div class="col-sm-2">
@@ -74,6 +74,8 @@
 			  </div>
 			  <hr style="margin-top: 100px;margin-bottom: 100px;height: 1px;background-color: black">
 			  <h1>선택정보</h1>
+			  <hr>
+			  프로필 사진 등록
 			  <br>
 			  <input class="form-control input-lg" type="submit" value="수정">
 			</form>

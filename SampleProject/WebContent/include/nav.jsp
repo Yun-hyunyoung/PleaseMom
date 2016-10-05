@@ -95,6 +95,7 @@
 		<% if ((MemberDTO)session.getAttribute("login")==null){
 			%>
 			alert("로그인을 하세요");
+			location.href = "LoginFormServlet";
 		<%}else{%>
 		
 		location.href = "BoardWriteUIServlet";

@@ -41,18 +41,18 @@
 		    <div class="form-group">
 		      <label class="col-sm-1 control-label"><h4>출발지</h4></label>
 		      <div class="col-sm-4">
-		        <input class="form-control input-lg airportSearch" type="text" name="scb_from" placeholder="출발공항" required>
+		        <input class="form-control input-lg airportSearch" type="text" name="scb_from" placeholder="출발 공항" required>
 		      </div>
 		      <label class="col-sm-1 control-label"><h4>경유</h4></label>
 		      <div class="col-sm-1"><select class="form-control" name="scb_via"> 
 			 		<%for(int i=0;i<=5;i++){ 
 			 				int j=i; 
 			 		%><option><%=j%></option> 
-			 		<% }%> 
+			 		<% }%>
 			 	</select></div>
 		      <label class="col-sm-1 control-label"><h4>목적지</h4></label>
 		      <div class="col-sm-4">
-		        <input class="form-control input-lg airportSearch2" type="text" name="scb_to" placeholder="도착공항" required>
+		        <input class="form-control input-lg airportSearch2" type="text" name="scb_to" placeholder="도착 공항" required>
 		      </div>
 		    </div>
 		</div>
@@ -73,7 +73,7 @@
 			 		<% }%> 
 			 	</select></div>
 			 	<div class="col-sm-3"><select class="form-control" name="minute"> 
-			 		<%for(int i=0;i<=59;i++){ 
+			 		<%for(int i=0;i<=59;i+=5){ 
 			 				int j=i; 
 			 		%><option><%=j %></option> 
 			 		<% }%> 

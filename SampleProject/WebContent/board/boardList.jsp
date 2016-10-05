@@ -5,14 +5,30 @@
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
  <%@ taglib prefix="c-rt" uri="http://java.sun.com/jstl/core_rt" %> 
-
+<style>
+	.upper-content{
+		color: #7E7E7E;
+		position: absolute;
+		top: 25px;
+		font-size: 15px;
+	}
+	.upper-content-time{
+		color: #7E7E7E;
+		position: absolute;
+		top: 100px;
+		left: 300px;
+		font-size: 15px;
+	}
+</style>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12">
 				<c:forEach var="board" items="${page.list}" varStatus="s">
 					<c:if test="${board != null}">
+					<%-- <a href="BoardRetrieveServlet?scb_num=${board.scb_num}"></a> --%>
 					<div class="board-container col-lg-6 col-md-6 col-sm-12 col-xs-12">
-						<div class="board-content">
+						<input type="hidden" value="${board.scb_num}" id="boardRetrieveScbNum">
+						<div class="board-content" onclick="boardRetrieveTest()">
 							<div class="status ">
 								<c:if test="${board.scb_case == 'WAIT'}">
 									<img src="img/ic_sub.jpg">
@@ -27,23 +43,27 @@
 							<div class="contents ">
 								<div class="location">
 									<img src="img/plane.png" style="width:20px; height:20px"></img>
+									<span class="upper-content">출발공항</span>
 									<div class="from-to">
-										<div>${start[s.index]}</div>
+										<div><h4>${start[s.index]}</h4></div>
 									</div>
 									<img src="img/right-arrow.png" style="width:20px; height:20px"></img>
+									<span class="upper-content">경유</span>
 									<div class="via">
-										<div>${board.scb_via}회</div>
+										<div><h4>${board.scb_via}회</h4></div>
 									</div>
 									<img src="img/right-arrow.png" style="width:20px; height:20px"></img>
+									<span class="upper-content">도착공항</span>
 									<div class="from-to">
-										<div>${arrival[s.index]}</div>
+										<div><h4>${arrival[s.index]}</h4></div>
 									</div>
 								</div>
 								<div class="board-date-time">
-									<div>${board.scb_sdate}</div>
+									<span class="upper-content-time">출발시간</span>
+									<div><h4>${board.scb_sdate}</h4></div>
 								</div>
 								<div class="board-title">
-									<a href="BoardRetrieveServlet?scb_num=${board.scb_num}"><div>${board.scb_title}</div></a>
+									<div>${board.scb_title}</div>
 								</div>
 							</div>
 						</div>
@@ -54,3 +74,9 @@
 		</div>
 	</div>
 </div>
+<script>
+	function boardRetrieveTest() {
+		var scb_num = $("#boardRetrieveScbNum").val();
+		location.href="BoardRetrieveServlet?scb_num=" + scb_num;
+	}
+</script>
