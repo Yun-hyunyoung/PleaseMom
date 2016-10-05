@@ -21,5 +21,10 @@
     <jsp:include page="include/footer.jsp"></jsp:include>
 	
     <jsp:include page="include/scripts.jsp"></jsp:include>
+    
+	<!-- Airplane Search JavaScript -->
+	<script src="js/airportSearch.js"></script>
+	<script src="js/airportSearch2.js"></script>
+	
 </body>
 </html>

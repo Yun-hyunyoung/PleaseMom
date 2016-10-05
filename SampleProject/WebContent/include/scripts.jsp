@@ -16,11 +16,6 @@
     <!-- Theme JavaScript -->
     <script src="js/clean-blog.js"></script>
     
-    <!-- Airplane Search JavaScript -->
-	<script src="js/airportSearch.js"></script>
-    <!-- Nation Search JavaScript -->
-	<script src="js/countrySearch.js"></script>
-	
 	<!-- Date Picker JavaScript -->
 	<script src="js/datepicker.js"></script>
 	
@@ -30,6 +25,5 @@
 	<!-- Bootstrap Notify JavaScript -->
 	<script src="js/bootstrap-notify.js"></script>
 	
-    
     <!-- Common JavaScript -->
     <script src="js/mom.js"></script>

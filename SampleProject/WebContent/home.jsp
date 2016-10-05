@@ -46,6 +46,13 @@
     <jsp:include page="include/footer.jsp"></jsp:include>
     
     <jsp:include page="include/scripts.jsp"></jsp:include>
+	
+	<!-- Airplane Search JavaScript -->
+	<script src="js/airportSearch.js"></script>
+	
+    <!-- Nation Search JavaScript -->
+	<script src="js/countrySearch.js"></script>
+    
     <script>
 	    $.notifyDefaults({
 	    	placement: {

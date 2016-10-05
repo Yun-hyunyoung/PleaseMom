@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav navbar-right">
                 	<c:if test="${ sessionScope.login == null }">
                 		<li>
-                			<a href="#" onclick="boardWriteUI(myForm)">글쓰기</a>
+                			<a href="#" onclick="boardWriteUI()">글쓰기</a>
                 		</li>
 	                    <li>
 	                        <a href="AddMemberFormServlet">회원가입</a>
@@ -34,7 +34,7 @@
                     </c:if>
                     <c:if test="${ sessionScope.login != null }">
                     	<li>
-                			<a href="#" onclick="boardWriteUI(myForm)">글쓰기</a>
+                			<a href="#" onclick="boardWriteUI()">글쓰기</a>
                 		</li>
 	                    <li>
 	                        <a href="#">메시지</a>

@@ -1,8 +1,29 @@
 <%@page import="java.text.SimpleDateFormat"%> 
 <%@page import="java.util.Date"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
-     pageEncoding="UTF-8"%> 
- 
+     pageEncoding="UTF-8"%>
+<style> 
+	.ui-autocomplete {
+	    background: #FBF9D5;
+	    font-size: 1em;
+	    font-family: "Lato";
+	    font-color: #B9B9B9;
+	    border-radius: 0px;
+	}
+	.ui-autocomplete .a-name {
+		margin-right: 1em;
+		color: #606060;
+	}
+	.ui-autocomplete .a-country {
+		float: right;
+		color: #606060;
+	}
+	.ui-autocomplete .a-city {
+		display: block;
+		font-size: smaller;
+		color: #969696; 
+	}
+</style>
 <form name="writeBoardForm">
 	<div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
@@ -31,7 +52,7 @@
 			 	</select></div>
 		      <label class="col-sm-1 control-label"><h4>목적지</h4></label>
 		      <div class="col-sm-4">
-		        <input class="form-control input-lg airportSearch" type="text" name="scb_to" placeholder="도착공항" required>
+		        <input class="form-control input-lg airportSearch2" type="text" name="scb_to" placeholder="도착공항" required>
 		      </div>
 		    </div>
 		</div>

@@ -1,17 +1,18 @@
-	$( ".countrySearch" ).autocomplete({
+	$( ".airportSearch2" ).autocomplete({
 		source: function( request, response ) {
 	        $.ajax({
 	            dataType: "json",
 	            type : 'Get',
-	            url: 'search/countrySearch.jsp',
+	            url: 'search/airportSearch.jsp',
 	            data: { value : request.term },
 	            success: function(data) {
-	            	console.log(data);
 	                // hide loading image
-	            	var array = data.error ? [] : $.map(data, function(c) {
+	            	console.log(data)
+	            	var array = data.error ? [] : $.map(data, function(m) {
 						return{
-							country : c.country,
-							location : c.location
+							name : m.name,
+							country : m.country,
+							city : m.city
 						};
 					});
 	            	response(array);
@@ -22,12 +23,13 @@
 	    	event.preventDefault();
 	    },
 	    select: function(event, ui) {
-	    	$(".countrySearch").val(ui.item.country);
+	    	$(this).val(ui.item.name);
 	    	event.preventDefault();
 		}
 	}).data("ui-autocomplete")._renderItem = function(ul, item) {
 		var $a = $("<a></a>");
-		$("<span class='c-country'></span>").text(item.country).appendTo($a);
-		$("<span class='c-location'></span>").text(item.location).appendTo($a);
+		$("<span class='a-name'></span>").text(item.name).appendTo($a);
+		$("<span class='a-country'></span>").text(item.country).appendTo($a);
+		$("<span class='a-city'></span>").text(item.city).appendTo($a);
 		return $("<li></li>").append($a).appendTo(ul);
 	};

@@ -1,4 +1,3 @@
-$(function(){
 	$( ".airportSearch" ).autocomplete({
 		source: function( request, response ) {
 	        $.ajax({
@@ -24,8 +23,8 @@ $(function(){
 	    	event.preventDefault();
 	    },
 	    select: function(event, ui) {
+	    	$(this).val(ui.item.name);
 	    	event.preventDefault();
-	    	$(".airportSearch").val(ui.item.name);
 		}
 	}).data("ui-autocomplete")._renderItem = function(ul, item) {
 		var $a = $("<a></a>");
@@ -34,4 +33,3 @@ $(function(){
 		$("<span class='a-city'></span>").text(item.city).appendTo($a);
 		return $("<li></li>").append($a).appendTo(ul);
 	};
-});
