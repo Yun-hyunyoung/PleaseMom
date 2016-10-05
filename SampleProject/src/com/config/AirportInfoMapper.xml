@@ -11,11 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		or name_en like '%'||#{name}||'%'
 	</select>
 	<select id="nationSearch" parameterType="string" resultType="AirportInfoDTO">
-		select distinct country_kr
+		select distinct country_kr, location
 		from airport_info
 		where rownum &lt;= 5
 		and country_kr like '%'||#{name}||'%'
-		or country_kr like '%'||#{name}||'%'
+		 or country_en like '%'||#{name}||'%'
 	</select>
 	<select id="airportNum" parameterType="string" resultType="string">
 		select airport_num

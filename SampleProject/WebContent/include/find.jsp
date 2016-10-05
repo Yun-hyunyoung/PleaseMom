@@ -13,6 +13,35 @@
 		padding-left:2px;
 		padding-right:2px;
 	}
+	.ui-autocomplete {
+	    background: #FBF9D5;
+	    font-size: 1em;
+	    font-family: "Lato";
+	    font-color: #B9B9B9;
+	    border-radius: 0px;
+	}
+	.ui-autocomplete .a-name {
+		margin-right: 1em;
+		color: #606060;
+	}
+	.ui-autocomplete .a-country {
+		float: right;
+		color: #606060;
+	}
+	.ui-autocomplete .a-city {
+		display: block;
+		font-size: smaller;
+		color: #969696; 
+	}
+	.ui-autocomplete .c-country {
+		margin-right: 2em;
+		color: #606060;
+	}
+	.ui-autocomplete .c-location {
+		display: block;
+		font-size: smaller;
+		color: #969696; 
+	}
 </style>
  <div class="container">
         <div class="row">

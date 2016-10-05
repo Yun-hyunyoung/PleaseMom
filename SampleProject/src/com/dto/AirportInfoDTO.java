@@ -5,18 +5,22 @@ public class AirportInfoDTO {
 	private String name_kr;
 	private String country_kr;
 	private String city_kr;
+	private String location;
 	
 	public AirportInfoDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AirportInfoDTO(String airport_num, String name_kr, String country_kr, String city_kr) {
+	
+	public AirportInfoDTO(String airport_num, String name_kr, String country_kr, String city_kr, String location) {
 		super();
 		this.airport_num = airport_num;
 		this.name_kr = name_kr;
 		this.country_kr = country_kr;
 		this.city_kr = city_kr;
+		this.location = location;
 	}
+
 	public String getAirport_num() {
 		return airport_num;
 	}
@@ -41,10 +45,19 @@ public class AirportInfoDTO {
 	public void setCity_kr(String city_kr) {
 		this.city_kr = city_kr;
 	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	@Override
 	public String toString() {
-		return "AirplaneInfoDTO [airport_num=" + airport_num + ", name_kr=" + name_kr + ", country_kr=" + country_kr
-				+ ", city_kr=" + city_kr + "]";
+		return "AirportInfoDTO [airport_num=" + airport_num + ", name_kr=" + name_kr + ", country_kr=" + country_kr
+				+ ", city_kr=" + city_kr + ", location=" + location + "]";
 	}
 	
 	

@@ -11,22 +11,16 @@
 	AirportService service = new AirportService();
 	List<AirportInfoDTO> list = service.nationSearch(name);
 	
-	// 최종 완성될 JSONObject 선언(전체)
-	JSONObject jsonObject = new JSONObject();
 	// airplaneInfo의 JSON정보를 담을 Array 선언
 	JSONArray jsonArray = new JSONArray();
 	
 	for(AirportInfoDTO dto : list){
 		// airplaneInfo 하나의 정보가 들어갈 JSONObject 선언
-		JSONObject airplaneInfo = new JSONObject();
+		JSONObject countryInfo = new JSONObject();
 		
-		/* airplaneInfo.put("name", dto.getName_kr());
-		airplaneInfo.put("country", dto.getCountry_kr());
-		airplaneInfo.put("city", dto.getCity_kr()); */
-		airplaneInfo.put("label", dto.getCountry_kr());
-		jsonArray.add(airplaneInfo);
+		countryInfo.put("country", dto.getCountry_kr());
+		countryInfo.put("location", dto.getLocation());
+		jsonArray.add(countryInfo);
 	}
-	//jsonObject.put("airplane", planeArray);
-	
 %>
 <%= jsonArray %>
