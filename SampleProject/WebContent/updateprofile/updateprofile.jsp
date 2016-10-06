@@ -47,17 +47,14 @@
 			  </div>
 			  <div class="form-group">
 			    <label class="col-sm-3 control-label">전화번호</label>
-			    <div class="col-sm-7">
+			    <div class="col-sm-9">
 			    <c:set var="xxx" value="${prof.mem_phone}" scope="session"></c:set>
 			      <c:if test="${xxx == null}">
-			      <input class="form-control input-lg" type="text" name="phone" placeholder="-없이 입력해주세요.">
+			      <input class="form-control input-lg" type="text" name="phone" readonly="readonly">
 			      </c:if>
 			      <c:if test="${xxx != null}">
-			      <input class="form-control input-lg" type="text" name="phone" value="${prof.mem_phone}">
+			      <input class="form-control input-lg" type="text" name="phone" readonly="readonly" value="${prof.mem_phone}">
 			      </c:if>
-			    </div>
-			    <div class="col-sm-2">
-			      <button class="btn btn-warning">인증하기</button>
 			    </div>
 			  </div>
 			  <div class="form-group">

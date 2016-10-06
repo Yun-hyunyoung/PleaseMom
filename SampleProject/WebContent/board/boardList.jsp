@@ -40,7 +40,7 @@
 									<img src="img/ic_com.jpg">
 								</c:if>	
 							</div>
-							<div class="contents ">
+							<div class="contents">
 								<div class="location">
 									<img src="img/plane.png" style="width:20px; height:20px"></img>
 									<span class="upper-content">출발공항</span>

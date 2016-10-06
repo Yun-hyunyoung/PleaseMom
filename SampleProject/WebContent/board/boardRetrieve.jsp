@@ -3,51 +3,61 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<div class="main-panel" style="padding-top: 20px">
+<style>
+	.card{
+		border: 2px; 
+		border-radius: 8px; 
+		padding-top: 20px; 
+		padding-bottom: 20px; 
+		margin-bottom: 20px; 
+		-webkit-box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.12);
+		-moz-box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.12);
+		box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.12);
+	}
+</style>
+<div class="main-panel" style="padding-top: 20px;">
         <div class="content">
-            <div class="container-fluid">
+            <div class="container-fluid col-lg-10 col-lg-offset-1">
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
-                        <div class="card card-user" style="border: 2px solid; border-radius: 8px; backgound-color: gray; padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px">
+                        <div class="card card-user">
                             <div class="content text-center">
                                 <div class="author">
                                   <img class="avatar border-white" src="img/images.png" alt="..."/>
-                                  <h4 class="title">Chet Faker<br />
-                                     <a href="#"><small>@chetfaker</small></a>
+                                  <h4 class="title">${login.mem_name }<br />
                                   </h4>
                                 </div>
                                 <div class="text-center">
-                                    죽기 전에 하고 싶은 말 있나?<br>
+                                    안녕하세요 반갑습니다.<br>
                                 </div>
                             </div>
                             <hr>
                             <div class="text-center">
                             	<div class="row">
                             		<div class="col-md-5 col-md-offset-1">
-                            			이메일인증<br />
 	                                    <c:if test="${mDto.mem_email_ck == 'Y'}">
 	                                    	<img style="width: 30px; height: 30px;" src="img/verified.png" alt="..."/>
 	                                    </c:if>
 	                                    <c:if test="${mDto.mem_email_ck == 'N'}">
 	                                    	<img style="width: 30px; height: 30px;" src="img/unverified.png" alt="..."/>
-	                                    </c:if>
+	                                    </c:if><br />
+	                                    <h4 class="title">이메일인증</h4>
                             		</div>
-                            		<div class="col-md-4 col-md-offset-1">
-                            			휴대폰인증<br />
+                            		<div class="col-md-5">
 	                                    <c:if test="${mDto.mem_phone_ck == 'Y'}">
 	                                    	<img style="width: 30px; height: 30px;" src="img/verified.png" alt="..."/>
 	                                    </c:if>
 	                                    <c:if test="${mDto.mem_phone_ck == 'N'}">
 	                                    	<img style="width: 30px; height: 30px;" src="img/unverified.png" alt="..."/>
-	                                    </c:if>
+	                                    </c:if><br/>
+	                                    <h4 class="title">휴대폰인증</h4>
 	                                </div>
                             	</div>
                             </div>
                             <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-1">
-                                        <h5>윤현영<br /><small>이름</small></h5>
+                                        <h5>한국<br /><small>국가</small></h5>
                                     </div>
                                     <div class="col-md-4">
                                         <h5>25<br /><small>나이</small></h5>
@@ -59,32 +69,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-7" style="border: 2px solid; border-radius: 8px; backgound-color: gray; padding-top: 10px; padding-bottom: 20px; margin-bottom: 20px">
+                    <div class="card col-lg-8 col-md-7">
                     	<div class="header text-center">
                            	<h3 class="title">${retrieveMap.bDto.scb_title}</h3>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-7" style="border: 2px solid; border-radius: 8px; backgound-color: gray; padding-top: 20px; padding-bottom: 20px">
-                        <div class="card">
+                    <div class="card col-lg-8 col-md-7">
+                        <div>
                             <div class="content">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>출발 공항</label>
+                                            <div class="form-group text-center">
+                                                <small>출발 공항</small>
                                                 <br>
                                                 <label>${retrieveMap.start}</label>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>경유</label>
+                                            <div class="form-group text-center">
+                                                <small>경유</small>
                                                 <br>
                                                 <label>${retrieveMap.bDto.scb_via}</label>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>도착 공항</label>
+                                            <div class="form-group text-center">
+                                                <small>도착 공항</small>
                                                 <br>
                                                 <label>${retrieveMap.arrival}</label>
                                             </div>
@@ -93,8 +103,8 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>출발 시간</label>
+                                            <div class="form-group text-center">
+                                                <small>출발 시간</small>
                                                 <br>
                                                 <label>${retrieveMap.bDto.scb_sdate}</label>
                                             </div>
@@ -102,8 +112,8 @@
                                     </div>
 									<div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>글 내용</label>
+                                            <div class="form-group text-center">
+                                            	<hr>
                                                 <br>
                                                 ${retrieveMap.bDto.scb_content}
                                             </div>

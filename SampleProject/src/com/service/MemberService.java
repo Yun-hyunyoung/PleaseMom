@@ -1,7 +1,6 @@
 package com.service;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -178,6 +177,36 @@ public class MemberService {
 			e.printStackTrace();
 			throw new CommonException("게시판변경후 Guider,Request 상황 업데이트 실패 : 중개현황->request멤버 정보얻기 부분");
 		} finally {
+			session.close();
+		}
+	}
+	
+	public boolean findByPhone(String phone) throws CommonException {
+		boolean isExist = false;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			String str = session.selectOne("findByPhone", phone);
+			if(str != null){
+				isExist = true;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new CommonException("휴대폰번호 검색 실패");
+		} finally {
+			session.close();
+		}
+		return isExist;
+	}
+	
+	public void updatePhoneNumber(MemberDTO dto) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			int n = session.update("updatePhoneNumber", dto);
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new CommonException("휴대폰번호 업데이트 실패");
+		} finally {
+			session.commit();
 			session.close();
 		}
 	}

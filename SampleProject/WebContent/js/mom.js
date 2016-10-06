@@ -160,3 +160,47 @@ function mediateListfunction(f) {
 function mediateApprovalfunction(data,scb_num) {
 	location.href="BoardMediateRetrieveServlet?data="+data+"&scb_num="+scb_num;
 }
+
+/* 
+ * phoneCertifyForm.jsp
+*/
+$("#phoneCertifyNumber2").on("keypress", function() {
+	var length = $(this).val().length;
+	if(length == 3){
+		$("#phoneCertifyNumber3").focus();
+	}
+})
+$("#phoneCertifyNumber3").on("keypress", function() {
+	var length = $(this).val().length;
+	if(length+1 == 0){
+		$("#phoneCertifyNumber2").focus();
+	}
+})
+function onlyNumber(event){
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	$("#checkPhone").html("");
+	if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39) 
+		return;
+	else
+		return false;
+}
+function removeChar(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	$("#checkPhone").html("");
+	if ( keyID == 8 || keyID == 9 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		return;
+	else
+		event.target.value = event.target.value.replace(/[^0-9]/g, "");
+}
+$("#phoneCertifyBtn").on("click", function() {
+	var length1 = $("#phoneCertifyNumber2").val().length;
+	var length2 = $("#phoneCertifyNumber3").val().length;
+	if (length1 >= 3 && length2 == 4) {
+		$("#checkPhone").html("");
+	} else{
+		$("#checkPhone").html("<h5 style='color: red'>올바른 번호를 입력해주세요.</h5>");
+		event.preventDefault();
+	}
+})

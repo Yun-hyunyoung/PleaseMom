@@ -79,4 +79,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set mem_case='DURING'
 		where mem_num=#{mem_num}
 	</update>
+	
+	<select id="findByPhone" parameterType="string" resultType="string">
+		select mem_phone
+		from member
+		where mem_phone = #{phone}
+	</select>
+	
+	<update id="updatePhoneNumber" parameterType="MemberDTO">
+		update member
+		set mem_phone = #{mem_phone}, mem_phone_ck = 'Y'
+		where mem_num = #{mem_num}
+	</update>
 </mapper>

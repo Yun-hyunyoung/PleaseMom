@@ -29,4 +29,16 @@ public class PasswordGenerator {
 		}
 		return pw;
 	}
+	public static String getCertifyNumber(int length){
+		String number = "0123456789";					// 1
+		
+		String pw = "";
+		Random rn = new Random();
+		for (int i = 0; i < length; i++) {
+			int type = rn.nextInt(3) + 1;
+			int nu = rn.nextInt(9)+1;
+			pw += number.charAt(nu);
+		}
+		return pw;
+	}
 }

@@ -57,12 +57,12 @@
 				    <div class="col-sm-7">
 				      <input type="email" class="form-control input-lg" name="userid" value="${prof.mem_id}" readonly="readonly">
 				    </div>
-				    <c:set var="xxx" value="${prof.mem_email_ck}" scope="session"></c:set>
+				    <c:set var="email_ck" value="${prof.mem_email_ck}" scope="session"></c:set>
 				    <div class="col-sm-2">
-					    <c:if test="${xxx == 'N'}">
+					    <c:if test="${email_ck == 'N'}">
 					    	<button class="btn btn-warning" onclick="emailAuthor(myForm)">인증하기</button>
 				    	</c:if>
-				    	<c:if test="${xxx == 'Y'}">
+				    	<c:if test="${email_ck == 'Y'}">
 							<div class="btn btn-success">인증완료</div><br>
 						</c:if>
 				    </div>
@@ -70,10 +70,16 @@
 				  <div class="form-group">
 				    <label class="col-sm-3 control-label">전화번호</label>
 				    <div class="col-sm-7">
-				      <input type="text" class="form-control input-lg" name="phone" value="${prof.mem_phone}">
+				      <input type="text" class="form-control input-lg" name="phone" value="${prof.mem_phone}" readonly="readonly">
 				    </div>
+				    <c:set var="phone_ck" value="${prof.mem_phone_ck}" scope="session"></c:set>
 				    <div class="col-sm-2">
-				    	<button class="btn btn-warning">인증하기</button>
+				    	<c:if test="${phone_ck == 'N'}">
+				    		<button class="btn btn-warning" onClick=window.open("PhoneCertifyFormServlet","Ratting","width=600,height=300,0,status=0")>인증하기</button>
+				    	</c:if>
+				    	<c:if test="${phone_ck == 'Y'}">
+				    		<div class="btn btn-success">인증완료</div>
+				    	</c:if>
 				    </div>
 				  </div>
 				  <hr style="margin-top: 100px;margin-bottom: 100px;height: 1px;background-color: black">
