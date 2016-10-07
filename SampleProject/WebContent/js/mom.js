@@ -158,6 +158,9 @@ function mediateListfunction(f) {
 	location.href="BoardMediateListServlet";
 }
 function mediateApprovalfunction(data,scb_num) {
+	if(data=='Y'){
+		alert("동행요청을 수락하였습니다");
+	}
 	location.href="BoardMediateRetrieveServlet?data="+data+"&scb_num="+scb_num;
 }
 

@@ -92,6 +92,7 @@
 			login.mem_case : ${login.mem_case }<br>
 			mediate_case : ${mediateRetrieve.bDto.scb_mediate}<br>
 			approval=${approval}<br> --%>
+			approval===${approval}<br>
 			<c:if test="${mediateRetrieve.bDto.scb_mem_num==login.mem_num && mediateRetrieve.bDto.scb_case!='CONFIRM'}">
 				<c:if test="${approval =='N'}">
 					<button name="mediateApproval"  <c:if test="${approval=='Y'}">disabled="disabled" style="text-decoration: none;background-color: rgb(100,100,100);"</c:if> onclick="mediateApprovalfunction('Y',${mediateRetrieve.bDto.scb_num})">요청수락</button>
