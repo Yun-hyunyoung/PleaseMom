@@ -28,7 +28,7 @@
 					<%-- <a href="BoardRetrieveServlet?scb_num=${board.scb_num}"></a> --%>
 					<div class="board-container col-lg-6 col-md-6 col-sm-12 col-xs-12">
 						<input type="hidden" value="${board.scb_num}" id="boardRetrieveScbNum">
-						<div class="board-content" onclick="boardRetrieveTest()">
+						<div class="board-content" onclick="boardRetrieveTest(${board.scb_num})">
 							<div class="status ">
 								<c:if test="${board.scb_case == 'WAIT'}">
 									<img src="img/ic_sub.jpg">
@@ -75,8 +75,7 @@
 	</div>
 </div>
 <script>
-	function boardRetrieveTest() {
-		var scb_num = $("#boardRetrieveScbNum").val();
-		location.href="BoardRetrieveServlet?scb_num=" + scb_num;
-	}
+function boardRetrieveTest(scb_num) {
+	location.href="BoardRetrieveServlet?scb_num=" + scb_num;
+}
 </script>
