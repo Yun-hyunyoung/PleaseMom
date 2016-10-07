@@ -24,7 +24,7 @@
     			<p class="videosubheding">30만 재외 유학생과 함께 하는 동반 여행기. 우리는 하나입니다</p>
 			</div>
 			</div> -->
-			<div class="container">
+		<div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">

@@ -24,7 +24,7 @@
                             <div class="content text-center">
                                 <div class="author">
                                   <img class="avatar border-white" src="img/images.png" alt="..."/>
-                                  <h4 class="title">${login.mem_name }<br />
+                                  <h4 class="title">${mDto.mem_name }<br />
                                   </h4>
                                 </div>
                                 <div class="text-center">
@@ -129,7 +129,7 @@
 										<c:set var="searchMapFrom" value="${map.scb_from}" scope="session"></c:set>
 										<c:set var="mDto" value="${mDto}" scope="session"></c:set>
 										<c:if test="${loginMemberNum!=DtoMemberNum}">
-											<input type="button" value="동행요청" <c:if test="${case2!='WAIT'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
+											<input class="btn btn-info btn-fill btn-wd" type="button" value="동행요청" <c:if test="${case2!='WAIT'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
 										</c:if>
 										<c:if test="${loginMemberNum==DtoMemberNum}">
 											<input class="btn btn-info btn-fill btn-wd" type="button" value="수정" onclick="boardUpdate(myForm)">

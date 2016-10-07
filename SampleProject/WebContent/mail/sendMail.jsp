@@ -24,7 +24,7 @@
     String from = "mejune1009@naver.com"; //보내는 메일
     String fromName = "엄마를 부탁해 Master"; // 보낸사람 이름
     String to = userid;
-    String content = "엄마를 부탁해, 메일 인증을 환영합니다. 메일 인증을 하시려면 아래 글을 선택하세요."+ "<br>" + "<form action='http://localhost:8090/SampleProject/EmailConfirmServlet'>홈페이지 이동Test" + "<input type='hidden' id='userid' name='userid' value='"+userid+"'>"+"<input type='submit' value='Submit'>"+"</form>";
+    String content = "엄마를 부탁해, 메일 인증을 환영합니다. 메일 인증을 하시려면 아래 글을 선택하세요."+ "<br>" + "<form action='http://210.125.213.72:8090/SampleProject/EmailConfirmServlet'>홈페이지 이동Test" + "<input type='hidden' id='userid' name='userid' value='"+userid+"'>"+"<input type='submit' value='Submit'>"+"</form>";
    try{
      //프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
      Properties props = new Properties();
