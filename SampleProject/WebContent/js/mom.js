@@ -37,6 +37,7 @@ $("#findPwBtn").on('click', function() {
 })
 
 $("#findPwClose").on('click', function() {
+	opener.parent.location.reload();
 	window.close();
 })
 
@@ -206,4 +207,8 @@ $("#phoneCertifyBtn").on("click", function() {
 		$("#checkPhone").html("<h5 style='color: red'>올바른 번호를 입력해주세요.</h5>");
 		event.preventDefault();
 	}
+})
+$("#checkPhoneClose").on('click', function() {
+	opener.parent.location.reload();
+	window.close();
 })

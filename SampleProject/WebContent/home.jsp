@@ -53,7 +53,7 @@
     <!-- Nation Search JavaScript -->
 	<script src="js/countrySearch.js"></script>
     
-    <script>
+    <!-- <script>
 	    $.notifyDefaults({
 	    	placement: {
 	    		from: "bottom",
@@ -65,11 +65,11 @@
 	    	}
 	    });
     	$.notify({
-    		title: '<string>Notify Test</string>',
+    		title: '<string>엄마를 부탁해</string><div>',
     		message: "홈페이지 방문을 환영합니다!"
     		
     	})
-    </script>
+    </script> -->
 </body>
 
 </html>

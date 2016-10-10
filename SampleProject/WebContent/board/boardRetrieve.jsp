@@ -1,3 +1,4 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -60,7 +61,13 @@
                                         <h5>한국<br /><small>국가</small></h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <h5>25<br /><small>나이</small></h5>
+                                    <%
+                                    	MemberDTO dto = (MemberDTO)request.getAttribute("mDto");
+                                    	System.out.println(dto);
+                                    	int year = Integer.parseInt(dto.getMem_birth().substring(0, 4));
+                                    	int age = 2016 - year + 1;
+                                    %>
+                                        <h5><%= age %><br /><small>나이</small></h5>
                                     </div>
                                     <div class="col-md-3">
                                         <h5>대학생<br /><small>직업</small></h5>
