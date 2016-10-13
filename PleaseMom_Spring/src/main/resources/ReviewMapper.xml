@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+	<resultMap type="MemberDTO" id="memberResult">
+		<id column="mem_num" property="mem_num"/>
+		<result column="mem_picture" property="mem_picture"/>
+		<result column="mem_name" property="mem_name"/>
+	</resultMap>
+	
+	<resultMap type="BoardDTO" id="boardResult">
+		<id column="scb_num" property="scb_num"/>
+		<result column="scb_from" property="scb_from"/>
+		<result column="scb_via" property="scb_via"/>
+		<result column="scb_to" property="scb_to"/>
+	</resultMap>
+	
+	<resultMap type="ReviewDTO" id="reviewResult">
+		<id column="review_num" property="review_num"/>
+		<result column="review_content" property="review_content"/>
+		<result column="review_star" property="review_star"/>
+		<association property="memberDto" resultMap="memberResult"/>	<!-- 1:1에서만 사용함 -->
+		<association property="boardDto" resultMap="boardResult"/>
+	</resultMap>
+	
+	<select id="reviewList" parameterType="int" resultMap="reviewResult">
+		select review_num, review_content, review_mem_num, review_star, mem_name, mem_picture, scb_from, scb_via, scb_to
+		from review, member, schedule_board
+		where mem_num = review_mem_num and review_scb_num = scb_num and review_mem_num = #{mem_num}
+	</select>
+	
+	<select id="airportList" parameterType="list" resultType="string">
+		select name_kr from airport_info 
+		<where>
+		airport_num in
+			<foreach collection="list" item="airport_num" open="(" close=")" separator=",">
+				#{airport_num}
+			</foreach>
+		</where> 
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
