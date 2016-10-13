@@ -47,7 +47,7 @@ public class MyPageController {
 		} else {
 			target = "home";
 		}
-		return "target";
+		return target;
 	}
 
 	@RequestMapping("/UpdateProfileFormServlet")
@@ -83,6 +83,11 @@ public class MyPageController {
 		request.setAttribute("update", "정상적으로 수정되었습니다.");
 
 		return "home";
+	}
+	
+	@RequestMapping("/sendMail")
+	public String sendMail(){
+		return "sendMail";
 	}
 
 }

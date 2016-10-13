@@ -116,6 +116,6 @@
 </div>
 <script type="text/javascript">
 	function emailAuthor(f){
-		f.action="sendMail.jsp";
+		f.action="sendMail";
 	}
 </script>
