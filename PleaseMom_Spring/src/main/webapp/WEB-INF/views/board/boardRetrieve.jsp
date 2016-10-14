@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="col-md-4">
                                     <%
-                                    	MemberDTO dto = (MemberDTO)request.getAttribute("mDto");
+                                    	MemberDTO dto = (MemberDTO)session.getAttribute("mDto");
                                     	System.out.println(dto);
                                     	int year = Integer.parseInt(dto.getMem_birth().substring(0, 4));
                                     	int age = 2016 - year + 1;

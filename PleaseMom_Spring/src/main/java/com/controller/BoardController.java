@@ -85,7 +85,7 @@ public class BoardController {
 		MemberDTO mDto = mDao.boardSearchMember(scb_num);
 		HashMap<String, Object> map = bDao.retrieve(scb_num);
 		session.setAttribute("retrieveMap", map);
-		request.setAttribute("mDto", mDto);
+		session.setAttribute("mDto", mDto);
 		return "boardRetrieve";
 	}
 	

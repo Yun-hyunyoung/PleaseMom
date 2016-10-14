@@ -77,7 +77,7 @@ public class LoginController {
 			request.setAttribute("title", title);
 			request.setAttribute("link", link);
 		}
-		return "target";
+		return target;
 	}
 	
 }
