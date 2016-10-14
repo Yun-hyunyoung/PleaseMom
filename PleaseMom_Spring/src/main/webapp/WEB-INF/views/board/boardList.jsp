@@ -16,7 +16,7 @@
 		color: #7E7E7E;
 		position: absolute;
 		top: 100px;
-		left: 300px;
+		left: 300px; 
 		font-size: 15px;
 	}
 </style>

@@ -169,9 +169,11 @@
 	position: relative;
 	overflow: visible;
 }
-.title-font{
-	
+.form-selected{
+	background-color: #797979;
+	color: white;
 }
+
 </style>
 
 <div class="container">
@@ -194,8 +196,24 @@
 			<c:set var="gStart" value="${guiderBoard.mediateStart}"></c:set>
 			<c:set var="gArrival" value="${guiderBoard.mediateArrival}"></c:set>
 			<c:set var="size" value="${size}"></c:set>
-			<button id="request"> 동행요청한 게시글</button>
-			<button id="guider"> 내가작성한 게시글</button>
+			<div class="row">
+				<c:if test="${ guiderBoardList !=null}">
+				<div class="col-xs-12 col-sm-6">
+					<button class="form-control input-lg" id="request"> 동행요청한 게시글</button>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<button class="form-control input-lg form-selected" id="guider"> 내가작성한 게시글</button>
+				</div>
+				</c:if>
+				<c:if test="${ requestBoardList !=null}">
+				<div class="col-xs-12 col-sm-6">
+					<button class="form-control input-lg form-selected" id="request"> 동행요청한 게시글</button>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<button class="form-control input-lg" id="guider"> 내가작성한 게시글</button>
+				</div>
+				</c:if>
+			</div>
 			
 			<c:if test="${ requestBoardList !=null}">
 				<c:if test="${size != 0}">

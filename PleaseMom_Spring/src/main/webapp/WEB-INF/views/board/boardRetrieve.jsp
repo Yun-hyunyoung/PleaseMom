@@ -7,7 +7,7 @@
 <style>
 	.card{
 		border: 2px; 
-		border-radius: 8px; 
+		border-radius: 4px; 
 		padding-top: 20px; 
 		padding-bottom: 20px; 
 		margin-bottom: 20px; 
@@ -17,12 +17,16 @@
 	}
 </style>
 <div class="main-panel" style="padding-top: 20px;">
+<div class="col-xs-10 col-lg-offset-1">
+	<button style="text-align:left; font-size:smaller; padding: 10px; margin-top:10px; margin-bottom:10px;" class="card form-control" onclick="boardRetrieveToList(myForm,'${map.scb_from}','${map.scb_to }','${map.min}','${map.max}','${curPage1}')">&nbsp;&nbsp;<div class="glyphicon glyphicon-arrow-left"></div>&nbsp;&nbsp;목록보기로 돌아가기</button>
+</div>
         <div class="content">
             <div class="container-fluid col-lg-10 col-lg-offset-1">
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-lg-4 col-md-5">
                         <div class="card card-user">
                             <div class="content text-center">
+                            	<div>
                                 <div class="author">
                                   <img class="avatar border-white" src="img/images.png" alt="..."/>
                                   <h4 class="title">${mDto.mem_name }<br />
@@ -31,8 +35,9 @@
                                 <div class="text-center">
                                     안녕하세요 반갑습니다.<br>
                                 </div>
+                                </div>
                             </div>
-                            <hr>
+                            <hr style="border-color: #D4D4D4">
                             <div class="text-center">
                             	<div class="row">
                             		<div class="col-md-5 col-md-offset-1">
@@ -55,6 +60,7 @@
 	                                </div>
                             	</div>
                             </div>
+                            <hr style="border-color: #D4D4D4">
                             <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-1">
@@ -80,11 +86,9 @@
                     	<div class="header text-center">
                            	<h3 class="title">${retrieveMap.bDto.scb_title}</h3>
                         </div>
-                    </div>
-                    <div class="card col-lg-8 col-md-7">
                         <div>
                             <div class="content">
-                                    <div class="row">
+                                    <div class="row" style="border:2px solid; padding-top: 10px; border-color: #D4D4D4; border-radius: 8px; margin: 20px;">
                                         <div class="col-md-5">
                                             <div class="form-group text-center">
                                                 <small>출발 공항</small>
@@ -96,7 +100,7 @@
                                             <div class="form-group text-center">
                                                 <small>경유</small>
                                                 <br>
-                                                <label>${retrieveMap.bDto.scb_via}</label>
+                                                <label>${retrieveMap.bDto.scb_via}회</label>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
@@ -107,7 +111,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
@@ -120,34 +123,42 @@
 									<div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
-                                            	<hr>
+                                            	<hr style="border-color: #D4D4D4">
+                                                <small>글 내용</small>
                                                 <br>
                                                 ${retrieveMap.bDto.scb_content}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <form name="myForm" method="get">
-										<c:set var="case2" value="${retrieveMap.bDto.scb_case}"></c:set>
-										<c:set var="loginMemberNum" value="${login.mem_num}" scope="session"></c:set>
-										<c:set var="retrieveMap" value="${retrieveMap}" scope="session"></c:set>
-										<c:set var="DtoMemberNum" value="${mDto.mem_num}"></c:set>
-										<c:set var="boardNum" value="${retrieveMap.bDto.scb_num}"></c:set>
-										<c:set var="searchMapFrom" value="${map.scb_from}" scope="session"></c:set>
-										<c:set var="mDto" value="${mDto}" scope="session"></c:set>
-										<c:if test="${loginMemberNum!=DtoMemberNum}">
-											<input class="btn btn-info btn-fill btn-wd" type="button" value="동행요청" <c:if test="${case2!='WAIT'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
-										</c:if>
-										<c:if test="${loginMemberNum==DtoMemberNum}">
-											<input class="btn btn-info btn-fill btn-wd" type="button" value="수정" onclick="boardUpdate(myForm)">
-											<input class="btn btn-info btn-fill btn-wd" type="button" value="삭제" onclick="boardDelete(myForm,${boardNum})">
-										</c:if>
-											<input class="btn btn-info btn-fill btn-wd" type="button" value="목록보기" onclick="boardRetrieveToList(myForm,'${map.scb_from}','${map.scb_to }','${map.min}','${map.max}','${curPage1}')">
-										</form>
                                     </div>
                             </div>
                         </div>
                     </div>
+                    <form name="myForm" method="get">
+					<c:set var="case2" value="${retrieveMap.bDto.scb_case}"></c:set>
+					<c:set var="loginMemberNum" value="${login.mem_num}" scope="session"></c:set>
+					<c:set var="retrieveMap" value="${retrieveMap}" scope="session"></c:set>
+					<c:set var="DtoMemberNum" value="${mDto.mem_num}"></c:set>
+					<c:set var="boardNum" value="${retrieveMap.bDto.scb_num}"></c:set>
+					<c:set var="searchMapFrom" value="${map.scb_from}" scope="session"></c:set>
+					<c:set var="mDto" value="${mDto}" scope="session"></c:set>
+					<div class="col-xs-12 col-sm-8">
+					<c:if test="${loginMemberNum!=DtoMemberNum}">
+					<div class="col-xs-12">
+						<input class="form-control input-lg btn btn-fill btn-wd" type="button" value="동행요청" <c:if test="${case2!='WAIT'}">disabled="disabled" style="background: rgb(100,100,100);"</c:if> onclick="boardMediate()" >
+					</div>
+					</c:if>
+					<c:if test="${loginMemberNum==DtoMemberNum}">
+					<div class="col-xs-6">
+						<button class="form-control input-lg btn-fill btn-wd" type="button" value="수정" onclick="boardUpdate(myForm)">수정</button>
+					</div>
+					<div class="col-xs-6">
+						<input class="form-control input-lg btn-fill btn-wd" type="button" value="삭제" onclick="boardDelete(myForm,${boardNum})">
+					</div>
+					</c:if>
+					</div>
+					</form>
                 </div>
             </div>
         </div>
