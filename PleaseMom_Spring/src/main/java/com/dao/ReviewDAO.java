@@ -2,8 +2,9 @@ package com.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,9 +16,15 @@ public class ReviewDAO {
 
 	@Autowired
 	SqlSessionTemplate template;
+	static Logger logger = LoggerFactory.getLogger(ReviewDAO.class);
+
+	public List<ReviewDTO> reqRievewList(int mem_num) throws CommonException{
+		List<ReviewDTO>list = template.selectList("review.reqReviewList", mem_num);
+		return list;
+	}
 	
-	public List<ReviewDTO> rievewList(int mem_num) throws CommonException{
-		List<ReviewDTO>list = template.selectList("review.reviewList", mem_num);
+	public List<ReviewDTO> guiRievewList(int mem_num) throws CommonException{
+		List<ReviewDTO>list = template.selectList("review.guiReviewList", mem_num);
 		return list;
 	}
 	
@@ -27,5 +34,9 @@ public class ReviewDAO {
 		}
 		List<String> list = template.selectList("review.airportList", airportList);
 		return list;
+	}
+	
+	public void writeReview(ReviewDTO dto){
+		int n = template.insert("review.writeReview",dto);
 	}
 }

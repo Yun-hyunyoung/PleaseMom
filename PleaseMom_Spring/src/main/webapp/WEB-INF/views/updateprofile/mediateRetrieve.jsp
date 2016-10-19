@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <style type="text/css">
 
  .abc{
@@ -24,7 +25,7 @@
         <div class="col-sm-3">
 			<h4><a href="UpdateProfileFormServlet">프로필 수정</a></h4>
 			<h4><a href="BoardMediateListServlet">중개 현황</a></h4>
-			<h4><a href="#">후기</a></h4>
+			<h4><a href="BoardReviewListServlet">후기</a></h4>
 		</div>
 		<div class="col-sm-9">
 			<form class="form-horizontal" action="UpdateProfileServlet">
@@ -122,7 +123,41 @@
 			<%-- </c:if> --%>
 			<c:if test="${mediateRetrieve.bDto.scb_case=='CONFIRM'}">
 				<button name="mediateList" onclick="mediateListfunction()">목록보기</button>
-					완료됨 - > 후기계시판!!!만들기
+					완료됨 - > 후기게시판!!!만들기
+					<div class="container">
+					  <div class="row">
+					    <div class="col-md-8">
+					      <h2 class="page-header">후기 작성</h2>
+					        <section class="comment-list">
+					          <!-- First Comment -->
+					          <article class="row">
+					            <div class="col-md-2 col-sm-2 hidden-xs">
+					              <figure class="thumbnail">
+					                <img class="img-responsive" src="img/${login.mem_picture}" />
+					                <figcaption class="text-center">${login.mem_name}</figcaption>
+					              </figure>
+					            </div>
+					            <div class="col-md-10 col-sm-10">
+					              <div class="panel panel-default arrow left">
+					                <div class="panel-body">
+					                <form action="writeReview" method="post">
+					                <input type="hidden" name="mem_num" value="${login.mem_num }">
+					                <input type="hidden" name="gui_num" value="${mediateRetrieveDto.mem_num }">
+					                <input type="hidden" name="scb_num" value="${mediateRetrieve.bDto.scb_num }">
+					                <input id="input-rating" name="review_star" value="0" type="number" class="rating" min=0 max=5 step=0.1 data-size="sm">
+					                  <div class="comment-post">
+					                    <textarea name="review_content" cols="3" rows="5" placeholder="후기를 입력해주세요." draggable="false" class="form-control"></textarea>
+					                  </div>
+					                  <input type="submit" class="form-control" value="등록">
+					                </form>
+					                </div>
+					              </div>
+					            </div>
+					          </article>
+					        </section>
+					    </div>
+					  </div>
+					</div>
 			</c:if>
 			
 			<%
@@ -137,6 +172,9 @@
 					}
 				}
 			%>
+			
+			
 		</div>
     </div>
 </div>
+	

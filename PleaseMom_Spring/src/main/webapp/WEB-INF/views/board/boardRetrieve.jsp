@@ -28,7 +28,7 @@
                             <div class="content text-center">
                             	<div>
                                 <div class="author">
-                                  <img class="avatar border-white" src="img/images.png" alt="..."/>
+                                  <img class="avatar border-white" src="img/${mDto.mem_picture }" alt="..."/>
                                   <h4 class="title">${mDto.mem_name }<br />
                                   </h4>
                                 </div>
