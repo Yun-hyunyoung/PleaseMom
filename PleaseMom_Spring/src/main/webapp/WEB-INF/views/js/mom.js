@@ -212,3 +212,23 @@ $("#checkPhoneClose").on('click', function() {
 	opener.parent.location.reload();
 	window.close();
 })
+
+$(document).ready(function () {
+	if(typeof(EventSource) !== "undefined") {
+		var source = new EventSource("refresh");
+		console.log("source" , source);
+	    source.onopen = function(event){
+	    	console.log("onopen");
+	    };
+	    source.onerror = function(event){
+	    	console.log("onerror");
+	    	console.log(event);
+	    };
+	    source.onmessage = function(event) {
+	    	console.log("onmessage");
+	        console.log(event.data);
+	    };
+	}else {
+	    consol.log("Sorry, your browser does not support server-sent events...");
+	}
+})
