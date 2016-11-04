@@ -265,5 +265,28 @@ public class BoardService {
 		}
 		return approval;
 	}
+	
+	// 안드로이드 글 리스트
+		public HashMap<String, Object> list(HashMap<String, String> map) {
+			HashMap<String, Object> mapList = new HashMap<>();
+			List<BoardDTO> list = null;
+			List<String> listName_kr_start = null;
+			List<String> listName_kr_arrival = null;
+			SqlSession session = MySqlSessionFactory.getSession();
+			try {
+				
+				list = session.selectList("androidBoardList", map);
+				listName_kr_start = session.selectList("listAirportStart", map);
+				listName_kr_arrival = session.selectList("listAirportArrival", map);
+
+			} finally {
+				session.close();
+			}
+
+			mapList.put("list", list);
+			mapList.put("start", listName_kr_start);
+			mapList.put("arrival", listName_kr_arrival);
+			return mapList;
+		}// end list()
 
 }//end 

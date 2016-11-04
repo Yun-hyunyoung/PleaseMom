@@ -154,6 +154,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from schedule_board
 		where scb_num=#{scb_num}
 	</select>
+	
+	<select id="androidBoardList" resultType="BoardDTO" parameterType="hashmap">
+	   select scb_num, scb_mem_num, scb_from,scb_via,scb_to,
+	         scb_sdate,scb_title,
+	         scb_content,scb_wdate,scb_case
+		from schedule_board
+		where scb_from=(select airport_num from AIRPORT_INFO where name_kr=#{scb_from})
+		and scb_to in (select airport_num from AIRPORT_INFO where COUNTRY_KR=#{scb_to})
+	   	and scb_sdate between to_date(#{min},'YYYY-MM-DD:HH24:MI') and to_date(#{max},'YYYY-MM-DD:HH24:MI')
+	   	order by scb_num desc      
+	</select>
 </mapper>
 
 

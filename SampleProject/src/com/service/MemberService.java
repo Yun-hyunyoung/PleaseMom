@@ -210,4 +210,39 @@ public class MemberService {
 			session.close();
 		}
 	}
+	
+	public void checkToken(String mem_num, String token) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			String getToken = session.selectOne("getToken", mem_num);
+			HashMap<String,String> map = new HashMap<String,String>();
+			map.put("mem_num", mem_num);
+			map.put("token", token);
+			if (getToken == null) {
+				int n = session.insert("putToken", map);
+			} else{
+				int n = session.update("updateToken", map);
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+			throw new CommonException("checkToken 실패");
+		} finally {
+			session.commit();
+			session.close();
+		}
+	}
+	
+	public String getToken(String mem_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String token = null;
+		try {
+			token = session.selectOne("getToken", mem_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("getToken 실패");
+		} finally {
+			session.close();
+		}
+		return token;
+	}
 }

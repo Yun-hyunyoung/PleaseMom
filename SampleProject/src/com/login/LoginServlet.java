@@ -43,7 +43,6 @@ public class LoginServlet extends HttpServlet {
 		
 		LoginManager.getInstance();
 		
-		
 		try {
 			dto = service.login(map);
 			if (dto == null) {

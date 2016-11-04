@@ -9,7 +9,7 @@ import com.dto.ReviewDTO;
 import com.exception.CommonException;
 
 public class ReviewService {
-	public List<ReviewDTO> rievewList(int mem_num) throws CommonException{
+	public List<ReviewDTO> reviewList(int mem_num) throws CommonException{
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<ReviewDTO> list = null;
 		try {
@@ -35,6 +35,20 @@ public class ReviewService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new CommonException("공항 목록 불러오기 실패");
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	public List<ReviewDTO> reviewAllList() throws CommonException{
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<ReviewDTO> list = null;
+		try {
+			list = session.selectList("review.reviewList");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("리뷰 목록 불러오기 실패");
 		} finally {
 			session.close();
 		}
