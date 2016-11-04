@@ -213,7 +213,10 @@ $("#checkPhoneClose").on('click', function() {
 	window.close();
 })
 
-$(document).ready(function () {
+/*
+ * Noti Event (Not Complete)
+ */
+/*$(document).ready(function () {
 	if(typeof(EventSource) !== "undefined") {
 		var source = new EventSource("refresh");
 		console.log("source" , source);
@@ -231,4 +234,4 @@ $(document).ready(function () {
 	}else {
 	    consol.log("Sorry, your browser does not support server-sent events...");
 	}
-})
+})*/

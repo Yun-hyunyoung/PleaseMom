@@ -1,5 +1,3 @@
-<%@page import="com.dto.MemberDTO"%>
-<%@page import="com.dao.MemberDAO"%>
 <%@page import="com.dao.AirportDAO"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -8,26 +6,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String name = (String)request.getAttribute("value");
+	String name = request.getParameter("value");
 
-	MemberDAO mDao = new MemberDAO();
-	MemberDTO mDto = mDao.catchProfile("mind111@naver.com");
-	System.out.println(mDto);
-	
 	AirportDAO aDao = new AirportDAO();
-	List<AirportInfoDTO> list = aDao.airportSearch(name);
+	List<AirportInfoDTO> list = aDao.nationSearch(name);
 	
 	// airplaneInfo의 JSON정보를 담을 Array 선언
 	JSONArray jsonArray = new JSONArray();
 	
 	for(AirportInfoDTO dto : list){
 		// airplaneInfo 하나의 정보가 들어갈 JSONObject 선언
-		JSONObject airplaneInfo = new JSONObject();
+		JSONObject countryInfo = new JSONObject();
 		
-		airplaneInfo.put("name", dto.getName_kr());
-		airplaneInfo.put("country", dto.getCountry_kr());
-		airplaneInfo.put("city", dto.getCity_kr());
-		jsonArray.add(airplaneInfo);
+		countryInfo.put("country", dto.getCountry_kr());
+		countryInfo.put("location", dto.getLocation());
+		jsonArray.add(countryInfo);
 	}
 %>
 <%= jsonArray %>

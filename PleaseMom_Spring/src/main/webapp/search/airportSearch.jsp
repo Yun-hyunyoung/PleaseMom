@@ -1,5 +1,3 @@
-<%@page import="com.dto.MemberDTO"%>
-<%@page import="com.dao.MemberDAO"%>
 <%@page import="com.dao.AirportDAO"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -10,10 +8,6 @@
 <%
 	String name = (String)request.getAttribute("value");
 
-	MemberDAO mDao = new MemberDAO();
-	MemberDTO mDto = mDao.catchProfile("mind111@naver.com");
-	System.out.println(mDto);
-	
 	AirportDAO aDao = new AirportDAO();
 	List<AirportInfoDTO> list = aDao.airportSearch(name);
 	
