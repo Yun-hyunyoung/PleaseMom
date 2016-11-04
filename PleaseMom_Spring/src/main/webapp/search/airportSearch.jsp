@@ -1,3 +1,7 @@
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.web.context.WebApplicationContext"%>
+<%@page import="com.dto.MemberDTO"%>
+<%@page import="com.dao.MemberDAO"%>
 <%@page import="com.dao.AirportDAO"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -6,9 +10,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String name = (String)request.getAttribute("value");
+	String name = (String)request.getParameter("value");
 
-	AirportDAO aDao = new AirportDAO();
+	WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+	AirportDAO aDao = (AirportDAO)wac.getBean("AirportDAO");
+	
 	List<AirportInfoDTO> list = aDao.airportSearch(name);
 	
 	// airplaneInfo의 JSON정보를 담을 Array 선언

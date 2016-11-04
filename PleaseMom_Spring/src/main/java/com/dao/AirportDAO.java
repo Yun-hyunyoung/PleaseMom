@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dto.AirportInfoDTO;
 
-@Repository
+@Repository(value="AirportDAO")
 public class AirportDAO {
 	
 	@Autowired
