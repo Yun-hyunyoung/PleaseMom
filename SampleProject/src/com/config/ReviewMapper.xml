@@ -3,10 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
-	<resultMap type="MemberDTO" id="memberResult">
-		<id column="mem_num" property="mem_num"/>
+	<resultMap type="MemberDTO" id="reqMemberResult">
+		<id column="review_req_num" property="mem_num"/>
 		<result column="mem_picture" property="mem_picture"/>
 		<result column="mem_name" property="mem_name"/>
+	</resultMap>
+	
+	<resultMap type="MemberDTO" id="guiMemberResult">
+		<id column="review_gui_num" property="mem_num"/>
+		<result column="g_pic" property="mem_picture"/>
+		<result column="g_name" property="mem_name"/>
 	</resultMap>
 	
 	<resultMap type="BoardDTO" id="boardResult">
@@ -20,14 +26,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id column="review_num" property="review_num"/>
 		<result column="review_content" property="review_content"/>
 		<result column="review_star" property="review_star"/>
-		<association property="memberDto" resultMap="memberResult"/>	<!-- 1:1에서만 사용함 -->
+		<result column="review_wdate" property="review_wdate"/>
+		<association property="reqMemDto" resultMap="reqMemberResult"/>	<!-- 1:1에서만 사용함 -->
+		<association property="guiMemDto" resultMap="guiMemberResult"/>
 		<association property="boardDto" resultMap="boardResult"/>
 	</resultMap>
 	
-	<select id="reviewList" parameterType="int" resultMap="reviewResult">
-		select review_num, review_content, review_mem_num, review_star, mem_name, mem_picture, scb_from, scb_via, scb_to
-		from review, member, schedule_board
-		where mem_num = review_mem_num and review_scb_num = scb_num and review_mem_num = #{mem_num}
+	<select id="reviewList" resultMap="reviewResult">
+		select review_num, review_content, review_req_num, review_gui_num, review_star, to_char(review_wdate, 'yyyy-mm-dd hh24:mm') review_wdate, r.mem_name, r.mem_picture, g.mem_name g_name, g.mem_picture g_pic, scb_from, scb_via, scb_to
+		from review, member r, member g, schedule_board
+		where r.mem_num = review_req_num and g.mem_num = review_gui_num
+			and review_scb_num = scb_num
+	</select>
+	
+	<select id="reqReviewList" parameterType="int" resultMap="reviewResult">
+		select review_num, review_content, review_req_num, review_gui_num, review_star, to_char(review_wdate, 'yyyy-mm-dd hh24:mm') review_wdate, r.mem_name, r.mem_picture, g.mem_name g_name, g.mem_picture g_pic, scb_from, scb_via, scb_to
+		from review, member r, member g, schedule_board
+		where r.mem_num = review_req_num and g.mem_num = review_gui_num
+			and review_scb_num = scb_num and review_req_num = #{mem_num}
+	</select>
+	
+	<select id="guiReviewList" parameterType="int" resultMap="reviewResult">
+		select review_num, review_content, review_req_num, review_gui_num, review_star, to_char(review_wdate, 'yyyy-mm-dd hh24:mm') review_wdate, r.mem_name, r.mem_picture, g.mem_name g_name, g.mem_picture g_pic, scb_from, scb_via, scb_to
+		from review, member r, member g, schedule_board
+		where r.mem_num = review_req_num and g.mem_num = review_gui_num 
+			and review_scb_num = scb_num and review_gui_num = #{mem_num}
 	</select>
 	
 	<select id="airportList" parameterType="list" resultType="string">

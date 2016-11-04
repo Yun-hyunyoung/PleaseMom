@@ -33,7 +33,7 @@ public class BoardReviewListServlet extends HttpServlet {
 		String title = "";
 		String target = "";
 		try {
-			List<ReviewDTO> list = rService.rievewList(mem_num);
+			List<ReviewDTO> list = rService.reviewList(mem_num);
 			List<Integer> fromList = new ArrayList<Integer>();
 			List<Integer> toList = new ArrayList<Integer>();
 			for (ReviewDTO rdto : list) {

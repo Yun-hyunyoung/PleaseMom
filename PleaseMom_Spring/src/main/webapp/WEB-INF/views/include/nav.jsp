@@ -35,8 +35,11 @@
                     	<li>
                 			<a href="#" onclick="boardWriteUI()">글쓰기</a>
                 		</li>
-	                    <li>
-	                        <a href="#">메시지</a>
+	                    <li class="dropdown">
+	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">메시지<span class="caret"></span></a>
+	                        <ul class="dropdown-menu message-menu">
+	                        	 
+	                        </ul>
 	                    </li>
 	                    <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">이름 <span class="caret"></span></a>

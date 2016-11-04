@@ -21,10 +21,10 @@ public class CertifyController {
 	@Autowired
 	MemberDAO mDao;
 	
-	@ExceptionHandler(Exception.class)
+	/*@ExceptionHandler(Exception.class)
 	public String error(){
 		return "error";
-	}
+	}*/
 	
 	@RequestMapping("/PhoneCertifyFormServlet")
 	public String phoneCertifyForm(){
@@ -54,11 +54,14 @@ public class CertifyController {
 		} else {
 			target = "phoneCertify";
 			String certifyNumber = PasswordGenerator.getCertifyNumber(6);
+			System.out.println("구간1");
 			SendSMS.sendSMS(phone, certifyNumber);
+			System.out.println("구간2");
 			request.setAttribute("certifyNumber", certifyNumber);
 			request.setAttribute("phoneNumber", phone);
+			System.out.println("구간3");
 		}
-		return "target";
+		return target;
 	}
 	
 	

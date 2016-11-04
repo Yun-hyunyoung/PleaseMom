@@ -91,4 +91,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set mem_phone = #{mem_phone}, mem_phone_ck = 'Y'
 		where mem_num = #{mem_num}
 	</update>
+	
+	<select id="getToken" parameterType="String" resultType="String">
+		select token from tokens where token_mem_num = #{mem_num}
+	</select>
+	
+	<insert id="putToken" parameterType="hashmap">
+		insert into tokens(token_num, token, token_mem_num)
+		values(seq_tokens.nextval, #{token}, #{mem_num})
+	</insert>
+	
+	<update id="updateToken" parameterType="hashmap">
+		update tokens
+		set token = #{token}
+		where token_mem_num = #{mem_num}
+	</update>
 </mapper>

@@ -96,4 +96,5 @@ public class MemberDTO {
 				+ mem_name + ", mem_birth=" + mem_birth + ", mem_phone=" + mem_phone + ", mem_picture=" + mem_picture
 				+ ", mem_email_ck=" + mem_email_ck + ", mem_phone_ck=" + mem_phone_ck + ", mem_case=" + mem_case + "]";
 	}
+	
 }
