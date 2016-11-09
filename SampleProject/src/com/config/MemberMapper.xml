@@ -106,4 +106,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set token = #{token}
 		where token_mem_num = #{mem_num}
 	</update>
+	
+	<select id="getPasswd" parameterType="String" resultType="String">
+		select CRYPTIT.DECRYPT(mem_passwd, 'oramaster') mem_passwd from member where mem_num = #{mem_num}
+	</select>
+	
+	<update id="updatePasswd" parameterType="hashmap">
+		update member
+		set mem_passwd = CRYPTIT.encrypt(#{passwd}, 'oramaster')
+		where mem_num = #{mem_num}
+	</update>
 </mapper>
