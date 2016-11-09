@@ -2,7 +2,7 @@
 		source: function( request, response ) {
 	        $.ajax({
 	            dataType: "json",
-	            type : 'Get',
+	            type : 'POST',
 	            url: 'search/airportSearch.jsp',
 	            data: { value : request.term },
 	            success: function(data) {
