@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%!   int i = 0;  %>
+<%-- <%!   int i = 0;  %>
 <%
 	System.out.println("HEllo");
 	// response.setHeader("Content-Type" , "text/event-stream;charset=UTF-8");	//sever sent event 사용 위한 환경설정
@@ -10,5 +10,5 @@
 	out.print("data: Hello\n\n");
    	out.flush();
 %>
-data: 이벤트1,데이터1
+data: 이벤트1,데이터1 --%>
 

@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dao.AirportDAO;
 import com.dao.BoardDAO;
@@ -43,12 +45,12 @@ public class BoardController {
 	public String boardList(HttpSession session, HttpServletRequest request){
 		String curPage=request.getParameter("curPage");
 		HashMap<String, String> map=new HashMap<>();
-		HashMap<String,String> writeMap=(HashMap<String, String>)request.getAttribute("writeMap");
+		HashMap<String,String> writeMap=(HashMap<String, String>)session.getAttribute("writeMap");
 		if (curPage == null) {
 			curPage = "1";
 			if (writeMap == null) {
 				String scb_from1[] = request.getParameter("scb_from").split("/");// 출발지
-				String scb_from = scb_from1[0];// 공항이름
+				String scb_from = request.getParameter("scb_from");// 공항이름
 				String scb_to = request.getParameter("scb_to");// 도착지
 				String min = request.getParameter("min");// 미니멈
 				String max = request.getParameter("max");// 맥시멈
@@ -76,6 +78,8 @@ public class BoardController {
 		request.setAttribute("page", mapList.get("dto"));
 		request.setAttribute("start", mapList.get("start"));
 		request.setAttribute("arrival", mapList.get("arrival"));
+		
+		session.removeAttribute("writeMap");
 		return "boardList";
 	}
 	
@@ -142,7 +146,7 @@ public class BoardController {
 		writeMap.put("scb_to", scb_to_country);
 		writeMap.put("min", scb_sdate);
 		writeMap.put("max", "9999-12-31:00:00");
-		request.setAttribute("writeMap", writeMap);
+		session.setAttribute("writeMap", writeMap);
 		return "redirect:BoardListServlet";
 	}
 	
@@ -150,6 +154,5 @@ public class BoardController {
 	public String boardWriteUI(){
 		return "write";
 	}
-	
 	
 }

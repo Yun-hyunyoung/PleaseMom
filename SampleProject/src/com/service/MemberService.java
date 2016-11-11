@@ -245,4 +245,31 @@ public class MemberService {
 		}
 		return token;
 	}
+	
+	public String getPasswd(String mem_num) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String passwd = null;
+		try {
+			passwd = session.selectOne("getPasswd", mem_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("getPasswd 실패");
+		} finally {
+			session.close();
+		}
+		return passwd;
+	}
+	
+	public void updatePasswd(HashMap<String, String> map) throws CommonException {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			int n = session.update("updatePasswd", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("updatePasswd 실패");
+		} finally {
+			session.commit();
+			session.close();
+		}
+	}
 }

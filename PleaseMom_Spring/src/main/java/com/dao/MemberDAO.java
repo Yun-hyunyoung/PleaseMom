@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.dto.MemberDTO;
 import com.exception.CommonException;
 
-@Repository
+@Repository(value="MemberDAO")
 public class MemberDAO {
 
 	@Autowired

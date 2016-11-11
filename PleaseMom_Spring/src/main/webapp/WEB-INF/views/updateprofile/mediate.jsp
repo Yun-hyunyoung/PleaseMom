@@ -294,6 +294,7 @@
 								<hr style="border: 1px solid ; color:rgb(153,138,0);">
 							</div>
 						</a>
+						</div>
 					</c:forEach>
 				</c:if>	
 				<c:if test="${size == 0 }">

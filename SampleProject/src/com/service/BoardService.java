@@ -288,5 +288,17 @@ public class BoardService {
 			mapList.put("arrival", listName_kr_arrival);
 			return mapList;
 		}// end list()
+		
+		// 안드로이드 보드 서치
+		public BoardDTO selectBoard(String scb_num) {
+			BoardDTO dto=new BoardDTO();
+			SqlSession session = MySqlSessionFactory.getSession();
+			try {
+				dto = session.selectOne("selectBoard", Integer.parseInt(scb_num));
+			} finally {
+				session.close();
+			}
+			return dto;
+		}
 
 }//end 
