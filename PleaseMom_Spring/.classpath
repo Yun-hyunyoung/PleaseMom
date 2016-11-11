@@ -30,18 +30,18 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/fluent-hc-4.5.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/httpclient-4.5.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/httpclient-cache-4.5.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/httpclient-win-4.5.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/httpcore-4.4.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/httpmime-4.5.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/jna-4.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project Files/documents/부탁해요 엄마/SMS무료(25건)_청기와랩/lib/jna-platform-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/fluent-hc-4.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/httpclient-4.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/httpclient-cache-4.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/httpclient-win-4.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/httpcore-4.4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/httpmime-4.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/jna-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/08_718/Desktop/Project/build path/청기와랩/jna-platform-4.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
