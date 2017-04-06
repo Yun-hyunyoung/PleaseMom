@@ -25,3 +25,4 @@
  - 안드로이드는 구축 하는대로 업로드 할 것입니다.
  - 메인화면에 동영상은 Airbnb의 동영상을 참조하였습니다.
 [![](http://img.youtube.com/vi/Ue6MYOQnFy4/0.jpg)](http://www.youtube.com/watch?v=Ue6MYOQnFy4)
+http://192.168.25.42:8080/a
