@@ -21,8 +21,6 @@
  - jQuery, bootstrap, Ajax
 
 ### 비고
- - 자택에 랜환경이 없어 로컬로 작업하여 간단한 영상으로 대신하였습니다.
- - 안드로이드는 구축 하는대로 업로드 할 것입니다.
+ - 링크 : http://192.168.25.42:8080/a
  - 메인화면에 동영상은 Airbnb의 동영상을 참조하였습니다.
 [![](http://img.youtube.com/vi/Ue6MYOQnFy4/0.jpg)](http://www.youtube.com/watch?v=Ue6MYOQnFy4)
-http://192.168.25.42:8080/a
