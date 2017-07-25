@@ -22,5 +22,5 @@
 
 ### 비고
  - 링크 : http://192.168.25.42:8080/a
- - 메인화면에 동영상은 Airbnb의 동영상을 참조하였습니다.
+ - 사진을 클릭하면 Youtube로 이동합니다.(메인화면에 동영상은 Airbnb의 동영상을 참조하였습니다.)
 [![](http://img.youtube.com/vi/Ue6MYOQnFy4/0.jpg)](http://www.youtube.com/watch?v=Ue6MYOQnFy4)
